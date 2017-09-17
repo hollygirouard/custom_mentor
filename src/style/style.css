@@ -1,0 +1,9 @@
+.logo{
+  width:100%;
+}
+
+.socialLinks{
+  display: flex;
+ font-size: 24px;
+ justify-content: space-around;
+}
