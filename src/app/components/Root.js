@@ -7,13 +7,10 @@ export class Root extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-xs-10 col-xs-offset-1">
+                    <div className="col-xs-2">
                         <Header />
                     </div>
-                </div>
-                <hr/>
-                <div className="row">
-                    <div className="col-xs-10 col-xs-offset-1">
+                    <div className="col-xs-10 ">
                         {this.props.children}
                     </div>
                 </div>
