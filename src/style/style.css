@@ -1,12 +1,13 @@
 .logo {
   width: 100%;
-  padding: 10%;
+  padding: 10% 5% 10% 5%;
 }
 
 .socialLinks {
   display: flex;
   font-size: 24px;
   justify-content: space-around;
+  padding-top: 5%;
 }
 
 //////

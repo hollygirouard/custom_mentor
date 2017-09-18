@@ -17,16 +17,14 @@ export class Root extends Component {
   }
   render() {
     return (
-      <div className="container">
         <div className="row">
-          <div className="col-xs-3">
+          <div className="col-xs-2">
             <Header/>
           </div>
           <div className="col-xs-7">
             {this.props.children}
           </div>
         </div>
-      </div>
     );
   }
 }
