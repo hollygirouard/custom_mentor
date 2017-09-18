@@ -19,17 +19,10 @@ export class Root extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-xs-2">
-            <img className = "logo" src = "../image/CustomMentorLogo.png"/>
+          <div className="col-xs-3">
             <Header/>
-            {/* <div className ="socialLinks">
-              <i onClick={this.facebook} className="fa fa-facebook-official"></i>
-              <i onClick={this.twitter} className="fa fa-twitter-square"></i>
-              <i onClick={this.linkedin} className="fa fa-linkedin-square"></i>
-              <i onClick={this.youtube} className="fa fa-youtube-square"></i>
-            </div> */}
           </div>
-          <div className="col-xs-10 ">
+          <div className="col-xs-7">
             {this.props.children}
           </div>
         </div>

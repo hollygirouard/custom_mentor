@@ -35,10 +35,9 @@ export class Header extends Component {
 
     return (
 
-      <div id="documenter_sidebar">
-        <a href="#documenter_cover" id="documenter_logo"></a>
+      <nav id="documenter_sidebar">
         <img className="logo" src="../image/CustomMentorLogo.png"/>
-        <ul id="documenter_nav">
+        <ul  className="nav" >
           <li><Link to={"/home"} activeStyle={{color: "blue"}}>Home</Link></li>
           <li><Link to={"/user"} activeClassName={"active"}>User</Link></li>
           <li><Link to={"/about"} activeClassName={"active"}>About</Link></li>
@@ -52,7 +51,7 @@ export class Header extends Component {
           <i onClick={this.youtube} className="fa fa-youtube-square"></i>
         </div>
 
-      </div>
+      </nav>
 
     );
   };
