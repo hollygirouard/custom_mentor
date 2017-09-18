@@ -22,12 +22,12 @@ export class Root extends Component {
           <div className="col-xs-2">
             <img className = "logo" src = "../image/CustomMentorLogo.png"/>
             <Header/>
-            <div className ="socialLinks">
+            {/* <div className ="socialLinks">
               <i onClick={this.facebook} className="fa fa-facebook-official"></i>
               <i onClick={this.twitter} className="fa fa-twitter-square"></i>
               <i onClick={this.linkedin} className="fa fa-linkedin-square"></i>
               <i onClick={this.youtube} className="fa fa-youtube-square"></i>
-            </div>
+            </div> */}
           </div>
           <div className="col-xs-10 ">
             {this.props.children}

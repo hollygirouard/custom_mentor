@@ -96,10 +96,10 @@
 	                    _reactRouter.Route,
 	                    { path: "/", component: _Root.Root },
 	                    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home.Home }),
+	                    _react2.default.createElement(_reactRouter.Route, { path: "home", component: _Home.Home }),
 	                    _react2.default.createElement(_reactRouter.Route, { path: "user", component: _User.User }),
 	                    _react2.default.createElement(_reactRouter.Route, { path: "about", component: _About.About }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: "contact", component: _Contact.Contact }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: "home", component: _Home.Home })
+	                    _react2.default.createElement(_reactRouter.Route, { path: "contact", component: _Contact.Contact })
 	                ),
 	                _react2.default.createElement(_reactRouter.Route, { path: "home-single", component: _Home.Home })
 	            );
@@ -28635,7 +28635,7 @@
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.Root = undefined;
 	
@@ -28655,46 +28655,70 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Root = exports.Root = function (_React$Component) {
-	    _inherits(Root, _React$Component);
+	var Root = exports.Root = function (_Component) {
+	  _inherits(Root, _Component);
 	
-	    function Root() {
-	        _classCallCheck(this, Root);
+	  function Root() {
+	    _classCallCheck(this, Root);
 	
-	        return _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).apply(this, arguments));
+	  }
+	
+	  _createClass(Root, [{
+	    key: "facebook",
+	    value: function facebook() {
+	      window.open("https://www.facebook.com/blossomcarenetwork.org");
 	    }
-	
-	    _createClass(Root, [{
-	        key: "render",
-	        value: function render() {
-	            return _react2.default.createElement(
-	                "div",
-	                { className: "container" },
-	                _react2.default.createElement(
-	                    "div",
-	                    { className: "row" },
-	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "col-xs-10 col-xs-offset-1" },
-	                        _react2.default.createElement(_Header.Header, null)
-	                    )
-	                ),
-	                _react2.default.createElement("hr", null),
-	                _react2.default.createElement(
-	                    "div",
-	                    { className: "row" },
-	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "col-xs-10 col-xs-offset-1" },
-	                        this.props.children
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return Root;
-	}(_react2.default.Component);
+	  }, {
+	    key: "twitter",
+	    value: function twitter() {
+	      window.open("https://twitter.com/BlossomCareCO");
+	    }
+	  }, {
+	    key: "linkedin",
+	    value: function linkedin() {
+	      window.open("https://www.linkedin.com/company/3800360/");
+	    }
+	  }, {
+	    key: "youtube",
+	    value: function youtube() {
+	      window.open("https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ");
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "container" },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "row" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-xs-2" },
+	            _react2.default.createElement("img", { className: "logo", src: "../image/CustomMentorLogo.png" }),
+	            _react2.default.createElement(_Header.Header, null),
+	            _react2.default.createElement(
+	              "div",
+	              { className: "socialLinks" },
+	              _react2.default.createElement("i", { onClick: this.facebook, className: "fa fa-facebook-official" }),
+	              _react2.default.createElement("i", { onClick: this.twitter, className: "fa fa-twitter-square" }),
+	              _react2.default.createElement("i", { onClick: this.linkedin, className: "fa fa-linkedin-square" }),
+	              _react2.default.createElement("i", { onClick: this.youtube, className: "fa fa-youtube-square" })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-xs-10 " },
+	            this.props.children
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Root;
+	}(_react.Component);
 
 /***/ }),
 /* 248 */
@@ -28721,7 +28745,7 @@
 	var Header = exports.Header = function Header(props) {
 	    return _react2.default.createElement(
 	        "nav",
-	        { className: "navbar navbar-default" },
+	        { className: "navbar navbar-default " },
 	        _react2.default.createElement(
 	            "div",
 	            { className: "container" },
@@ -28730,7 +28754,7 @@
 	                { className: "navbar-header" },
 	                _react2.default.createElement(
 	                    "ul",
-	                    { className: "nav navbar-nav" },
+	                    { className: "nav flex-column" },
 	                    _react2.default.createElement(
 	                        "li",
 	                        null,
@@ -28801,8 +28825,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Home = exports.Home = function (_React$Component) {
-	    _inherits(Home, _React$Component);
+	var Home = exports.Home = function (_Component) {
+	    _inherits(Home, _Component);
 	
 	    function Home() {
 	        _classCallCheck(this, Home);
@@ -28824,9 +28848,9 @@
 	            );
 	        }
 	    }]);
-	
+
 	    return Home;
-	}(_react2.default.Component);
+	}(_react.Component);
 
 /***/ }),
 /* 250 */
@@ -29021,7 +29045,27 @@
 	                _react2.default.createElement(
 	                    "h3",
 	                    null,
-	                    "Contact"
+	                    "Contact Blossom Care Network"
+	                ),
+	                _react2.default.createElement(
+	                    "p",
+	                    null,
+	                    "1600 Downing Street"
+	                ),
+	                _react2.default.createElement(
+	                    "p",
+	                    null,
+	                    "Suite 240"
+	                ),
+	                _react2.default.createElement(
+	                    "p",
+	                    null,
+	                    "Denver CO 80218"
+	                ),
+	                _react2.default.createElement(
+	                    "a",
+	                    { href: "tel:+13035782422" },
+	                    "303.578.2422"
 	                ),
 	                _react2.default.createElement(
 	                    "button",
