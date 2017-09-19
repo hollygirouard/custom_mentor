@@ -8,6 +8,8 @@ import {User} from "./components/User";
 import {About} from "./components/About";
 import {Contact} from "./components/Contact";
 import {Header} from "./components/Header";
+import {Login} from "./components/Login";
+
 
 
 
@@ -20,6 +22,7 @@ class App extends Component {
                   </div>
                   <div className="col-xs-10">
                       <div id ="home"><Home /></div>
+                      <div id ="login"><Login /></div>
                       <div id ="user"><User /></div>
                       <div id ="about"><About /></div>
                       <div id ="contact"><Contact /></div>
