@@ -7,21 +7,24 @@ import {Home} from "./components/Home";
 import {User} from "./components/User";
 import {About} from "./components/About";
 import {Contact} from "./components/Contact";
+import {Header} from "./components/Header";
+
 
 
 class App extends Component {
     render() {
         return (
-            <Router history={browserHistory}>
-                <Route path={"/"} component={Root} >
-                    <IndexRoute component={Home} />
-                    <Route path={"home"} component={Home} />
-                    <Route path={"user"} component={User} />
-                    <Route path={"about"} component={About} />
-                    <Route path={"contact"} component={Contact} />
-                </Route>
-                <Route path={"home-single"} component={Home}/>
-            </Router>
+              <div className="row">
+                  <div className="col-xs-2">
+                      <Header/>
+                  </div>
+                  <div className="col-xs-10">
+                      <div id ="home"><Home /></div>
+                      <div id ="user"><User /></div>
+                      <div id ="about"><About /></div>
+                      <div id ="contact"><Contact /></div>
+                  </div>
+          </div>
         );
     }
 }

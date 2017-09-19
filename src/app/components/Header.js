@@ -38,11 +38,10 @@ export class Header extends Component {
       <nav id="documenter_sidebar">
         <img className="logo" src="../image/CustomMentorLogo.png"/>
         <ul  className="nav" >
-          <li><Link to={"/home"} activeStyle={{color: "blue"}}>Home</Link></li>
-          <li><Link to={"/user"} activeClassName={"active"}>User</Link></li>
-          <li><Link to={"/about"} activeClassName={"active"}>About</Link></li>
-          <li><Link to={"/contact"} activeClassName={"active"}>Contact</Link></li>
-
+          <li><a href ="#home"> Home</a></li>
+          <li><a href ="#user"> User</a></li>
+          <li><a href ="#about"> About</a></li>
+          <li><a href ="#contact"> Contact</a></li>
         </ul>
         <div className="socialLinks">
           <i onClick={this.facebook} className="fa fa-facebook-official"></i>

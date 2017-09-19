@@ -90,18 +90,35 @@
 	        key: "render",
 	        value: function render() {
 	            return _react2.default.createElement(
-	                _reactRouter.Router,
-	                { history: _reactRouter.browserHistory },
+	                "div",
+	                { className: "container" },
 	                _react2.default.createElement(
-	                    _reactRouter.Route,
-	                    { path: "/", component: _Root.Root },
-	                    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home.Home }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: "home", component: _Home.Home }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: "user", component: _User.User }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: "about", component: _About.About }),
-	                    _react2.default.createElement(_reactRouter.Route, { path: "contact", component: _Contact.Contact })
+	                    "div",
+	                    { className: "row" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-xs-10 col-xs-offset-1" },
+	                        _react2.default.createElement(Header, null)
+	                    )
 	                ),
-	                _react2.default.createElement(_reactRouter.Route, { path: "home-single", component: _Home.Home })
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "row" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { id: "home", className: "col-xs-10 col-xs-offset-1" },
+	                        _react2.default.createElement(_Home.Home, null)
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "row" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { id: "user", className: "col-xs-10 col-xs-offset-1" },
+	                        _react2.default.createElement(_User.User, null)
+	                    )
+	                )
 	            );
 	        }
 	    }]);
@@ -28689,29 +28706,16 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "container" },
+	        { className: "row" },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "row" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-xs-2" },
-	            _react2.default.createElement("img", { className: "logo", src: "../image/CustomMentorLogo.png" }),
-	            _react2.default.createElement(_Header.Header, null),
-	            _react2.default.createElement(
-	              "div",
-	              { className: "socialLinks" },
-	              _react2.default.createElement("i", { onClick: this.facebook, className: "fa fa-facebook-official" }),
-	              _react2.default.createElement("i", { onClick: this.twitter, className: "fa fa-twitter-square" }),
-	              _react2.default.createElement("i", { onClick: this.linkedin, className: "fa fa-linkedin-square" }),
-	              _react2.default.createElement("i", { onClick: this.youtube, className: "fa fa-youtube-square" })
-	            )
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-xs-10 " },
-	            this.props.children
-	          )
+	          { className: "col-xs-2" },
+	          _react2.default.createElement(_Header.Header, null)
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "col-xs-7" },
+	          this.props.children
 	        )
 	      );
 	    }
@@ -28730,9 +28734,11 @@
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.Header = undefined;
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 1);
 	
@@ -28742,60 +28748,120 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Header = exports.Header = function Header(props) {
-	    return _react2.default.createElement(
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// export const Header = (props) => {
+	//     return (
+	//         <nav className="navbar navbar-default ">
+	//             <div className="container">
+	//                 <div className="navbar-header">
+	//                     <ul className="nav flex-column">
+	//                         <li><Link to={"/home"} activeStyle={{color: "blue"}}>Home</Link></li>
+	//                         <li><Link to={"/user"} activeClassName={"active"}>User</Link></li>
+	//                         <li><Link to={"/about"} activeClassName={"active"}>About</Link></li>
+	//                         <li><Link to={"/contact"} activeClassName={"active"}>Contact</Link></li>
+	//                     </ul>
+	//                 </div>
+	//             </div>
+	//         </nav>
+	//     );
+	// };
+	
+	var Header = exports.Header = function (_Component) {
+	  _inherits(Header, _Component);
+	
+	  function Header() {
+	    _classCallCheck(this, Header);
+	
+	    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+	  }
+	
+	  _createClass(Header, [{
+	    key: "facebook",
+	    value: function facebook() {
+	      window.open("https://www.facebook.com/blossomcarenetwork.org");
+	    }
+	  }, {
+	    key: "twitter",
+	    value: function twitter() {
+	      window.open("https://twitter.com/BlossomCareCO");
+	    }
+	  }, {
+	    key: "linkedin",
+	    value: function linkedin() {
+	      window.open("https://www.linkedin.com/company/3800360/");
+	    }
+	  }, {
+	    key: "youtube",
+	    value: function youtube() {
+	      window.open("https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ");
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	
+	      return _react2.default.createElement(
 	        "nav",
-	        { className: "navbar navbar-default " },
+	        { id: "documenter_sidebar" },
+	        _react2.default.createElement("img", { className: "logo", src: "../image/CustomMentorLogo.png" }),
 	        _react2.default.createElement(
-	            "div",
-	            { className: "container" },
+	          "ul",
+	          { className: "nav" },
+	          _react2.default.createElement(
+	            "li",
+	            null,
 	            _react2.default.createElement(
-	                "div",
-	                { className: "navbar-header" },
-	                _react2.default.createElement(
-	                    "ul",
-	                    { className: "nav flex-column" },
-	                    _react2.default.createElement(
-	                        "li",
-	                        null,
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: "/home", activeStyle: { color: "blue" } },
-	                            "Home"
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        "li",
-	                        null,
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: "/user", activeClassName: "active" },
-	                            "User"
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        "li",
-	                        null,
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: "/about", activeClassName: "active" },
-	                            "About"
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        "li",
-	                        null,
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: "/contact", activeClassName: "active" },
-	                            "Contact"
-	                        )
-	                    )
-	                )
+	              _reactRouter.Link,
+	              { to: "/home", activeStyle: { color: "blue" } },
+	              "Home"
 	            )
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: "/user", activeClassName: "active" },
+	              "User"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: "/about", activeClassName: "active" },
+	              "About"
+	            )
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: "/contact", activeClassName: "active" },
+	              "Contact"
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "socialLinks" },
+	          _react2.default.createElement("i", { onClick: this.facebook, className: "fa fa-facebook-official" }),
+	          _react2.default.createElement("i", { onClick: this.twitter, className: "fa fa-twitter-square" }),
+	          _react2.default.createElement("i", { onClick: this.linkedin, className: "fa fa-linkedin-square" }),
+	          _react2.default.createElement("i", { onClick: this.youtube, className: "fa fa-youtube-square" })
 	        )
-	    );
-	};
+	      );
+	    }
+	  }]);
+
+	  return Header;
+	}(_react.Component);
 
 /***/ }),
 /* 249 */
@@ -29067,6 +29133,7 @@
 	                    { href: "tel:+13035782422" },
 	                    "303.578.2422"
 	                ),
+	                _react2.default.createElement("br", null),
 	                _react2.default.createElement(
 	                    "button",
 	                    { onClick: this.onNavigateHome, className: "btn btn-primary" },
