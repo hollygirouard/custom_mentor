@@ -1,21 +1,45 @@
 import React, {Component} from "react";
-import {Button, Menu, Icon, Header, Modal} from 'semantic-ui-react';
 
-export class Home extends Component {
-  render() {
-    return (
-      <div>
-        <h3>Home</h3>
-        <Modal trigger={<Button className="login_button">Log In</Button>}>
-          <Modal.Header>Login</Modal.Header>
-          <Modal.Content image>
-            <Modal.Description>
-              <Header>Please login with a username and password</Header>
-            </Modal.Description>
-          </Modal.Content>
-        </Modal>
+import {Login} from "./Login";
+import {Signin} from "./Signin";
 
-      </div>
-    );
+
+
+class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loginVisible: true,
+      signinVisible:false
+    }
   }
-}
+
+  render() {
+    return(
+      <div>
+        <button onClick={() => this.onLogin()}>Login</button>
+        <button onClick={() => this.onSignin()}>Sign-in</button>
+
+        {this.state.loginVisible
+            ? <Login />
+            : null
+        }
+        {this.state.signinVisible
+            ? <Signin />
+            : null
+        }
+      </div>
+
+    )
+  }
+
+  onLogin() {
+      this.setState({loginVisible: true, signinVisible:false});
+  }
+  onSignin() {
+    this.setState({loginVisible: false, signinVisible:true});
+  }
+};
+
+
+export default Home
