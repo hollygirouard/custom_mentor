@@ -7,6 +7,7 @@ export class Title extends Component {
     render() {
         return (
             <div className = "title">
+
                 <h2 >Custom Mentor</h2>
                 <p>You Goals, Your Way</p><br/>
                 <p>Everyone should have a mentor.</p>

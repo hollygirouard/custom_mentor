@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {render} from "react-dom";
-import {Router, Route, browserHistory, IndexRoute} from "react-router";
+import {render} from 'react-dom';
+import {Router, Route, IndexRoute, browserHistory} from "react-router";
 
 import {Root} from "./components/Root";
 import {Home} from "./components/Home";
@@ -8,14 +8,13 @@ import {MentorPage} from "./components/MentorPage";
 import {MenteePage} from "./components/MenteePage";
 
 
-
-class App extends Component {
+export class App extends Component {
   toRoute(page){
     console.log("route", page);
   }
     render() {
         return (
-          <Router history={browserHistory}>
+          <Router history = {browserHistory}>
             <Route path={"/"} component={Root} >
               <IndexRoute component={Home} />
               <Route path={"/mentor"} component={MentorPage} ></Route>
@@ -27,6 +26,7 @@ class App extends Component {
     }
 }
 
-render(<App />, window.document.getElementById('root'));
 
-export default App
+
+
+render(<App />, document.getElementById('root'));
