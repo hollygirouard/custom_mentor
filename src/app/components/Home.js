@@ -1,52 +1,23 @@
 import React, {Component} from "react";
 
-import {Signup} from "./Signup";
-import {Signin} from "./Signin";
+import {SignForm} from "./SignForm";
+import {About} from "./About";
+import {Contact} from "./Contact";
+import {Header} from "./Header";
 
-
-
-class Home extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      loginVisible: true,
-      signinVisible:false
+export class Home extends Component {
+    render() {
+        return (
+              <div className="row">
+                  <div className="col-xs-2">
+                      <Header/>
+                  </div>
+                  <div className="col-xs-10">
+                      <div id ="signin"><SignForm /></div>
+                      <div id ="about"><About /></div>
+                      <div id ="contact"><Contact /></div>
+                  </div>
+          </div>
+        );
     }
-  }
-
-  signIn(member){
-    console.log("signin", member);
-  }
-  signUp(member){
-    console.log("signUp", member);
-  }
-
-  render() {
-    return(
-      <div>
-        <button onClick={() => this.onLogin()}>Sign-in</button>
-        <button onClick={() => this.onSignin()}>Sign-up</button>
-
-        {this.state.loginVisible
-            ? <Signin onSignIn = {member => this.signIn(member)} />
-            : null
-        }
-        {this.state.signinVisible
-            ? <Signup onSignUp = {member => this.signUp(member)}  />
-            : null
-        }
-      </div>
-
-    )
-  }
-
-  onLogin() {
-      this.setState({loginVisible: true, signinVisible:false});
-  }
-  onSignin() {
-    this.setState({loginVisible: false, signinVisible:true});
-  }
-};
-
-
-export default Home
+}
