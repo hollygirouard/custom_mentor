@@ -12,14 +12,12 @@ export class Signin extends Component {
         let formValues = this.state.formValues;
         let name = event.target.name;
         let value = event.target.value;
-
         formValues[name] = value;
-
         this.setState({formValues})
     }
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.formValues);
+        this.props.onSignIn(this.state.formValues)
     }
 
         render(){

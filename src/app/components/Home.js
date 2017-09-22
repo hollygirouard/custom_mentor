@@ -14,6 +14,13 @@ class Home extends React.Component {
     }
   }
 
+  signIn(member){
+    console.log("signin", member);
+  }
+  signUp(member){
+    console.log("signUp", member);
+  }
+
   render() {
     return(
       <div>
@@ -21,11 +28,11 @@ class Home extends React.Component {
         <button onClick={() => this.onSignin()}>Sign-up</button>
 
         {this.state.loginVisible
-            ? <Signin />
+            ? <Signin onSignIn = {member => this.signIn(member)} />
             : null
         }
         {this.state.signinVisible
-            ? <Signup />
+            ? <Signup onSignUp = {member => this.signUp(member)}  />
             : null
         }
       </div>

@@ -20,7 +20,8 @@ export class Signup extends Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.formValues);
+        this.props.onSignUp(this.state.formValues)
+
     }
 
         render(){
