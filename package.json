@@ -1,12 +1,12 @@
 {
   "name": "CustomMentor",
   "version": "1.0.0",
-  "description": "ReactJS Website",
+  "description": "CustomMentor React.js Project",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build",
-    "build": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
-    "build:prod": "webpack -p && cp src/index.html dist/index.html"
+    "start": "webpack -d && cp src/index.html dist/index.html && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [
     "reactjs"
@@ -14,7 +14,6 @@
   "author": "Austin Edwards",
   "license": "",
   "dependencies": {
-    "babel-core": "^6.26.0",
     "formsy-react": "^0.19.5",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
@@ -23,6 +22,7 @@
     "semantic-ui-react": "^0.73.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
