@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import { Redirect } from 'react-router';
+
 
 import {Signup} from "./Signup";
 import {Signin} from "./Signin";
@@ -16,6 +18,13 @@ export class SignForm extends Component {
 
   signIn(member){
     console.log("signin", member);
+    this.props.onPageType("mentor")
+    if (member.email === "austintedwards@gmail.com"){
+      window.location.pathname = "mentor";
+    }else if (member.email === "jeff.diers@gmail.com"){
+      window.location.pathname = "mentor";
+    }
+
   }
   signUp(member){
     console.log("signUp", member);

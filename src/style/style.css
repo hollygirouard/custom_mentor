@@ -17,7 +17,7 @@ hr {
   border-bottom: 1px solid #FFFFFF;
 }
 #documenter_sidebar{
-height: calc(100vh);
+height: calc(200vh);
 position: absolute;
 
 }
@@ -49,4 +49,43 @@ position: absolute;
   background: #444444;
   color: #DDDDDD;
   border-top: 1px solid #444444;
+}
+/* below */
+
+
+#member_sidebar{
+height: calc(100vh);
+position: absolute;
+
+}
+
+#member_sidebar, #member_sidebar ul a {
+  background-color: #778899;
+  color: #222222;
+}
+
+#member_sidebar ul {
+  border-top: 1px solid #AAAAAA;
+}
+
+#member_sidebar ul a {
+  border-top: 1px solid #EEEEEE;
+  border-bottom: 1px solid #AAAAAA;
+  color: #444444;
+}
+
+#member_sidebar ul a:hover {
+  background: #444444;
+  color: #DDDDDD;
+  border-top: 1px solid #444444;
+}
+
+
+#member_sidebar ul a.current {
+  background: #444444;
+  color: #DDDDDD;
+  border-top: 1px solid #444444;
+}
+.title {
+  text-align: center;
 }

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 
-export class Header extends Component {
+export class MemberHeader extends Component {
   facebook() {
     window.open("https://www.facebook.com/blossomcarenetwork.org");
   }
@@ -18,11 +18,12 @@ export class Header extends Component {
 
     return (
 
-      <nav id="documenter_sidebar">
-        <img className="logo" href ="#title" src="../image/CustomMentorLogo.png"/>
+      <nav id="member_sidebar">
+        <img className="logo" src="../image/CustomMentorLogo.png"/>
         <ul  className="nav" >
-          <li><a href ="#signin"> Signin</a></li>
-          <li><a href ="#about"> About</a></li>
+          <li><a href ="#signin"> Account</a></li>
+          <li><a href ="#about"> Activities</a></li>
+          <li><a href ="#schedule"> Schedule</a></li>
           <li><a href ="#contact"> Contact</a></li>
         </ul>
         <div className="socialLinks">
