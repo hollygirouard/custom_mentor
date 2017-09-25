@@ -1,10 +1,13 @@
 import React, {Component} from "react";
+import axios from 'axios';
 
 export class Signup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      formValues: {}
+      formValues: {
+        type:'Mentee'
+      }
     }
   }
   handleChange(event) {
@@ -15,12 +18,22 @@ export class Signup extends Component {
 
     formValues[name] = value;
 
-    this.setState({formValues})
+    this.setState({formValues});
   }
+
   handleSubmit(event) {
     event.preventDefault();
     this.props.onSignUp(this.state.formValues)
-
+    //send data to API
+    axios({
+    method: 'POST',
+    url: 'http://localhost/custommentor/custom_mentor/serverapi/user.php',
+    data: "Signup=" + (JSON.stringify(this.state.formValues))
+  }).then(function (response) {
+    console.log(response.data);
+  }).catch(function (error) {
+    console.log(error);
+  });
   }
 
   render() {
@@ -52,10 +65,10 @@ export class Signup extends Component {
           </label><br/>
           <label>
             I want to be:
-          <select>
-            <option selected value="">Mentee</option>
-            <option value="">Mentor</option>
-            <option value="">Both</option>
+          <select name="type" value={this.state.formValues["type"]} onChange={this.handleChange.bind(this)}>
+            <option selected value="Mentee">Mentee</option>
+            <option value="Mentor">Mentor</option>
+            <option value="Both">Both</option>
           </select>
           </label><br/>
           <input className="btn btn-primary" type="submit" value="Submit"/>
