@@ -5,6 +5,10 @@ import {SignForm} from "./SignForm";
 import {About} from "./About";
 import {Contact} from "./Contact";
 import {Header} from "./Header";
+import {MenteeInfo} from "./MenteeInfo";
+import {MentorInfo} from "./MentorInfo";
+
+
 
 export class Home extends Component {
       toPage(page){
@@ -13,18 +17,21 @@ export class Home extends Component {
       }
     render() {
         return (
-          
               <div className="row">
                   <div className="col-xs-2">
                       <Header/>
                   </div>
-                  <div className="col-xs-10">
+                  <div className="col-xs-10 home">
                       <div id ="title"><Title /></div>
                       <div id ="signin"><SignForm onPageType = {page => this.toPage(page)} /></div>
+                      <div id ="menteeInfo"><MenteeInfo /></div>
+                      <div id ="mentorInfo"><MentorInfo /></div>
+
                       <div id ="about"><About /></div>
                       <div id ="contact"><Contact /></div>
                   </div>
                 </div>
+
 
         );
     }
