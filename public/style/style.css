@@ -56,7 +56,8 @@ width:15%;
 
 #member_sidebar{
 height: calc(100vh);
-position: absolute;
+position: fixed;
+width:15%;
 
 }
 
