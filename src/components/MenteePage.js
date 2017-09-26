@@ -1,20 +1,23 @@
 import React, {Component} from "react";
-import { browserHistory } from "react-router";
+import {render} from "react-dom";
+import {Router, Route, browserHistory, IndexRoute} from "react-router";
 
-import {MemberHeader} from "./MemberHeader";
+import {MenteeRoot} from "./MenteeRoot";
+import {MenteeHome} from "./MenteeHome";
+import {MenteeForm} from "./MenteeForm";
 
 
 export class MenteePage extends Component {
     render() {
         return (
-            <div className="row">
-                <div className="col-xs-2">
-                    <MemberHeader/>
-                </div>
-                <div className="col-xs-10">
-                  <h3>The Mentee Page</h3>
-                </div>
-        </div>
+            <Router history={browserHistory}>
+                <Route path={"/mentee"} component={MenteeRoot} >
+                    <IndexRoute component={MenteeHome} />
+                    <Route path={"/mentee/home"} component={MenteeHome} />
+                    <Route path={"/mentee/form"} component={MenteeForm} />
+                </Route>
+                <Route path={"home-single"} component={MenteeHome}/>
+            </Router>
         );
     }
 }

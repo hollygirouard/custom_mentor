@@ -17,8 +17,8 @@ export class App extends Component {
           <Router history = {browserHistory}>
             <Route path={"/"} component={Root} >
               <IndexRoute component={Home} />
-              <Route path={"/mentor"} component={MentorPage} ></Route>
-              <Route path={"/mentee"} component={MenteePage} ></Route>
+              <Route path={"/mentor/home"} component={MentorPage} ></Route>
+              <Route path={"/mentee/home"} component={MenteePage} ></Route>
             </Route>
 
           </Router>

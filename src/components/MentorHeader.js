@@ -3,7 +3,7 @@ import {Link} from "react-router";
 
 
 
-export class MemberHeader extends Component {
+export class MentorHeader extends Component {
   facebook() {
     window.open("https://www.facebook.com/blossomcarenetwork.org");
   }
@@ -23,8 +23,8 @@ export class MemberHeader extends Component {
       <nav id="member_sidebar">
         <img className="logo" src="../image/CustomMentorLogo.png"/>
         <ul  className="nav" >
-          <li><Link to={"/home"}>Home</Link></li>
-          <li><Link to={"/form"}>Form</Link></li>
+          <li><Link to={"/mentor/home"}>Home</Link></li>
+          <li><Link to={"/mentor/form"}>Personality Form</Link></li>
           <li><a href ="#signin"> Account</a></li>
           <li><a href ="#about"> Activities</a></li>
           <li><a href ="#schedule"> Schedule</a></li>
