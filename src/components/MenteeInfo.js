@@ -15,12 +15,12 @@ export class MenteeInfo extends Component {
           <li>personal links to valuable resources &amp; skill sets</li>
           <li>support in attaining skills/ knowledge/ attitudes/ culture awareness</li>
           <li>encouragement for faster learning and growth—both personal and professional</li>
-<li>increased confidence</li>
-<li>access to role models</li>
-<li>greater exposure and visibility</li>
-<li>increased feeling of being more valued as an employee</li>
-<li>improved communication and expanded network</li>
-<li>130% greater likelihood of being in a leadership role</li>
+          <li>increased confidence</li>
+          <li>access to role models</li>
+          <li>greater exposure and visibility</li>
+          <li>increased feeling of being more valued as an employee</li>
+          <li>improved communication and expanded network</li>
+          <li>130% greater likelihood of being in a leadership role</li>
 
         </ol>
 

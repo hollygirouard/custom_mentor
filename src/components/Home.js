@@ -6,6 +6,8 @@ import {About} from "./About";
 import {Contact} from "./Contact";
 import {Header} from "./Header";
 import {MenteeInfo} from "./MenteeInfo";
+import {MentorInfo} from "./MentorInfo";
+
 
 
 export class Home extends Component {
@@ -23,6 +25,8 @@ export class Home extends Component {
                       <div id ="title"><Title /></div>
                       <div id ="signin"><SignForm onPageType = {page => this.toPage(page)} /></div>
                       <div id ="menteeInfo"><MenteeInfo /></div>
+                      <div id ="mentorInfo"><MentorInfo /></div>
+
                       <div id ="about"><About /></div>
                       <div id ="contact"><Contact /></div>
                   </div>
