@@ -12,29 +12,23 @@ include_once 'objects/user.php';
 $database = new Database();
 $db = $database->getConnection();
 $user = new User($db);
-$response = array();
+$requesttype=$_POST['requesttype'];
+$obj = json_decode($_POST['data'],true);
+$user->name = array_key_exists("name", $obj) ? $obj['name']:'';
+$user->phone = array_key_exists("phone", $obj) ? $obj['phone']:'';
+$user->email = array_key_exists("email", $obj) ? $obj['email']:'';
+$user->password = array_key_exists("password", $obj) ? $obj['password']:'';
+$user->type = array_key_exists("type", $obj) ? $obj['type']:'';
 
 // if the form was signup is sent
-if($_POST['Signup']){
-
-
-
-        $obj = json_decode($_POST['Signup'],true);
-        $user->name = $obj['name'];
-        $user->phone = $obj['phone'];
-        $user->email = $obj['email'];
-        $user->password = $obj['password'];
-        $user->type = $obj['type'];
-        $result = $user->create();
+if($requesttype=="Signup"){
+  $result = $user->create();
+}
+elseif($requesttype=="Signin"){
+$result = $user->auth();
+}
 
 //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email."}
 
-        if($result!="success"){
-          $response["response"]="failed";
-          $response["error"]=$result;
-        }else{
-          $response["response"]="success";
-          $response["error"]="";
-        }
-        echo json_encode($response);
-}
+echo json_encode($user->resultv);
+?>

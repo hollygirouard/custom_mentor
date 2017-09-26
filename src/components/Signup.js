@@ -27,9 +27,10 @@ export class Signup extends Component {
     //send data to API
     axios({
     method: 'POST',
-    url: 'http://localhost/custommentor/custom_mentor/serverapi/user.php',
-    data: "Signup=" + (JSON.stringify(this.state.formValues))
+    url: 'custommentor/custom_mentor/serverapi/user.php',
+    data: "requesttype=Signup&data=" + (JSON.stringify(this.state.formValues))
   }).then(function (response) {
+    //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
     console.log(response.data);
   }).catch(function (error) {
     console.log(error);

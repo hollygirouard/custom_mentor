@@ -1,4 +1,5 @@
 <?php
+session_start();
 class Database{
 
     // specify your own database credentials

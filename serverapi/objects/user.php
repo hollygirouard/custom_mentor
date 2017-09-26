@@ -12,14 +12,20 @@ class User{
     public $email;
     public $password;
     public $type;
+    public $resultv=array();
+
+
 
     public function __construct($db){
         $this->conn = $db;
+        $this->resultv["response"]="failed";
+        $this->resultv["error"]="";
+
     }
 
     public function auth() {
         try {
-            $query = "SELECT id, email, password
+            $query = "SELECT type,id, email, password
                 FROM " . $this->table_name . "
                 WHERE email = :email";
 
@@ -29,20 +35,22 @@ class User{
             $email=htmlspecialchars(strip_tags($this->email));
             $stmt->bindParam(':email', $email);
             $stmt->execute();
-
-            $user = false;
+            $this->resultv["type"]=$this->type;
+            $this->resultv["error"]="Wrong email and password Combination";
             $results=$stmt->fetchAll(PDO::FETCH_OBJ);
             if(count($results) > 0) {
                 $result = $results[0];
                 if(password_verify($this->password, $result->password)) {
-                    session_start();
-                    $user = true;
-                    $_SESSION['id'] = $user->id;
-                    $_SESSION['email'] = $user->email;
+
+                    $this->resultv["response"]="success";
+                    $this->resultv["error"]="";
+                    $this->resultv["type"]=$result->type;
+                    $_SESSION['id'] = $this->id;
+                    $_SESSION['email'] = $this->email;
                 }
             }
 
-            return $user;
+
         } catch(PDOException $exception) {
             die('ERROR: ' . $exception->getMessage());
         }
@@ -64,9 +72,9 @@ class User{
 
             $user = null;
             $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
-
+            $this->resultv["type"]=$this->type;
             if(count($results) > 0) {
-                return 'Your email has been registered. Please pick another email.';
+                $this->resultv["error"]= 'Your email has been registered. Please pick another email.';
             } else {
                 // insert query
                 $query = "INSERT INTO users(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
@@ -94,9 +102,11 @@ class User{
 
                 // Execute the query
                  if($stmt->execute()){
-                     return 'success';
+                   $this->resultv["response"]="success";
+
                  }else{
-                    return $this->conn->errorInfo();
+                  $this->resultv["error"]= $this->conn->errorInfo();;
+
                  }
             }
         }
