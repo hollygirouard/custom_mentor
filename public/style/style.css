@@ -92,6 +92,10 @@ width:15%;
   text-align: center;
 }
 
+.titlelogo{
+  width: 50%;
+}
+
 .sign-form {
   width: 25vw;
   align-self: center;
