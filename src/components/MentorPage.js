@@ -1,20 +1,23 @@
 import React, {Component} from "react";
-import { browserHistory } from "react-router";
+import {render} from "react-dom";
+import {Router, Route, browserHistory, IndexRoute} from "react-router";
 
-import {MemberHeader} from "./MemberHeader";
+import {MentorRoot} from "./MentorRoot";
+import {MentorHome} from "./MentorHome";
+import {MentorForm} from "./MentorForm";
 
 
 export class MentorPage extends Component {
     render() {
         return (
-            <div className="row">
-                <div className="col-xs-2">
-                    <MemberHeader/>
-                </div>
-                <div className="col-xs-10">
-                  <h3>The Mentor Page</h3>
-                </div>
-        </div>
+            <Router history={browserHistory}>
+                <Route path={"/mentor"} component={MentorRoot} >
+                    <IndexRoute component={MentorHome} />
+                    <Route path={"/mentor/home"} component={MentorHome} />
+                    <Route path={"/mentor/form"} component={MentorForm} />
+                </Route>
+                <Route path={"home-single"} component={MentorHome}/>
+            </Router>
         );
     }
 }
