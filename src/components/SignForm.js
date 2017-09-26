@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Redirect } from 'react-router';
-
+import { Button, ButtonGroup } from 'reactstrap'
 
 import {Signup} from "./Signup";
 import {Signin} from "./Signin";
@@ -32,9 +32,11 @@ export class SignForm extends Component {
 
   render() {
     return(
-      <div>
-        <button onClick={() => this.onLogin()}>Sign-in</button>
-        <button onClick={() => this.onSignin()}>Sign-up</button>
+      <div className="sign-form">
+        <ButtonGroup>
+          <Button active={this.state.loginVisible} color="primary" onClick={() => this.onLogin()}>Sign-in</Button>
+          <Button active={this.state.signinVisible} color="primary" onClick={() => this.onSignin()}>Sign-up</Button>
+        </ButtonGroup>
 
         {this.state.loginVisible
             ? <Signin onSignIn = {member => this.signIn(member)} />
@@ -53,6 +55,6 @@ export class SignForm extends Component {
       this.setState({loginVisible: true, signinVisible:false});
   }
   onSignin() {
-    this.setState({loginVisible: false, signinVisible:true});
+      this.setState({loginVisible: false, signinVisible:true});
   }
 };

@@ -91,3 +91,14 @@ width:15%;
 .title {
   text-align: center;
 }
+
+.sign-form {
+  width: 25vw;
+  align-self: center;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

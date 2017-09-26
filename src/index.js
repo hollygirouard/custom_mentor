@@ -7,7 +7,6 @@ import {Home} from "./components/Home";
 import {MentorPage} from "./components/MentorPage";
 import {MenteePage} from "./components/MenteePage";
 
-
 export class App extends Component {
   toRoute(page){
     console.log("route", page);
