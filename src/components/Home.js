@@ -13,7 +13,7 @@ export class Home extends Component {
       }
     render() {
         return (
-
+          
               <div className="row">
                   <div className="col-xs-2">
                       <Header/>
