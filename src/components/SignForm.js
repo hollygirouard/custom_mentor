@@ -33,8 +33,8 @@ export class SignForm extends Component {
   render() {
     return(
       <div>
-        <button onClick={() => this.onLogin()}>Sign-in</button>
-        <button onClick={() => this.onSignin()}>Sign-up</button>
+        <button onClick={() => this.onLogin()}>Sign-In</button>
+        <button onClick={() => this.onSignin()}>Sign-Up</button>
 
         {this.state.loginVisible
             ? <Signin onSignIn = {member => this.signIn(member)} />

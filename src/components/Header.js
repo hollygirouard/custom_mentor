@@ -19,11 +19,13 @@ export class Header extends Component {
     return (
 
       <div id="documenter_sidebar">
-        <img className="logo"  src="./image/CustomMentorLogo.png"/>
+        <a href ="#title"><img  className="logo" src="./image/CustomMentorLogo.png"/></a>
         <ul  className="nav" >
-          <li><a href ="#signin"> Signin</a></li>
-          <li><a href ="#about"> About</a></li>
-          <li><a href ="#contact"> Contact</a></li>
+          <li><a href ="#signin">Sign-In/Sign-Up</a></li>
+          <li><a href ="#menteeInfo">Need a Mentor?</a></li>
+          <li><a href ="#mentorInfo">Become a Mentor</a></li>
+          <li><a href ="#about">About</a></li>
+          <li><a href ="#contact">Contact</a></li>
         </ul>
         <div className="socialLinks">
           <i onClick={this.facebook} className="fa fa-facebook-official"></i>

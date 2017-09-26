@@ -27,7 +27,7 @@ export class Signup extends Component {
     return (
       <div>
 
-        <h3>Sign-up</h3>
+        <h3>Sign-Up</h3>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>
             Name:

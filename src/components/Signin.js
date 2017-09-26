@@ -24,7 +24,7 @@ export class Signin extends Component {
         return (
           <div>
 
-          <h3>Sign-in</h3>
+          <h3>Sign-In</h3>
         <form onSubmit={this.handleSubmit.bind(this)}>
 
                 <label> E-mail:
