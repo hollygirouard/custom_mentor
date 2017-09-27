@@ -12,10 +12,10 @@ export class MenteePage extends Component {
         return (
           <div>
             <Router history={browserHistory}>
-                <Route path={"/mentee"} component={MenteeRoot} >
+                <Route path={"/mentee/"} component={MenteeRoot} >
                     <IndexRoute component={MenteeHome} />
-                    <Route path={"/mentee/home"} component={MenteeHome} />
-                    <Route path={"/mentee/form"} component={MenteeForm} />
+                    <Route path={"home"} component={MenteeHome} />
+                    <Route path={"form"} component={MenteeForm} />
                 </Route>
                 <Route path={"home-single"} component={MenteeHome}/>
             </Router>
