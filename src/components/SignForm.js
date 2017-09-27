@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import { Redirect } from 'react-router';
 import { Button, ButtonGroup } from 'reactstrap'
 
 import {Signup} from "./Signup";

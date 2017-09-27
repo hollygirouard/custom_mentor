@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export class Signup extends Component {
   constructor(props) {
