@@ -1,11 +1,14 @@
 import React, {Component} from "react";
+import axios from 'axios';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 export class Signup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      formValues: {}
+      formValues: {
+		   type:'Mentee'
+	  }
     }
   }
   handleChange(event) {
@@ -21,7 +24,18 @@ export class Signup extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.onSignUp(this.state.formValues)
-
+    console.log(this.state.formValues);
+ //send data to API
+    axios({
+    method: 'POST',
+    url: 'custommentor/custom_mentor/serverapi/user.php',
+    data: "requesttype=Signup&data=" + (JSON.stringify(this.state.formValues))
+  }).then(function (response) {
+    //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
+    console.log(response.data);
+  }).catch(function (error) {
+    console.log(error);
+  });
   }
 
   render() {
@@ -55,7 +69,7 @@ export class Signup extends Component {
                 </FormGroup>
                 <FormGroup>
                     <Label for="selectOption">I want to be</Label>
-                    <Input type="select" name="selectOption" id="selectOption">
+                    <Input type="select" name="selectOption" id="selectOption" value={this.state.formValues["type"]} onChange={this.handleChange.bind(this)}>
                       <option value="">Mentee</option>
                       <option value="">Mentor</option>
                       <option value="">Both</option>
