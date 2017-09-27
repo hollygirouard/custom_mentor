@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import {render} from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from "react-router";
 
-import {Root} from "./components/Root";
-import {Home} from "./components/Home";
-import {MentorPage} from "./components/MentorPage";
-import {MenteePage} from "./components/MenteePage";
+import {Root} from "./components/Home/Root";
+import {Home} from "./components/Home/Home";
+import {MentorPage} from "./components/Mentor/MentorPage";
+import {MenteePage} from "./components/Mentee/MenteePage";
 
 export class App extends Component {
   toRoute(page){

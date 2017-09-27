@@ -5,8 +5,8 @@ import {SignForm} from "./SignForm";
 import {About} from "./About";
 import {Contact} from "./Contact";
 import {Header} from "./Header";
-import {MenteeInfo} from "./MenteeInfo";
-import {MentorInfo} from "./MentorInfo";
+import {MenteeInfo} from "../Mentee/MenteeInfo";
+import {MentorInfo} from "../Mentor/MentorInfo";
 
 
 
