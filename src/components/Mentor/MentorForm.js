@@ -10,13 +10,14 @@ export class MentorForm extends Component {
         physical: false,
         spiritual: false,
         other: false,
-        helpInfo: ""
+        helpInfo: "",
+        mentoring: ""
+
       }
     }
   }
 
   handleChange(event) {
-    event.preventDefault();
     let formValues = this.state.formValues;
     let name = event.target.name;
     let value = event.target.value;
@@ -24,7 +25,6 @@ export class MentorForm extends Component {
     this.setState({formValues})
   }
   handleCheckedChange(event) {
-    event.preventDefault();
     let formValues = this.state.formValues;
     let name = event.target.name;
     let checked = event.target.checked;
@@ -76,7 +76,28 @@ export class MentorForm extends Component {
             width: '50%',
             height: '200%'
           }} name="helpInfo" value={this.state.formValues["helpInfo"]} onChange={this.handleChange.bind(this)}/>
+          <br/>
+          <p>Note: mentors should be able to sign up to mentor in different areas.</p>
+          <p>What level of mentoring do you wish to provide?</p>
 
+          <div className="radio">
+            <label>
+              <input name="mentoring" value={this.state.formValues["option1"]} type="radio" onChange={this.handleChange.bind(this)}/>
+              Option 1
+            </label>
+          </div>
+          <div className="radio">
+            <label>
+              <input name="mentoring" value={this.state.formValues["option2"]} type="radio" onChange={this.handleChange.bind(this)}/>
+              Option 2
+            </label>
+          </div>
+          <div className="radio">
+            <label>
+              <input name="mentoring" value={this.state.formValues["option3"]} type="radio" onChange={this.handleChange.bind(this)}/>
+              Option 3
+            </label>
+          </div>
           <br/><input className="btn btn-primary" type="submit" value="Submit"/>
 
         </form>
