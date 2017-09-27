@@ -19,7 +19,7 @@ export class Header extends Component {
     return (
 
       <div id="documenter_sidebar">
-        <a href ="#title"><img  className="logo" src="./image/CustomMentorLogo.png"/></a>
+        <a href ="#title"><img  alt = "" className="logo" src="./image/CustomMentorLogo.png"/></a>
         <ul  className="nav" >
           <li><a href ="#signin">Sign-In/Sign-Up</a></li>
           <li><a href ="#menteeInfo">Need a Mentor?</a></li>

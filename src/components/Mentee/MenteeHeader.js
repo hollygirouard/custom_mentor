@@ -21,7 +21,7 @@ export class MenteeHeader extends Component {
     return (
 
       <nav id="member_sidebar">
-        <img className="logo" src="../image/CustomMentorLogo.png"/>
+        <img alt = "" className="logo" src="../image/CustomMentorLogo.png"/>
         <ul  className="nav" >
           <li><Link to={"/mentee/home"}>Home</Link></li>
           <li><Link to={"/mentee/form"}>Personality Form</Link></li>
