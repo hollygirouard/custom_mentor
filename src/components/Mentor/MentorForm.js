@@ -82,22 +82,38 @@ export class MentorForm extends Component {
 
           <div className="radio">
             <label>
-              <input name="mentoring" value={this.state.formValues["option1"]} type="radio" onChange={this.handleChange.bind(this)}/>
+              <input name="mentoring" value={"option1"} type="radio" onChange={this.handleChange.bind(this)}/>
               Option 1
             </label>
           </div>
           <div className="radio">
             <label>
-              <input name="mentoring" value={this.state.formValues["option2"]} type="radio" onChange={this.handleChange.bind(this)}/>
+              <input name="mentoring" value={"option2"} type="radio" onChange={this.handleChange.bind(this)}/>
               Option 2
             </label>
           </div>
           <div className="radio">
             <label>
-              <input name="mentoring" value={this.state.formValues["option3"]} type="radio" onChange={this.handleChange.bind(this)}/>
+              <input name="mentoring" value={"option3"} type="radio" onChange={this.handleChange.bind(this)}/>
               Option 3
             </label>
           </div>
+          <p>How do you prefer to contact the mentee? (choose any combination)</p>
+
+          <label>
+            <input name="email" type="checkbox" checked={this.state.formValues["email"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Physical (health)
+          </label>
+          <br/>
+          <label>
+            <input name="phone" type="checkbox" checked={this.state.formValues["phone"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Spiritual
+          </label>
+          <br/>
+          <label>
+            <input name="text" type="checkbox" checked={this.state.formValues["text"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Other
+          </label>
           <br/><input className="btn btn-primary" type="submit" value="Submit"/>
 
         </form>
