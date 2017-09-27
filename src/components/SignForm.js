@@ -33,10 +33,12 @@ export class SignForm extends Component {
   render() {
     return(
       <div className="sign-form">
+        <div className="button-sign-form">
         <ButtonGroup>
           <Button active={this.state.loginVisible} color="primary" onClick={() => this.onLogin()}>Sign-in</Button>
           <Button active={this.state.signinVisible} color="primary" onClick={() => this.onSignin()}>Sign-up</Button>
         </ButtonGroup>
+      </div>
 
         {this.state.loginVisible
             ? <Signin onSignIn = {member => this.signIn(member)} />

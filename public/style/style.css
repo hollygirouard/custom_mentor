@@ -97,12 +97,24 @@ width:15%;
 }
 
 .sign-form {
-  width: 25vw;
+  width: 50%;
   align-self: center;
+  display: block;
+  margin: auto;
+
 }
+.button-sign-form{
+  text-align: center;
+
+}
+
 
 .signup-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.signup-container Input{
+  width: 150%;
 }
