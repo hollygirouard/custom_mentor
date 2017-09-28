@@ -19,9 +19,9 @@ export class SignForm extends Component {
     console.log("signin", member);
     this.props.onPageType("mentor")
     if (member.email === "austintedwards@gmail.com"){
-      window.location.pathname = "mentor";
+      window.location.pathname = "mentor/home";
     }else if (member.email === "jeff.diers@gmail.com"){
-      window.location.pathname = "mentor";
+      window.location.pathname = "mentor/home";
     }
 
   }
