@@ -1,34 +1,12 @@
-import React, {Component} from "react";
-import {render} from 'react-dom';
-import {Router, Route, IndexRoute, browserHistory} from "react-router";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import store from './store';
+import AppContainer from './AppContainer';
+import {Provider} from 'react-redux';
 
-import {Root} from "./components/Home/Root";
-import {Home} from "./components/Home/Home";
-import {MentorPage} from "./components/Mentor/MentorPage";
-import {MenteePage} from "./components/Mentee/MenteePage";
-
-
-export class App extends Component {
-  toRoute(page){
-    console.log("route", page);
-  }
-    render() {
-        return (
-          <Router history = {browserHistory}>
-            <Route path={"/"} component={Root} >
-              <IndexRoute component={Home} />
-              <Route path={"/mentor/home"} component={MentorPage} ></Route>
-              <Route path={"/mentee/home"} component={MenteePage} ></Route>
-              <Route path={"/mentee/form"} component={MenteePage} ></Route>
-              <Route path={"/mentor/form"} component={MentorPage} ></Route>
-            </Route>
-
-          </Router>
-        );
-    }
-}
-
-
-
-
-render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <AppContainer/>
+    </Provider>,
+    document.getElementById('root')
+);

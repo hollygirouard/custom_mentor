@@ -1,30 +1,39 @@
 import React, {Component} from "react";
 import { Button, ButtonGroup } from 'reactstrap'
+import {browserHistory} from 'react-router'
 
 import {Signup} from "./Signup";
 import {Signin} from "./Signin";
 
 
 
-export class SignForm extends Component {
+export default class SignForm extends Component {
   constructor() {
     super();
     this.state = {
       loginVisible: true,
-      signinVisible:false
+      signinVisible: false
     }
   }
 
-  signIn(member){
-    console.log("signin", member);
-    this.props.onPageType("mentor")
-    if (member.email === "austintedwards@gmail.com"){
-      window.location.pathname = "mentor/home";
-    }else if (member.email === "jeff.diers@gmail.com"){
-      window.location.pathname = "mentor/home";
-    }
+  // signIn(member){
+  //   console.log("signin", member);
+  //   this.props.onPageType("mentor")
+  //   if (member.email === "austintedwards@gmail.com"){
+  //     window.location.pathname = "mentor/home";
+  //   }else if (member.email === "jeff.diers@gmail.com"){
+  //     window.location.pathname = "mentor/home";
+  //   }
 
+
+  // }
+
+  signIn = (userInfo) => {
+    // const {email, password} = this.state
+    this.props.authenticateUser(userInfo)
+    setTimeout(function(){ browserHistory.push("/mentor/home")})
   }
+
   signUp(member){
     console.log("signUp", member);
   }

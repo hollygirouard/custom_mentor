@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 import {Title} from "./Title";
-import {SignForm} from "./SignForm";
+import SignFormContainer from "./SignFormContainer";
 import {About} from "./About";
 import {Contact} from "./Contact";
 import {Header} from "./Header";
@@ -23,7 +23,7 @@ export class Home extends Component {
                   </div>
                   <div className="col-xs-10 home">
                       <div id ="title"><Title /></div>
-                      <div id ="signin"><SignForm onPageType = {page => this.toPage(page)} /></div>
+                      <div id ="signin"><SignFormContainer /></div>
                       <div id ="menteeInfo"><MenteeInfo /></div>
                       <div id ="mentorInfo"><MentorInfo /></div>
 
