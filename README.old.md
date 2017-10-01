@@ -1,2 +1,0 @@
-# reactinstallation
-default react installation

@@ -1,6 +1,5 @@
-# ReactJS Basics
+# CustomMenter.com
 
-This repository accompanies my ReactJS - Basics YouTube Series.
+Project Manager - Holly White
 
-# Usage
-Switch to the branch you're interested in (branches = different stages in the series) and compare/ download the source code.
+Developer - Austin Edwards
