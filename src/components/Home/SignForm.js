@@ -18,15 +18,15 @@ export class SignForm extends Component {
   signIn(member){
     console.log("signin", member);
     this.props.onPageType("mentor")
-    if (member.email === "austintedwards@gmail.com"){
-      window.location.pathname = "mentor/home";
-    }else if (member.email === "jeff.diers@gmail.com"){
-      window.location.pathname = "mentor/home";
-    }
+    // if (member.email === "austintedwards@gmail.com"){
+    //   window.location.pathname = "mentor/home";
+    // }else if (member.email === "jeff.diers@gmail.com"){
+    //   window.location.pathname = "mentor/home";
+    // }
 
   }
   signUp(member){
-    console.log("signUp", member);
+    // console.log("signUp", member);
   }
 
   render() {

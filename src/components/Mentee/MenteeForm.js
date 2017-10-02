@@ -41,7 +41,7 @@ export class MenteeForm extends Component {
   render() {
     return (
       <div>
-        <h2>Mentor Profile</h2>
+        <h2>Mentee Profile</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <p>Goals: What area(s) do you want to be mentored in?</p>
           <label>
