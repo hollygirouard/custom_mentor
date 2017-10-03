@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 import {Root} from "./components/Home/Root";
 import {Home} from "./components/Home/Home";
-import Header from './components/Home/Header'
+import HeaderContainer from './components/Home/HeaderContainer'
+import MentorHeader from './components/Mentor/MentorHeader'
 import {MentorHome} from "./components/Mentor/MentorHome";
 import {MenteeHome} from "./components/Mentee/MenteeHome";
 import SignForm from "./components/Home/SignForm"
@@ -19,12 +20,7 @@ const SCREENS = [
 
 export default class App extends Component {
     checkAuth(ComponentToRender) {
-        return props => this.props.isLoggedIn ? <ComponentToRender {...props} /> : 
-        <Redirect to={{
-            pathname: '/',
-            state: { from: props.location }
-          }}/>
-        
+        return props => this.props.isLoggedIn ? <ComponentToRender {...props} /> : <Redirect to={'/'} /> 
     };
     
     renderRoutes() {
@@ -47,7 +43,7 @@ export default class App extends Component {
             <Router>
                 <div className="row">
                     <div className="col-xs-2">
-                        <Header/>
+                        <HeaderContainer />
                     </div>
                     <div className="col-xs-10 home">
                         <Route path='/' exact component={Home} />

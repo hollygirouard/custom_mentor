@@ -3,7 +3,7 @@ import {Link} from "react-router";
 
 
 
-export class MenteeHeader extends Component {
+export default class MenteeHeader extends Component {
   facebook() {
     window.open("https://www.facebook.com/blossomcarenetwork.org");
   }

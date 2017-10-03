@@ -7,12 +7,13 @@ import {Signin} from "./Signin";
 
 
 export default class SignForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       loginVisible: true,
       signinVisible: false
     }
+    console.log(this.props)
   }
 
   signIn = (userInfo) => {
