@@ -118,3 +118,8 @@ width:15%;
 .signup-container Input{
   width: 150%;
 }
+
+
+.error{
+  color: darkred;
+}
