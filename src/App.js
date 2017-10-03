@@ -1,33 +1,31 @@
 import React, {Component} from "react";
-// import {render} from 'react-dom';
-import {Router, Route, IndexRoute, browserHistory} from "react-router";
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 import {Root} from "./components/Home/Root";
 import {Home} from "./components/Home/Home";
-import {MentorPage} from "./components/Mentor/MentorPage";
-import {MenteePage} from "./components/Mentee/MenteePage";
+import Header from './components/Home/Header'
+import {MentorHome} from "./components/Mentor/MentorHome";
+import {MenteeHome} from "./components/Mentee/MenteeHome";
 import SignForm from "./components/Home/SignForm"
-import EnsureLoggedInContainer from './components/EnsureLoggedInContainer'
+import { syncHistoryWithStore } from 'react-router-redux'
+import store from './store';
+
 
 const SCREENS = [
-    {title: 'Mentor Home', route: '/mentor/home', component: MentorPage},
-    {title: 'Mentee Home', route: '/mentee/home', component: MenteePage},
-    {title: 'Mentor form', route: '/mentor/form', component: MenteePage},
-    {title: 'Mentee Form', route: '/mentee/form', component: MentorPage}
+    {title: 'Mentor Home', route: '/mentor/home', component: MentorHome},
+    {title: 'Mentee Home', route: '/mentee/home', component: MenteeHome}
 ]
 
 
 export default class App extends Component {
-  toRoute(page){
-    console.log("route", page);
-  }
-
-    requireAuth(nextState, replace) {
-        console.log(this.props)
-        if (!this.props.isLoggedIn) {
-          replace('/')
-        }
-    }
+    checkAuth(ComponentToRender) {
+        return props => this.props.isLoggedIn ? <ComponentToRender {...props} /> : 
+        <Redirect to={{
+            pathname: '/',
+            state: { from: props.location }
+          }}/>
+        
+    };
     
     renderRoutes() {
         console.log(this.props)
@@ -35,8 +33,8 @@ export default class App extends Component {
             <div>
                 {
                     SCREENS.map(screen => (
-                        <Route path={screen.route} key={screen.route}
-                                component={screen.component} onEnter={this.requireAuth.bind(this)} />
+                        <Route path={screen.route} key={screen.route} exact
+                                render={this.checkAuth(screen.component)} />
                     ))
                 }
             </div>
@@ -44,18 +42,19 @@ export default class App extends Component {
     }
 
     render() {
+        console.log("render function pre")
         return (
-          <Router history = {browserHistory}>
-            <Route path={"/"} component={Root} >
-                <IndexRoute component={Home} />
-                    {this.renderRoutes()}
-            </Route>
-          </Router>
+            <Router>
+                <div className="row">
+                    <div className="col-xs-2">
+                        <Header/>
+                    </div>
+                    <div className="col-xs-10 home">
+                        <Route path='/' exact component={Home} />
+                        {this.renderRoutes()}
+                    </div>
+                </div>
+            </Router>
         );
     }
 }
-
-
-
-
-// component={screen.component} onEnter={this.requireAuth.bind(this)}

@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import axios from 'axios';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { BrowserRouter as Link } from 'react-router-dom'
+
 
 export class Signin extends Component {
     constructor(props) {
@@ -48,7 +50,9 @@ export class Signin extends Component {
                     <Input type="password" name="password" placeholder="Password" value={this.state.formValues["password"]} onChange={this.handleChange.bind(this)} />
                 </FormGroup>
                 {' '}
-                <Button>Submit</Button>
+                <Link to='mentor/home'>
+                    <Button>Submit</Button>
+                </Link>
             </Form>
          </div>
 

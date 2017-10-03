@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import { Button, ButtonGroup } from 'reactstrap'
-import {browserHistory} from 'react-router'
 
 import {Signup} from "./Signup";
 import {Signin} from "./Signin";
@@ -16,22 +15,9 @@ export default class SignForm extends Component {
     }
   }
 
-  // signIn(member){
-  //   console.log("signin", member);
-  //   this.props.onPageType("mentor")
-  //   if (member.email === "austintedwards@gmail.com"){
-  //     window.location.pathname = "mentor/home";
-  //   }else if (member.email === "jeff.diers@gmail.com"){
-  //     window.location.pathname = "mentor/home";
-  //   }
-
-
-  // }
-
   signIn = (userInfo) => {
-    // const {email, password} = this.state
     this.props.authenticateUser(userInfo)
-    setTimeout(function(){ browserHistory.push("/mentor/home")})
+    this.props.pushLocation('/mentor/home')
   }
 
   signUp(member){

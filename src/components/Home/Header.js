@@ -1,7 +1,7 @@
 import React, {Component} from "react";
+// import logo from "./image/CustomMentorLogo.png"
 
-
-export class Header extends Component {
+export default class Header extends Component {
   facebook() {
     window.open("https://www.facebook.com/blossomcarenetwork.org");
   }
@@ -19,7 +19,7 @@ export class Header extends Component {
     return (
 
       <div id="documenter_sidebar">
-        <a href ="#title"><img  alt = "" className="logo" src="./image/CustomMentorLogo.png"/></a>
+        <a href ="#title"><img  alt = "" className="logo" src={process.env.PUBLIC_URL + '/image/CustomMentorLogo.png'}/></a>
         <ul  className="nav" >
           <li><a href ="#signin">Sign-In/Sign-Up</a></li>
           <li><a href ="#menteeInfo">Need a Mentor?</a></li>
