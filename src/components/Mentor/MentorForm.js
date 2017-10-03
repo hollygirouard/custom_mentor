@@ -13,10 +13,10 @@
 //
 //
 // Mentor specific:
-// *ExpertisePara: “string” (personal information)
+// *expertisePara: “string” (personal information)
 // *experiencePara: “string” (personal information)
-// *fieldPara: “string” (personal information)
-// Education:”string"
+// *studiesPara: “string” (personal information)
+// education:”string"
 //
 
 
@@ -240,7 +240,7 @@ export class MentorForm extends Component {
           <textarea style={{
             width: '50%',
             height: '200%'
-          }} name="expertise" value={this.state.formValues["expertise"]} onChange={this.handleChange.bind(this)}/>
+          }} name="expertisePara" value={this.state.formValues["expertisePara"]} onChange={this.handleChange.bind(this)}/>
           <br/>
 
           <label>
@@ -250,7 +250,7 @@ export class MentorForm extends Component {
           <textarea style={{
             width: '50%',
             height: '500%'
-          }} name="experience" value={this.state.formValues["experience"]} onChange={this.handleChange.bind(this)}/>
+          }} name="experiencePara" value={this.state.formValues["experiencePara"]} onChange={this.handleChange.bind(this)}/>
           <br/>
 
           <label>
@@ -260,7 +260,7 @@ export class MentorForm extends Component {
           <textarea style={{
             width: '50%',
             height: '200%'
-          }} name="studies" value={this.state.formValues["studies"]} onChange={this.handleChange.bind(this)}/>
+          }} name="studiesPara" value={this.state.formValues["studiesPara"]} onChange={this.handleChange.bind(this)}/>
           <br/>
 
           <label>What is your highest education level attained?</label>
@@ -317,20 +317,20 @@ export class MentorForm extends Component {
             <textarea style={{
               width: '50%',
               height: '200%'
-            }} name="expertise" value={this.state.formValues["additionalDegrees"]} onChange={this.handleChange.bind(this)}/>
+            }} name="additionalDegrees" value={this.state.formValues["additionalDegrees"]} onChange={this.handleChange.bind(this)}/>
             <br/>
           </div>
 
           <p>Do you want to use the CustomMentor suite of relationship management tools?</p>
           <div className="radio">
             <label>
-              <input name="managementTool" value={"yes"} type="radio" onChange={this.handleChange.bind(this)}/>
+              <input name="managementTool" value={true} type="radio" onChange={this.handleChange.bind(this)}/>
               Yes
             </label>
           </div>
           <div className="radio">
             <label>
-              <input name="managementTool" value={"no"} type="radio" onChange={this.handleChange.bind(this)}/>
+              <input name="managementTool" value={false} type="radio" onChange={this.handleChange.bind(this)}/>
               No
             </label>
           </div>
