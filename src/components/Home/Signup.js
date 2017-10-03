@@ -16,9 +16,7 @@ export class Signup extends Component {
       formValues: {
         type: "Mentee"
       },
-      formValidate: {nameInvalid:false},
-      formColor: {}
-
+      formValidate: {}
     }
   }
 
