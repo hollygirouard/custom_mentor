@@ -34,6 +34,7 @@ export class Signin extends Component {
         //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
         //sample response :{"response":"success","error":"",type:"Mentee"} :redirect to signin based on response
         console.log(response.data);
+        this.emailPass(response.data.response)
       }).catch(function (error) {
         console.log(error);
       });
@@ -42,6 +43,11 @@ export class Signin extends Component {
     formValidations(form) {
       form.email ? this.state.formValidate.emailInvalid = false :this.state.formValidate.emailInvalid =true;
       form.password ? this.state.formValidate.passwordInvalid = false :this.state.formValidate.passwordInvalid =true;
+      this.forceUpdate()
+    }
+
+    emailPass(response){
+      response.data.response === "failed" ? this.state.formValidate.emailPass = true : this.state.formValidate.emailPass = false;
       this.forceUpdate()
     }
 
@@ -57,9 +63,14 @@ export class Signin extends Component {
                       ? <p className ="error">Please input E-mail.</p>
 
                       : null}
+                      {this.state.formValidate.emailPass
+                        ? <p className ="error">E-mail and password do not match.</p>
+
+                        : null}
                 </FormGroup>
                 {' '}
                 <FormGroup color={this.state.formValidate.passwordInvalid ? "error":"null"}>
+
                     <Label for="examplePassword">Password</Label>{' '}
                     <Input type="password" name="password" placeholder="Password" value={this.state.formValues["password"]} onChange={this.handleChange.bind(this)} />
                     {this.state.formValidate.passwordInvalid
