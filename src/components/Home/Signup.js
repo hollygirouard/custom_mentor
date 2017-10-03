@@ -39,27 +39,33 @@ export class Signup extends Component {
       this.props.onSignUp(this.state.formValues);
       this.formValidations(this.state.formValues);
       console.log("form into SQL", this.state.formValues);
+      let form = this.state.formValues;
+      form.name&&form.email&&form.phone&&form.password&&form.password===form.confirmPassword ? this.postLogin(form):null;
+
+    }
+
+    formValidations(form) {
+      form.name ? this.state.formValidate.nameInvalid = false:this.state.formValidate.nameInvalid =true;
+      form.email ? this.state.formValidate.emailInvalid = false :this.state.formValidate.emailInvalid =true;
+      form.phone ? this.state.formValidate.phoneInvalid = false :this.state.formValidate.phoneInvalid =true;
+      form.password ? this.state.formValidate.passwordInvalid = false :this.state.formValidate.passwordInvalid =true;
+      form.password !== form.confirmPassword ? this.state.formValidate.passwordMatch = true:this.state.formValidate.passwordMatch = false;
+      this.forceUpdate()
+    }
+
+    postLogin(form){
       //send data to API
+      console.log("sending data")
       axios({
         method: 'POST',
         url: 'custom_mentor/serverapi/user.php',
-        data: "requesttype=Signup&data=" + (JSON.stringify(this.state.formValues))
+        data: "requesttype=Signup&data=" + (JSON.stringify(form))
       }).then(function(response) {
         //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
         console.log(response.data);
       }).catch(function(error) {
         console.log(error);
       });
-    }
-
-    formValidations(form) {
-      console.log("form validations", form)
-      form.name ? this.state.formValidate.nameInvalid = false :this.state.formValidate.nameInvalid =true;
-      form.email ? this.state.formValidate.emailInvalid = false :this.state.formValidate.emailInvalid =true;
-      form.phone ? this.state.formValidate.phoneInvalid = false :this.state.formValidate.phoneInvalid =true;
-      form.password ? this.state.formValidate.passwordInvalid = false :this.state.formValidate.passwordInvalid =true;
-      form.password !== form.confirmPassword ? this.state.formValidate.passwordMatch = true:this.state.formValidate.passwordMatch = false;
-      this.forceUpdate()
     }
 
     render() {
