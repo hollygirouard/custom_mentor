@@ -43,7 +43,7 @@ export class Signup extends Component {
     }
 
     formValidations(form) {
-      form.name ? this.state.formValidate.nameInvalid = false:this.state.formValidate.nameInvalid =true;
+      form.name ? this.state.formValidate.nameInvalid = false : this.state.formValidate.nameInvalid =true;
       form.email ? this.state.formValidate.emailInvalid = false :this.state.formValidate.emailInvalid =true;
       form.phone ? this.state.formValidate.phoneInvalid = false :this.state.formValidate.phoneInvalid =true;
       form.password ? this.state.formValidate.passwordInvalid = false :this.state.formValidate.passwordInvalid =true;

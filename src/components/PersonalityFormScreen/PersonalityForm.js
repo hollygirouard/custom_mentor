@@ -22,7 +22,7 @@
 
 import React, {Component} from "react";
 
-export default class MentorForm extends Component {
+export default class PersonalityForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -61,9 +61,10 @@ export default class MentorForm extends Component {
   }
 
   render() {
+      let user = this.props.currentUser
     return (
       <div>
-        <h2>Mentor Profile</h2>
+        <h2>{user.status} Profile</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <p>Goals: What area(s) do you want to mentor in?</p>
           <label>

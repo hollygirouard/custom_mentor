@@ -27,6 +27,23 @@ const session = (state = initialState, action) => {
                 errorMessage: action.errorMessage,
                 currentUser: null
             });
+            
+        case 'USER_LOGOUT':
+            return Object.assign({}, state, {
+                sendAuthRequest: true
+            });
+
+        case 'USER_LOGOUT_SUCCESS':
+            return Object.assign({}, state, {
+                isLoggedIn: false,
+                currentUser: null,
+                errorMessage: null
+            });
+
+        case 'USER_LOGOUT_FAILURE':
+            return Object.assign({}, state, {
+                errorMessage: action.errorMessage,
+            });
 
         default:
             return state;

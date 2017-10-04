@@ -19,7 +19,7 @@ export default class SignForm extends Component {
 
   signIn = (userInfo) => {
     this.props.authenticateUser(userInfo)
-    this.props.pushLocation('/mentor/home')
+    this.props.pushLocation('/home')
   }
 
   signUp(member){
