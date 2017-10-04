@@ -5,8 +5,8 @@ import SignFormContainer from "./SignFormContainer";
 import {About} from "./About";
 import Contact from "./Contact";
 // import {Header} from "./Header";
-import {MenteeInfo} from "../Mentee/MenteeInfo";
-import {MentorInfo} from "../Mentor/MentorInfo";
+import {MenteeInfo} from "./MenteeInfo";
+import {MentorInfo} from "./MentorInfo";
 
 
 
@@ -25,5 +25,3 @@ export default class Home extends Component {
         );
     }
 }
-
-
