@@ -6,25 +6,22 @@ import {Signin} from "./Signin";
 
 
 
-export class SignForm extends Component {
-  constructor() {
-    super();
+export default class SignForm extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       loginVisible: true,
-      signinVisible:false
+      signinVisible: false
     }
+    console.log(this.props)
   }
 
-  signIn(member){
-    console.log("signin", member);
-    this.props.onPageType("mentor")
-    // if (member.email === "austintedwards@gmail.com"){
-    //   window.location.pathname = "mentor/home";
-    // }else if (member.email === "jeff.diers@gmail.com"){
-    //   window.location.pathname = "mentor/home";
-    // }
 
+  signIn = (userInfo) => {
+    this.props.authenticateUser(userInfo)
+    this.props.pushLocation('/mentor/home')
   }
+
   signUp(member){
     // console.log("signUp", member);
   }

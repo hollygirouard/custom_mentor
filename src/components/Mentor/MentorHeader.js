@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import {Link} from "react-router";
+import { NavLink } from 'react-router-dom'
 
 
 
-export class MentorHeader extends Component {
+export default class MentorHeader extends Component {
   facebook() {
     window.open("https://www.facebook.com/blossomcarenetwork.org");
   }
@@ -23,8 +23,8 @@ export class MentorHeader extends Component {
       <nav id="member_sidebar">
         <img  alt = "" className="logo" src="../image/CustomMentorLogo.png"/>
         <ul  className="nav" >
-          <li><Link to={"/mentor/home"}>Home</Link></li>
-          <li><Link to={"/mentor/form"}>Personality Form</Link></li>
+          <li><NavLink to={"/mentor/home"} key="home">Home</NavLink></li>
+          <li><NavLink to={"/mentor/form"} key="form">Personality Form</NavLink></li>
           <li><a href ="#signin"> Account</a></li>
           <li><a href ="#about"> Activities</a></li>
           <li><a href ="#schedule"> Schedule</a></li>
@@ -36,7 +36,6 @@ export class MentorHeader extends Component {
           <i onClick={this.linkedin} className="fa fa-linkedin-square"></i>
           <i onClick={this.youtube} className="fa fa-youtube-square"></i>
         </div>
-
       </nav>
 
     );
