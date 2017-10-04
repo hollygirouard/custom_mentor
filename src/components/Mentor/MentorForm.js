@@ -30,7 +30,6 @@ export class MentorForm extends Component {
         goals:[],
         contact:[],
         availability:[]
-
       }
     }
   }
@@ -50,8 +49,17 @@ export class MentorForm extends Component {
     if(name==="goals") checked ? formValues.goals.push(value):formValues.goals=formValues.goals.filter(e => e !== value)
     if(name==="contact") checked ? formValues.contact.push(value):formValues.contact=formValues.contact.filter(e => e !== value)
     if(name==="availability") checked ? formValues.availability.push(value):formValues.availability=formValues.availability.filter(e => e !== value)
-
     this.setState({formValues})
+  }
+  handleTimeChange(event) {
+    let formValues = this.state.formValues;
+    let name = event.target.name;
+    let value = event.target.value;
+    let day = event.target.type;
+    console.log(event.target)
+    formValues[name] = value;
+    this.setState({formValues})
+    console.log(day, formValues)
   }
   handleSubmit(event) {
     event.preventDefault();
@@ -179,7 +187,7 @@ export class MentorForm extends Component {
           <label>
             <input value="monday" name = "availability" type="checkbox" checked={this.state.formValues["monday"]} onChange={this.handleCheckedChange.bind(this)}/>
             Monday {this.state.formValues.availability.indexOf("monday")>=0
-              ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
+              ? <div><input type="time" name="monday1" onChange={this.handleTimeChange.bind(this)}/><input type="time" name="timeEnd" onChange={this.handleTimeChange.bind(this)}/></div>
               : null
 }
           </label>
