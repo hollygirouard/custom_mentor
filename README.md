@@ -1,6 +1,17 @@
-# ReactJS Basics
+# CustomMenter.com
 
-This repository accompanies my ReactJS - Basics YouTube Series.
+Built in ReactJS from using create-react-app - https://reactjs.org/docs/installation.html
 
-# Usage
-Switch to the branch you're interested in (branches = different stages in the series) and compare/ download the source code.
+To begin server, run 'npm start'
+
+Owner - Matt Sharratt
+
+Project Manager - Holly White
+
+Developer - Austin Edwards
+
+Developer - Kelvin Sajere
+
+Developer - Jeff Diers
+
+Developer - Kara Fox  

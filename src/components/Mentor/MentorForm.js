@@ -1,3 +1,25 @@
+
+// Table details - object inputed into DB table
+
+// Custom_mentor:
+//
+// {Goals: [ array of booleans]
+// *HelpPara: “string” (personal information)
+// Mentoring: “string”
+// weekTalk: “string"
+// Contact:[array of booleans]
+// Availability : [array of array [boolean(day), string (time)]]
+// ManagementTool: boolean}
+//
+//
+// Mentor specific:
+// *ExpertisePara: “string” (personal information)
+// *experiencePara: “string” (personal information)
+// *fieldPara: “string” (personal information)
+// Education:”string"
+//
+
+
 import React, {Component} from "react";
 
 export class MentorForm extends Component {
@@ -302,13 +324,13 @@ export class MentorForm extends Component {
           <p>Do you want to use the CustomMentor suite of relationship management tools?</p>
           <div className="radio">
             <label>
-              <input name="management" value={"yes"} type="radio" onChange={this.handleChange.bind(this)}/>
+              <input name="managementTool" value={"yes"} type="radio" onChange={this.handleChange.bind(this)}/>
               Yes
             </label>
           </div>
           <div className="radio">
             <label>
-              <input name="management" value={"no"} type="radio" onChange={this.handleChange.bind(this)}/>
+              <input name="managementTool" value={"no"} type="radio" onChange={this.handleChange.bind(this)}/>
               No
             </label>
           </div>

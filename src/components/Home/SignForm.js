@@ -16,13 +16,14 @@ export default class SignForm extends Component {
     console.log(this.props)
   }
 
+
   signIn = (userInfo) => {
     this.props.authenticateUser(userInfo)
     this.props.pushLocation('/mentor/home')
   }
 
   signUp(member){
-    console.log("signUp", member);
+    // console.log("signUp", member);
   }
 
   render() {
