@@ -17,9 +17,7 @@ export default class MentorHeader extends Component {
     window.open("https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ");
   }
   render() {
-
     return (
-
       <nav id="member_sidebar">
         <img  alt = "" className="logo" src="../image/CustomMentorLogo.png"/>
         <ul  className="nav" >

@@ -3,33 +3,38 @@
 
 // Custom_mentor:
 //
-// {Goals: {object of booleans}
+// {Goals: [ array of booleans]
 // *HelpPara: “string” (personal information)
 // Mentoring: “string”
 // weekTalk: “string"
-// Contact:{object of booleans}
-// Availability : {object of {object of strings}}
+// Contact:[array of booleans]
+// Availability : [array of array [boolean(day), string (time)]]
 // ManagementTool: boolean}
 //
 //
 // Mentor specific:
-// *expertisePara: “string” (personal information)
+// *ExpertisePara: “string” (personal information)
 // *experiencePara: “string” (personal information)
-// *studiesPara: “string” (personal information)
-// education:”string"
+// *fieldPara: “string” (personal information)
+// Education:”string"
 //
 
 
 import React, {Component} from "react";
 
-export default class MentorForm extends Component {
+export default class PersonalityForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       formValues: {
-        goals:{},
-        contact:{},
-        availability:{}
+        // educational: false,
+        // financial: false,
+        // physical: false,
+        // spiritual: false,
+        // other: false,
+        // helpInfo: "",
+        // mentoring: "",
+        // weekTalk:""
       }
     }
   }
@@ -38,68 +43,52 @@ export default class MentorForm extends Component {
     let formValues = this.state.formValues;
     let name = event.target.name;
     let value = event.target.value;
-    let type = event.target.type
-    type === "checkbox" ? this.checkedBox(event,formValues,name,value) : formValues[name] = value;
-    type === "time" ? this.inputTime(event,formValues,name,value):null
+    formValues[name] = value;
     this.setState({formValues})
   }
-  checkedBox(event, formValues,name,value) {
-    let checked = event.target.checked;
-    checked ? formValues[name][value]=checked:formValues[name][value]=checked
-    console.log(formValues)
-    this.setState({formValues})
-  }
-  timeChange(event){
+  handleCheckedChange(event) {
     let formValues = this.state.formValues;
     let name = event.target.name;
-    let value = event.target.value;
     let checked = event.target.checked;
-    checked ? formValues[name][value]=[] :formValues[name][value]=false
+    formValues[name] = checked;
     this.setState({formValues})
-    console.log(formValues)
-    console.log("time event", event.target)
-  }
-  timeSet(event){
-    console.log("time now", event.target)
-    let formValues = this.state.formValues;
-    let name = event.target.name;
-    let value = event.target.value;
-    formValues.availability[name].push(value)
   }
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state)
+
     // this.props.onMentorSubmit(this.state.formValues)
   }
 
   render() {
+      let user = this.props.currentUser
     return (
       <div>
-        <h2>Mentor Profile</h2>
+        <h2>{user.status} Profile</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <p>Goals: What area(s) do you want to mentor in?</p>
           <label>
-            <input name="goals" value='educational' type="checkbox" checked={this.state.formValues["educational"]} onChange={this.handleChange.bind(this)}/>
+            <input name="educational" type="checkbox" checked={this.state.formValues["educational"]} onChange={this.handleCheckedChange.bind(this)}/>
             Educational
           </label>
           <br/>
           <label>
-            <input name="goals" value="financial" type="checkbox" checked={this.state.formValues["financial"]} onChange={this.handleChange.bind(this)}/>
+            <input name="financial" type="checkbox" checked={this.state.formValues["financial"]} onChange={this.handleCheckedChange.bind(this)}/>
             Financial
           </label>
           <br/>
           <label>
-            <input name="goals" value="physical" type="checkbox" checked={this.state.formValues["physical"]} onChange={this.handleChange.bind(this)}/>
+            <input name="physical" type="checkbox" checked={this.state.formValues["physical"]} onChange={this.handleCheckedChange.bind(this)}/>
             Physical (health)
           </label>
           <br/>
           <label>
-            <input name="goals" value="spiritual" type="checkbox" checked={this.state.formValues["spiritual"]} onChange={this.handleChange.bind(this)}/>
+            <input name="spiritual" type="checkbox" checked={this.state.formValues["spiritual"]} onChange={this.handleCheckedChange.bind(this)}/>
             Spiritual
           </label>
           <br/>
           <label>
-            <input name="goals" value="other" type="checkbox" checked={this.state.formValues["other"]} onChange={this.handleChange.bind(this)}/>
+            <input name="other" type="checkbox" checked={this.state.formValues["other"]} onChange={this.handleCheckedChange.bind(this)}/>
             Other
           </label>
           <br/>
@@ -111,7 +100,7 @@ export default class MentorForm extends Component {
           <textarea style={{
             width: '50%',
             height: '200%'
-          }} name="helpPara" value={this.state.formValues["helpPara"]} onChange={this.handleChange.bind(this)}/>
+          }} name="helpInfo" value={this.state.formValues["helpInfo"]} onChange={this.handleChange.bind(this)}/>
           <br/>
           <p>Note: mentors should be able to sign up to mentor in different areas.</p>
 
@@ -147,17 +136,17 @@ export default class MentorForm extends Component {
 
           <p>How do you prefer to contact the mentee? (choose any combination)</p>
           <label>
-            <input value="email"  name = "contact" type="checkbox" checked={this.state.formValues["email"]} onChange={this.handleChange.bind(this)}/>
+            <input name="email" type="checkbox" checked={this.state.formValues["email"]} onChange={this.handleCheckedChange.bind(this)}/>
             Email
           </label>
           <br/>
           <label>
-            <input value="phone" name = "contact" type="checkbox" checked={this.state.formValues["phone"]} onChange={this.handleChange.bind(this)}/>
+            <input name="phone" type="checkbox" checked={this.state.formValues["phone"]} onChange={this.handleCheckedChange.bind(this)}/>
             Phone
           </label>
           <br/>
           <label>
-            <input value="text" name = "contact" type="checkbox" checked={this.state.formValues["text"]} onChange={this.handleChange.bind(this)}/>
+            <input name="text" type="checkbox" checked={this.state.formValues["text"]} onChange={this.handleCheckedChange.bind(this)}/>
             Text
           </label>
 
@@ -189,61 +178,61 @@ export default class MentorForm extends Component {
 
           <p>When are you available to contact the mentee?</p>
           <label>
-            <input value="monday" name = "availability" type="checkbox" checked={this.state.formValues["monday"]} onChange={this.timeChange.bind(this)}/>
-            Monday {this.state.formValues.availability.monday
-              ? <div><input type="time" name="monday" onChange={this.timeSet.bind(this)}/><input type="time" name="monday" onChange={this.timeSet.bind(this)}/></div>
-              : null
-}
-          </label>
-          <br/>
-          {/* <label>
-            <input value="tuesday" name = "availability" type="checkbox" checked={this.state.formValues["tuesday"]} onChange={this.handleChange.bind(this)}/>
-            Tuesday {this.state.formValues.availability.indexOf("tuesday")>=0
+            <input name="monday" type="checkbox" checked={this.state.formValues["monday"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Monday {this.state.formValues.monday
               ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="wednesday" name = "availability" type="checkbox" checked={this.state.formValues["wednesday"]} onChange={this.handleChange.bind(this)}/>
-            Wednesday {this.state.formValues.availability.indexOf("wednesday")>=0
+            <input name="tuesday" type="checkbox" checked={this.state.formValues["tuesday"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Tuesday {this.state.formValues.tuesday
               ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="thursday" name = "availability" type="checkbox" checked={this.state.formValues["thursday"]} onChange={this.handleChange.bind(this)}/>
-            Thursday {this.state.formValues.availability.indexOf("thursday")>=0
+            <input name="wednesday" type="checkbox" checked={this.state.formValues["wednesday"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Wednesday {this.state.formValues.wednesday
               ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="friday" name = "availability" type="checkbox" checked={this.state.formValues["friday"]} onChange={this.handleChange.bind(this)}/>
-            Friday {this.state.formValues.availability.indexOf("friday")>=0
+            <input name="thursday" type="checkbox" checked={this.state.formValues["thursday"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Thursday {this.state.formValues.thursday
               ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="saturday" name = "availability" type="checkbox" checked={this.state.formValues["saturday"]} onChange={this.handleChange.bind(this)}/>
-            Saturday {this.state.formValues.availability.indexOf("saturday")>=0
+            <input name="friday" type="checkbox" checked={this.state.formValues["friday"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Friday {this.state.formValues.friday
               ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="sunday" name = "availability" type="checkbox" checked={this.state.formValues["sunday"]} onChange={this.handleChange.bind(this)}/>
-            Sunday {this.state.formValues.availability.indexOf("sunday")>=0
+            <input name="saturday" type="checkbox" checked={this.state.formValues["saturday"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Saturday {this.state.formValues.saturday
               ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
               : null
 }
           </label>
-          <br/> */}
+          <br/>
+          <label>
+            <input name="sunday" type="checkbox" checked={this.state.formValues["sunday"]} onChange={this.handleCheckedChange.bind(this)}/>
+            Sunday {this.state.formValues.sunday
+              ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
+              : null
+}
+          </label>
+          <br/>
 
           <label>
             In what area(s) do you have expertise? (Separate different areas with a comma.)
@@ -252,7 +241,7 @@ export default class MentorForm extends Component {
           <textarea style={{
             width: '50%',
             height: '200%'
-          }} name="expertisePara" value={this.state.formValues["expertisePara"]} onChange={this.handleChange.bind(this)}/>
+          }} name="expertise" value={this.state.formValues["expertise"]} onChange={this.handleChange.bind(this)}/>
           <br/>
 
           <label>
@@ -262,7 +251,7 @@ export default class MentorForm extends Component {
           <textarea style={{
             width: '50%',
             height: '500%'
-          }} name="experiencePara" value={this.state.formValues["experiencePara"]} onChange={this.handleChange.bind(this)}/>
+          }} name="experience" value={this.state.formValues["experience"]} onChange={this.handleChange.bind(this)}/>
           <br/>
 
           <label>
@@ -272,7 +261,7 @@ export default class MentorForm extends Component {
           <textarea style={{
             width: '50%',
             height: '200%'
-          }} name="studiesPara" value={this.state.formValues["studiesPara"]} onChange={this.handleChange.bind(this)}/>
+          }} name="studies" value={this.state.formValues["studies"]} onChange={this.handleChange.bind(this)}/>
           <br/>
 
           <label>What is your highest education level attained?</label>
@@ -329,20 +318,20 @@ export default class MentorForm extends Component {
             <textarea style={{
               width: '50%',
               height: '200%'
-            }} name="additionalDegrees" value={this.state.formValues["additionalDegrees"]} onChange={this.handleChange.bind(this)}/>
+            }} name="expertise" value={this.state.formValues["additionalDegrees"]} onChange={this.handleChange.bind(this)}/>
             <br/>
           </div>
 
           <p>Do you want to use the CustomMentor suite of relationship management tools?</p>
           <div className="radio">
             <label>
-              <input name="managementTool" value={true} type="radio" onChange={this.handleChange.bind(this)}/>
+              <input name="managementTool" value={"yes"} type="radio" onChange={this.handleChange.bind(this)}/>
               Yes
             </label>
           </div>
           <div className="radio">
             <label>
-              <input name="managementTool" value={false} type="radio" onChange={this.handleChange.bind(this)}/>
+              <input name="managementTool" value={"no"} type="radio" onChange={this.handleChange.bind(this)}/>
               No
             </label>
           </div>

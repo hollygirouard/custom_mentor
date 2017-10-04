@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import axios from 'axios';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { BrowserRouter as Link } from 'react-router-dom'
 
@@ -27,6 +26,7 @@ export class Signin extends Component {
         event.preventDefault();
         this.props.onSignIn(this.state.formValues);
         this.formValidations(this.state.formValues);
+
 		 axios({
         method: 'POST',
         url: 'custommentor/custom_mentor/serverapi/user.php',
@@ -38,6 +38,7 @@ export class Signin extends Component {
       }).catch(function (error) {
         console.log(error);
       });
+
     }
 
     formValidations(form) {

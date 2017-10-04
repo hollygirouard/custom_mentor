@@ -1,5 +1,6 @@
 import {connect} from 'react-redux'
-import Header from './Header'
+import {authenticateUser} from '../../actions/login'
+import PersonalityForm from './PersonalityForm'
 
 const mapStateToProps = (state) => {
     return {
@@ -9,6 +10,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const HeaderContainer = connect(mapStateToProps)(Header)
+const PersonalityFormContainer = connect(mapStateToProps)(PersonalityForm)
 
-export default HeaderContainer
+export default PersonalityFormContainer

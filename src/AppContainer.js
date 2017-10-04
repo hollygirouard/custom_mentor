@@ -7,17 +7,17 @@ const mapStateToProps = (state) => {
     isLoggedIn: state.session.isLoggedIn,
     currentUser: state.session.currentUser
   }
-};
+}
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     authenticateUser: () => dispatch(authenticateUser(ownProps))
-  };
-};
+  }
+}
 
 const AppContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App)
 
-export default AppContainer;
+export default AppContainer
