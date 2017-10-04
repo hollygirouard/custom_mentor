@@ -45,6 +45,8 @@ class User{
                     $this->resultv["response"]="success";
                     $this->resultv["error"]="";
                     $this->resultv["type"]=$result->type;
+                    $this->resultv["email"]=$result->email;
+
                     $_SESSION['id'] = $this->id;
                     $_SESSION['email'] = $this->email;
                 }

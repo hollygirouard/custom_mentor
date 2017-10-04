@@ -25,9 +25,7 @@ export class Signup extends Component {
       let formValues = this.state.formValues;
       let name = event.target.name;
       let value = event.target.value;
-
       formValues[name] = value;
-
       this.setState({formValues})
       this.formValidations(formValues)
     }
@@ -36,7 +34,6 @@ export class Signup extends Component {
       event.preventDefault();
       this.props.onSignUp(this.state.formValues);
       this.formValidations(this.state.formValues);
-      console.log("form into SQL", this.state.formValues);
       let form = this.state.formValues;
       form.name&&form.email&&form.phone&&form.password&&form.password===form.confirmPassword ? this.postLogin(form):null;
 
@@ -53,7 +50,6 @@ export class Signup extends Component {
 
     postLogin(form){
       //send data to API
-      console.log("sending data")
       axios({
         method: 'POST',
         url: 'http://localhost:8080/custom_mentor/serverapi/user.php',
