@@ -24,7 +24,6 @@ export default class App extends Component {
     };
     
     renderRoutes() {
-        console.log(this.props)
         return (
             <div>
                 {
@@ -75,7 +74,6 @@ export default class App extends Component {
     }
 
     render() {
-        console.log("render function pre")
         return (
             <Router>
                 <div className="row">
@@ -83,10 +81,8 @@ export default class App extends Component {
                         {this.renderNav()}
                     </div>
                     <div className="col-xs-10 home">
-                            <div>
-                                <Route path='/' exact component={Home} />
-                                {this.renderRoutes()}
-                            </div>
+                        <Route path='/' exact component={Home} />
+                        {this.renderRoutes()}
                     </div>
                 </div>
             </Router>

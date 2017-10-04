@@ -13,7 +13,6 @@ export default class SignForm extends Component {
       loginVisible: true,
       signinVisible: false
     }
-    console.log(this.props)
   }
 
 
