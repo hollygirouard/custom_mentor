@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Router, Route, browserHistory, IndexRoute} from "react-router";
+import {Router, Route} from "react-router";
 
 import {MentorRoot} from "./MentorRoot";
 import {MentorHome} from "./MentorHome";
@@ -9,9 +9,8 @@ import {MentorForm} from "./MentorForm";
 export class MentorPage extends Component {
     render() {
         return (
-            <Router history={browserHistory}>
+            <Router >
                 <Route path={"/mentor/"} component={MentorRoot} >
-                    <IndexRoute component={MentorHome} />
                     <Route path={"home"} component={MentorHome} />
                     <Route path={"form"} component={MentorForm} />
                 </Route>

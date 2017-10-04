@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Link} from "react-router";
 
 
 
@@ -23,8 +22,8 @@ export class MentorHeader extends Component {
       <nav id="member_sidebar">
         <img  alt = "" className="logo" src="../image/CustomMentorLogo.png"/>
         <ul  className="nav" >
-          <li><Link to={"/mentor/home"}>Home</Link></li>
-          <li><Link to={"/mentor/form"}>Personality Form</Link></li>
+          <li><a href={"/mentee/home"}>Home</a></li>
+          <li><a href={"/mentee/form"}>Personality Form</a></li>
           <li><a href ="#signin"> Account</a></li>
           <li><a href ="#about"> Activities</a></li>
           <li><a href ="#schedule"> Schedule</a></li>
