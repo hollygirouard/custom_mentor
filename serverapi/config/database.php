@@ -3,7 +3,7 @@ session_start();
 class Database{
 
     // specify your own database credentials
-    private $host = "localhost";
+    private $host = "https://custommentor.herokuapp.com/";
     private $db_name = "custom_mentor";
     private $username = "root";
     private $password = "";
