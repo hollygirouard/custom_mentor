@@ -76,7 +76,7 @@ export default class PersonalityForm extends Component {
       <div>
         <h2>Mentor Profile</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <p>Goals: What area(s) do you want to mentor in?</p>
+          <p><b>Goals: What area(s) do you want to mentor in?</b></p>
           <label>
             <input name="goals" value='educational' type="checkbox" checked={this.state.formValues["educational"]} onChange={this.handleChange.bind(this)}/>
             Educational
@@ -121,30 +121,30 @@ export default class PersonalityForm extends Component {
           <div className="radio">
             <label>
               <input name="mentoring" value={"cheerleader"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Cheerleader – Most basic level of service the provides accountability and positive feedback with brief communications
+              <b>Cheerleader</b> – Most basic level of service the provides accountability and positive feedback with brief communications
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="mentoring" value={"mentor"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Mentor – More in-depth interaction, providing advice, advocacy and support at whatever level you desire. This person may not have specific experience or knowledge with the goals you are pursuing.
+              <b>Mentor</b> – More in-depth interaction, providing advice, advocacy and support at whatever level you desire. This person may not have specific experience or knowledge with the goals you are pursuing.
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="mentoring" value={"coach"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Coach – A mentor on steroids that provides specific advice based on experience or education in with the goal(s) you want to achieve.
+              <b>Coach</b> – A mentor on steroids that provides specific advice based on experience or education in with the goal(s) you want to achieve.
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="mentoring" value={"tutor"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Tutor – An expert in a certain field who will provide instruction in accomplishing a specific task.
+              <b>Tutor</b> – An expert in a certain field who will provide instruction in accomplishing a specific task.
             </label>
           </div>
           <p>Note: Mentors should be able to sign up to offer more than one level of mentoring.</p>
 
-          <p>How do you prefer to contact the mentee? (choose any combination)</p>
+          <p><b>How do you prefer to contact the mentee? (choose any combination)</b></p>
           <label>
             <input value="email"  name = "contact" type="checkbox" checked={this.state.formValues["email"]} onChange={this.handleChange.bind(this)}/>
             Email
@@ -160,33 +160,33 @@ export default class PersonalityForm extends Component {
             Text
           </label>
 
-          <p>How often are you willing to communicate per week?</p>
+          <p><b>How often are you willing to communicate per week?</b></p>
           <div className="radio">
             <label>
               <input name="weekTalk" value={"once"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Once
+              <b>Once</b>
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="weekTalk" value={"twice"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Twice
+              <b>Twice</b>
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="weekTalk" value={"three"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Three times
+              <b>Three times</b>
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="weekTalk" value={"everyday"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Every day
+              <b>Every day</b>
             </label>
           </div>
 
-          <p>When are you available to contact the mentee?</p>
+          <p><b>When are you available to contact the mentee?</b></p>
           <label>
             <input value="monday" name = "availability" type="checkbox" checked={this.state.formValues["monday"]} onChange={this.timeChange.bind(this)}/>
             Monday {this.state.formValues.availability.monday
@@ -278,50 +278,50 @@ export default class PersonalityForm extends Component {
           <div className="radio">
             <label>
               <input name="education" value={"HSStudent"} type="radio" onChange={this.handleChange.bind(this)}/>
-              High School Student
+              <b>High School Student</b>
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="education" value={"HSGrade"} type="radio" onChange={this.handleChange.bind(this)}/>
-              High School Graduate
+              <b>High School Graduate</b>
 
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="education" value={"UStudent"} type="radio" onChange={this.handleChange.bind(this)}/>
-              College Student
+              <b>College Student</b>
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="education" value={"ADGrade"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Associates Degree
+              <b>Associates Degree</b>
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="education" value={"BDGrade"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Bachelors Degree
+              <b>Bachelors Degree</b>
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="education" value={"Master"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Masters
+              <b>Masters</b>
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="education" value={"PHD"} type="radio" onChange={this.handleChange.bind(this)}/>
-              PHD
+              <b>PHD</b>
             </label>
           </div>
           <div className="radio">
             <label>
               <input name="education" value={"Additional"} type="radio" onChange={this.handleChange.bind(this)}/>
-              Additional Degrees and Certifications
+              <b>Additional Degrees and Certifications</b>
             </label>
             <br/>
 
@@ -332,7 +332,7 @@ export default class PersonalityForm extends Component {
             <br/>
           </div>
 
-          <p>Do you want to use the CustomMentor suite of relationship management tools?</p>
+          <p><b>Do you want to use the CustomMentor suite of relationship management tools?</b></p>
           <div className="radio">
             <label>
               <input name="managementTool" value={true} type="radio" onChange={this.handleChange.bind(this)}/>
