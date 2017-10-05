@@ -195,54 +195,54 @@ export default class PersonalityForm extends Component {
 }
           </label>
           <br/>
-          {/* <label>
-            <input value="tuesday" name = "availability" type="checkbox" checked={this.state.formValues["tuesday"]} onChange={this.handleChange.bind(this)}/>
-            Tuesday {this.state.formValues.availability.indexOf("tuesday")>=0
-              ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
+          <label>
+            <input value="tuesday" name = "availability" type="checkbox" checked={this.state.formValues["tuesday"]} onChange={this.timeChange.bind(this)}/>
+            Tuesday {this.state.formValues.availability.tuesday
+              ? <div><input type="time" name="tuesday" onChange={this.timeSet.bind(this)}/><input type="time" name="tuesday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="wednesday" name = "availability" type="checkbox" checked={this.state.formValues["wednesday"]} onChange={this.handleChange.bind(this)}/>
-            Wednesday {this.state.formValues.availability.indexOf("wednesday")>=0
-              ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
+            <input value="wednesday" name = "availability" type="checkbox" checked={this.state.formValues["wednesday"]} onChange={this.timeChange.bind(this)}/>
+            Wednesday {this.state.formValues.availability.monday
+              ? <div><input type="time" name="wednesday" onChange={this.timeSet.bind(this)}/><input type="time" name="wednesday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="thursday" name = "availability" type="checkbox" checked={this.state.formValues["thursday"]} onChange={this.handleChange.bind(this)}/>
-            Thursday {this.state.formValues.availability.indexOf("thursday")>=0
-              ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
+            <input value="thursday" name = "availability" type="checkbox" checked={this.state.formValues["thursday"]} onChange={this.timeChange.bind(this)}/>
+            Thursday {this.state.formValues.availability.monday
+              ? <div><input type="time" name="thursday" onChange={this.timeSet.bind(this)}/><input type="time" name="thursday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="friday" name = "availability" type="checkbox" checked={this.state.formValues["friday"]} onChange={this.handleChange.bind(this)}/>
-            Friday {this.state.formValues.availability.indexOf("friday")>=0
-              ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
+            <input value="friday" name = "availability" type="checkbox" checked={this.state.formValues["friday"]} onChange={this.timeChange.bind(this)}/>
+            Friday {this.state.formValues.availability.monday
+              ? <div><input type="time" name="friday" onChange={this.timeSet.bind(this)}/><input type="time" name="friday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="saturday" name = "availability" type="checkbox" checked={this.state.formValues["saturday"]} onChange={this.handleChange.bind(this)}/>
-            Saturday {this.state.formValues.availability.indexOf("saturday")>=0
-              ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
+            <input value="saturday" name = "availability" type="checkbox" checked={this.state.formValues["saturday"]} onChange={this.timeChange.bind(this)}/>
+            Saturday {this.state.formValues.availability.monday
+              ? <div><input type="time" name="saturday" onChange={this.timeSet.bind(this)}/><input type="time" name="saturday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
           <br/>
           <label>
-            <input value="sunday" name = "availability" type="checkbox" checked={this.state.formValues["sunday"]} onChange={this.handleChange.bind(this)}/>
-            Sunday {this.state.formValues.availability.indexOf("sunday")>=0
-              ? <div><input type="time" name="timeStart"/><input type="time" name="timeEnd"/></div>
+            <input value="sunday" name = "availability" type="checkbox" checked={this.state.formValues["sunday"]} onChange={this.timeChange.bind(this)}/>
+            Sunday {this.state.formValues.availability.monday
+              ? <div><input type="time" name="sunday" onChange={this.timeSet.bind(this)}/><input type="time" name="sunday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
-          <br/> */}
+          <br/>
 
           <label>
             In what area(s) do you have expertise? (Separate different areas with a comma.)
