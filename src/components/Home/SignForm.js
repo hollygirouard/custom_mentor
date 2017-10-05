@@ -4,8 +4,6 @@ import { Button, ButtonGroup } from 'reactstrap'
 import {Signup} from "./Signup";
 import {Signin} from "./Signin";
 
-
-
 export default class SignForm extends Component {
   constructor(props) {
     super(props);
@@ -15,10 +13,9 @@ export default class SignForm extends Component {
     }
   }
 
-
   signIn = (userInfo) => {
     this.props.authenticateUser(userInfo)
-    this.props.pushLocation('/home')
+    
   }
 
   signUp(member){
@@ -44,7 +41,6 @@ export default class SignForm extends Component {
             : null
         }
       </div>
-
     )
   }
 

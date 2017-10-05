@@ -37,26 +37,27 @@ export const authenticateUser = (loginInfo) => {
             //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
             //sample response :{"response":"success","error":"",type:"Mentee"} :redirect to signin based on response
             console.log(response.data);
+            return response.data.response === 'success' ? dispatch(userLoginSuccess(response)) : dispatch(userLoginFailure({message: "Invalid login credentials."}))
         }).catch(function (error) {
             console.log(error);
         });
 
 
         // *** FAKE LOGIN ***
-        let user
-        	if (loginInfo.email === 'jeff.diers@gmail.com') {
-                user = {
-                    name: 'Jeff',
-                    status: 'mentor'
-                }
-				return dispatch(userLoginSuccess(user));
-			} else if(loginInfo.email === 'austin@email.com') {
-                user ={
-                    name: 'Austin',
-                    status: 'mentee'
-                }
-                return dispatch(userLoginSuccess(user))
-            }
-			return dispatch(userLoginFailure({message: "Invalid login credentials."}));
+        // let user
+        // 	if (loginInfo.email === 'jeff.diers@gmail.com') {
+        //         user = {
+        //             name: 'Jeff',
+        //             status: 'mentor'
+        //         }
+		// 		return dispatch(userLoginSuccess(user));
+		// 	} else if(loginInfo.email === 'austin@email.com') {
+        //         user ={
+        //             name: 'Austin',
+        //             status: 'mentee'
+        //         }
+        //         return dispatch(userLoginSuccess(user))
+        //     }
+		// 	return dispatch(userLoginFailure({message: "Invalid login credentials."}));
     }
 }
