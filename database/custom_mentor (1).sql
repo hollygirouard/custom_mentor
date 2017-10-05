@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 05, 2017 at 07:52 PM
+-- Generation Time: Oct 05, 2017 at 11:42 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -31,7 +31,16 @@ CREATE TABLE `profile` (
   `fk_id` int(11) NOT NULL,
   `goals` varchar(255) NOT NULL,
   `service` varchar(255) NOT NULL,
-  `mentoring_level` varchar(255) NOT NULL
+  `mentoring_level` varchar(255) NOT NULL,
+  `weektalk` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `avialability` varchar(255) NOT NULL,
+  `areaofexp` varchar(255) NOT NULL,
+  `experience` varchar(255) NOT NULL,
+  `fieldofstudy` varchar(255) NOT NULL,
+  `education` varchar(255) NOT NULL,
+  `additional_degree` varchar(255) NOT NULL,
+  `managementool` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
