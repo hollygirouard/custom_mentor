@@ -5,18 +5,23 @@ import SignFormContainer from "./SignFormContainer";
 import {About} from "./About";
 import Contact from "./Contact";
 // import {Header} from "./Header";
-import {MenteeInfo} from "./MenteeInfo";
-import {MentorInfo} from "./MentorInfo";
+import {MenteeInfo} from "../Home/MenteeInfo";
+import {MentorInfo} from "../Home/MentorInfo";
+import { BrowserRouter as Redirect } from 'react-router-dom'
+
 
 
 
 export default class Home extends Component {
-
     render() {
+        if (this.props.isLoggedIn) {
+            this.props.history.push('/home')
+        }
+
         return (
               <div>
                       <div id ="title"><Title /></div>
-                      <div id ="signin"><SignFormContainer pushLocation={this.props.history.push} /></div>
+                      <div id ="signin"><SignFormContainer /></div>
                       <div id ="menteeInfo"><MenteeInfo /></div>
                       <div id ="mentorInfo"><MentorInfo /></div>
                       <div id ="about"><About /></div>

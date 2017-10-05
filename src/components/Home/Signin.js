@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { BrowserRouter as Link } from 'react-router-dom'
-import axios from 'axios';
-
+import axios from 'axios'
 
 export class Signin extends Component {
     constructor(props) {
@@ -27,6 +26,19 @@ export class Signin extends Component {
         event.preventDefault();
         this.props.onSignIn(this.state.formValues);
         this.formValidations(this.state.formValues);
+
+		 axios({
+        method: 'POST',
+        url: '/custom_mentor/serverapi/user.php',
+        data: "requesttype=Signin&data=" + (JSON.stringify(this.state.formValues))
+      }).then(function (response) {
+        //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
+        //sample response :{"response":"success","error":"",type:"Mentee"} :redirect to signin based on response
+        console.log(response.data);
+      }).catch(function (error) {
+        console.log(error);
+      });
+
     }
 
     formValidations(form) {

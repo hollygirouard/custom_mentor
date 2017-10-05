@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Redirect, NavLink } from 'react-router-dom'
 
-import Home from './components/Home/Home'
+import HomeContainer from './components/Home/HomeContainer'
 import UserContainer from './components/UserScreen/UserContainer'
 import PersonalityFormContainer from './components/PersonalityFormScreen/PersonalityFormContainer'
 import AccountContainer from './components/AccountScreen/AccountContainer'
@@ -20,9 +20,14 @@ const SCREENS = [
 export default class App extends Component {
 
     checkAuth(ComponentToRender) {
-        return props => this.props.isLoggedIn ? <ComponentToRender {...props} /> : <Redirect to={'/'}/> 
-    };
-    
+        console.log(this.props)
+        return props => this.props.isLoggedIn ? <ComponentToRender {...props} /> : 
+            (<Redirect to={{
+                pathname: '/',
+                state: { from: props.location }
+            }}/>)
+    }
+
     renderRoutes() {
         return (
             <div>
@@ -81,7 +86,7 @@ export default class App extends Component {
                         {this.renderNav()}
                     </div>
                     <div className="col-xs-10 home">
-                        <Route path='/' exact component={Home} />
+                        <Route path='/' exact component={HomeContainer} />
                         {this.renderRoutes()}
                     </div>
                 </div>
