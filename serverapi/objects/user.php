@@ -52,8 +52,7 @@ class User extends database{
                     $this->resultv["type"]=$result->type;
                     $this->resultv["email"]=$result->email;
 
-                    $_SESSION['id'] = $this->id;
-                    $_SESSION['email'] = $this->email;
+                    setcookie('useremail', $this->email, time() + (86400 * 30), "/");
                 }
             }
 
@@ -142,15 +141,18 @@ class User extends database{
 
     public function is_loggedin()
    {
-       return (isset($_SESSION['email']) && isset($_SESSION['id']));
+     if(isset($_COOKIE["useremail"]){
+       return $_COOKIE["useremail"];
+     }else{
+       return false;
+     }
+
 
    }
 
       public function logout()
    {
-        session_destroy();
-        unset($_SESSION['email']);
-        unset($_SESSION['id']);
+        setcookie("useremail", "", time() - 3600);
         return true;
    }
 }
