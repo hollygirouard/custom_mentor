@@ -10,7 +10,7 @@ class Database{
     public $conn;
 
     // get the database connection
-    public function getConnection(){
+    function __construct() {
 
         $this->conn = null;
 
@@ -21,6 +21,6 @@ class Database{
             echo "Connection error: " . $exception->getMessage();
         }
 
-        return $this->conn;
+        //return $this->conn;
     }
 }

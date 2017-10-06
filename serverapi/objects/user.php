@@ -1,8 +1,12 @@
 <?php
-class User{
+
+// include database connection
+include_once '../config/database.php';
+
+class User extends database{
 
     // database connection and table name
-    private $conn;
+
     private $table_name = "users";
 
     // object properties
@@ -16,8 +20,9 @@ class User{
 
 
 
-    public function __construct($db){
-        $this->conn = $db;
+    public function __construct(){
+        parent::__construct();
+
         $this->resultv["response"]="failed";
         $this->resultv["error"]="";
 
