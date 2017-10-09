@@ -92,7 +92,7 @@ class User extends database{
             } else {
                 // insert query
                 $query = "INSERT INTO ".$this->table_name."(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
-
+                $profile = "INSERT INTO profile(fk_id)VALUES(:id)";
                 // prepare query for execution
                 $stmt = $this->conn->prepare($query);
 
@@ -116,7 +116,13 @@ class User extends database{
 
                 // Execute the query
                  if($stmt->execute()){
-                   $this->resultv["response"]="success";
+                   $stmt = $this->conn->prepare($profile);
+                   $lastid=$this->conn->lastInsertId();
+                   $stmt->bindParam(':id', $lastid);
+                   if($stmt->execute()){
+                     $this->resultv["response"]="success";
+                   }else{$this->resultv["error"]= $this->conn->errorInfo();}
+
 
                  }else{
                   $this->resultv["error"]= $this->conn->errorInfo();

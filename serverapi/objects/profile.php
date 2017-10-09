@@ -50,6 +50,7 @@ class Profile extends User{
 
       if(count($results) > 0) {
           $id = $results[0]['id'];
+          //decide whether its an update or a new addition
           //insert details into profile Table
           $query = "INSERT INTO ".$this->table_name."(fk_id, goals, service, mentoring_level, weektalk, contact, avialability, areaofexp, experience, fieldofstudy, education, managementool)
           VALUES(:id, :goals, :services, :mentoring_level, :weekTalk, :contact, :avialability, :areaofexp, :experience, :fieldofstudy, :education, :managementool)";
