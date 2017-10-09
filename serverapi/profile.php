@@ -21,6 +21,7 @@ $profile->availability = array_key_exists("availability", $obj) ? serialize($obj
 $profile->areaofexp = array_key_exists("experiencePara", $obj) ? $obj['experiencePara']:'';
 $profile->experience = array_key_exists("expertisePara", $obj) ? $obj['expertisePara']:'';
 $profile->fieldofstudy = array_key_exists("studiesPara", $obj) ? $obj['studiesPara']:'';
+
 $profile->highest_education = array_key_exists("education", $obj) ? $obj['education']:'';
 
 $profile->management_tool = array_key_exists("managementTool", $obj) ? $obj['managementTool']:'';
@@ -29,9 +30,6 @@ $profile->management_tool = array_key_exists("managementTool", $obj) ? $obj['man
 // if the form was signup is sent
 if($requesttype=="createProfile"){
   $result = $profile->saveProfile();
-}
-elseif($requesttype=="updateProfile"){
-//$result = $user->auth();
 }
 elseif($requesttype=="getProfile"){
 
