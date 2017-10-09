@@ -1,7 +1,7 @@
 <?php
 
 // include database connection
-include_once '../config/user.php';
+include_once 'user.php';
 
 class Profile extends database{
   private $table_name = "profile";
@@ -98,4 +98,5 @@ class Profile extends database{
       die('ERROR: ' . $exception->getMessage());
   }
 
+}
 }

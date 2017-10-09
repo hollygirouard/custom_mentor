@@ -1,7 +1,7 @@
 <?php
 
 // include database connection
-include_once '../config/database.php';
+include_once 'config/database.php';
 
 class User extends database{
 
@@ -22,17 +22,17 @@ class User extends database{
 
     public function __construct(){
         parent::__construct();
-        $this->setTableName($this->$table_name);
+        $this->setTableName($this->table_name);
         $this->resultv["response"]="failed";
         $this->resultv["error"]="";
 
     }
 
-    public setTableName($table){
-      $this->$table_name=$tbale;
+    public function setTableName($table){
+      $this->table_name=$table;
     }
-    public getTableName(){
-      return $this->$table_name;
+    public function getTableName(){
+      return $this->table_name;
     }
 
 
@@ -149,7 +149,7 @@ class User extends database{
 
     public function is_loggedin()
    {
-     if(isset($_COOKIE["useremail"]){
+     if(isset($_COOKIE["useremail"])){
        return $_COOKIE["useremail"];
      }else{
        return false;
