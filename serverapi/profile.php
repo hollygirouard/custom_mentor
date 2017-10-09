@@ -8,28 +8,23 @@ header('Access-Control-Allow-Methods: GET, POST, PUT');
 include_once 'objects/profile.php';
 
 // class instance
-public $id;
-public $goals;//What areas do you want to mentor?
-public $services;//Explain how you can help
-public $mentoring_levels;//What levels of mentoring do you wish to particpate
-public $contact;//how would you cantact the mentor
-public $weekTalk;//How often are you willing to communicate per week?
-public $availability;
-public $areaofexp;//In what area(s) do you have expertise? (Separate different areas with a comma.)
-public $experience;//how would you cantact the mentor
-public $fieldofstudy;//What is/was your field of study in school? (Separate different fields with a comma.)
-public $highest_education;//What is your highest education level attained?
-public $addition_degrees;//how would you cantact the mentor
-public $management_tool;
+
 private $user_table;
 $profile = new Profile();
 $requesttype=$_POST['requesttype'];
 $obj = json_decode($_POST['data'],true);
-$user->goals = array_key_exists("name", $obj) ? $obj['name']:'';
-$user->phone = array_key_exists("phone", $obj) ? $obj['phone']:'';
-$user->email = array_key_exists("email", $obj) ? $obj['email']:'';
-$user->password = array_key_exists("password", $obj) ? $obj['password']:'';
-$user->type = array_key_exists("type", $obj) ? $obj['type']:'';
+$goals = array_key_exists("goals", $obj) ? $obj['goals']:'';
+$services = array_key_exists("helpPara", $obj) ? $obj['helpPara']:'';
+$mentoring_levels = array_key_exists("mentoring", $obj) ? $obj['mentoring']:'';
+$contact = array_key_exists("contact", $obj) ? $obj['contact']:'';
+$weekTalk = array_key_exists("weekTalk", $obj) ? $obj['weekTalk']:'';
+$availability = array_key_exists("availability", $obj) ? $obj['availability']:'';
+$areaofexp = array_key_exists("experiencePara", $obj) ? $obj['experiencePara']:'';
+$experience = array_key_exists("expertisePara", $obj) ? $obj['expertisePara']:'';
+$fieldofstudy = array_key_exists("studiesPara", $obj) ? $obj['studiesPara']:'';
+$highest_education = array_key_exists("education", $obj) ? $obj['education']:'';
+
+$management_tool = array_key_exists("managementTool", $obj) ? $obj['managementTool']:'';
 
 // if the form was signup is sent
 if($requesttype=="Signup"){
