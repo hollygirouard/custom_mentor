@@ -22,11 +22,19 @@ class User extends database{
 
     public function __construct(){
         parent::__construct();
-
+        $this->setTableName($this->$table_name);
         $this->resultv["response"]="failed";
         $this->resultv["error"]="";
 
     }
+
+    public setTableName($table){
+      $this->$table_name=$tbale;
+    }
+    public getTableName(){
+      return $this->$table_name;
+    }
+
 
     public function auth() {
         try {
