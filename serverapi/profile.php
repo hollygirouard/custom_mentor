@@ -9,29 +9,26 @@ include_once 'objects/profile.php';
 
 // class instance
 
-
 $profile = new Profile();
 $requesttype=$_POST['requesttype'];
 $obj = json_decode($_POST['data'],true);
-$goals = array_key_exists("goals", $obj) ? $obj['goals']:'';
-$services = array_key_exists("helpPara", $obj) ? $obj['helpPara']:'';
-$mentoring_levels = array_key_exists("mentoring", $obj) ? $obj['mentoring']:'';
-$contact = array_key_exists("contact", $obj) ? $obj['contact']:'';
-$weekTalk = array_key_exists("weekTalk", $obj) ? $obj['weekTalk']:'';
-$availability = array_key_exists("availability", $obj) ? $obj['availability']:'';
-$areaofexp = array_key_exists("experiencePara", $obj) ? $obj['experiencePara']:'';
-$experience = array_key_exists("expertisePara", $obj) ? $obj['expertisePara']:'';
-$fieldofstudy = array_key_exists("studiesPara", $obj) ? $obj['studiesPara']:'';
-$highest_education = array_key_exists("education", $obj) ? $obj['education']:'';
+$profile->goals = array_key_exists("goals", $obj) ? serialize($obj['goals']):'';//array
+$profile->services = array_key_exists("helpPara", $obj) ? $obj['helpPara']:'';
+$profile->mentoring_levels = array_key_exists("mentoring", $obj) ? $obj['mentoring']:'';
+$profile->contact = array_key_exists("contact", $obj) ? serialize($obj['contact']):'';//array
+$profile->weekTalk = array_key_exists("weekTalk", $obj) ? $obj['weekTalk']:'';
+$profile->availability = array_key_exists("availability", $obj) ? serialize($obj['availability']):'';//array
+$profile->areaofexp = array_key_exists("experiencePara", $obj) ? $obj['experiencePara']:'';
+$profile->experience = array_key_exists("expertisePara", $obj) ? $obj['expertisePara']:'';
+$profile->fieldofstudy = array_key_exists("studiesPara", $obj) ? $obj['studiesPara']:'';
+$profile->highest_education = array_key_exists("education", $obj) ? $obj['education']:'';
 
-$management_tool = array_key_exists("managementTool", $obj) ? $obj['managementTool']:'';
+$profile->management_tool = array_key_exists("managementTool", $obj) ? $obj['managementTool']:'';
 
-print_r($obj);
 
-/*
 // if the form was signup is sent
 if($requesttype=="createProfile"){
-  $result = $user->saveProfile();
+  $result = $profile->saveProfile();
 }
 elseif($requesttype=="updateProfile"){
 //$result = $user->auth();
@@ -43,5 +40,5 @@ elseif($requesttype=="getProfile"){
 
 
 echo json_encode($profile->resultv);
-*/
+
 ?>

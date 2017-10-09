@@ -1,7 +1,7 @@
 <?php
 
 // include database connection
-include_once 'user.php';
+include_once 'objects/user.php';
 
 class Profile extends User{
   private $table_name = "profile";
@@ -31,8 +31,8 @@ class Profile extends User{
   public function saveProfile(){
   try{
     //get email cookie
-    $useremail=$this->is_loggedin();
-    if($useremail!='false'){
+    $useremail='test1@test1.com';//$this->is_loggedin();
+    if($useremail!='notset'){
       //get the id for user email
       $query = "SELECT id
           FROM " . $this->user_table . "
@@ -45,14 +45,15 @@ class Profile extends User{
       $stmt->bindParam(':email', $useremail);
       $stmt->execute();
 
-      $user = null;
+
       $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+
       if(count($results) > 0) {
-          $result = $results[0];
-          $id=$result->id;
+          $id = $results[0]['id'];
           //insert details into profile Table
-          $query = "INSERT INTO ".$this->table_name."(fk_id, goals, services, mentoring_level, weektalk, contact, avialability, areaofexp, experience, fieldofstudy, education, managementool)
+          $query = "INSERT INTO ".$this->table_name."(fk_id, goals, service, mentoring_level, weektalk, contact, avialability, areaofexp, experience, fieldofstudy, education, managementool)
           VALUES(:id, :goals, :services, :mentoring_level, :weekTalk, :contact, :avialability, :areaofexp, :experience, :fieldofstudy, :education, :managementool)";
+
 
           // prepare query for execution
           $stmt = $this->conn->prepare($query);
@@ -62,22 +63,21 @@ class Profile extends User{
           $areaofexp=htmlspecialchars(strip_tags($this->areaofexp));
           $experience=htmlspecialchars(strip_tags($this->experience));
           $fieldofstudy=htmlspecialchars(strip_tags($this->fieldofstudy));
-          $education=htmlspecialchars(strip_tags($this->education));
-
+          $education=htmlspecialchars(strip_tags($this->highest_education));
 
           // bind the parameters
           $stmt->bindParam(':id', $id);
           $stmt->bindParam(':goals', $this->goals);
           $stmt->bindParam(':services', $services);
-          $stmt->bindParam(':mentoring_level', $this->mentoring_level);
-          $stmt->bindParam(':weektalk', $this->weekTalk);
+          $stmt->bindParam(':mentoring_level', $this->mentoring_levels);
+          $stmt->bindParam(':weekTalk', $this->weekTalk);
           $stmt->bindParam(':contact', $this->contact);
           $stmt->bindParam(':avialability', $this->availability);
           $stmt->bindParam(':areaofexp', $areaofexp);
           $stmt->bindParam(':experience', $experience);
           $stmt->bindParam(':fieldofstudy', $fieldofstudy);
           $stmt->bindParam(':education', $education);
-          $stmt->bindParam(':managementool', $this->managementool);
+          $stmt->bindParam(':managementool', $this->management_tool);
           // Execute the query
            if($stmt->execute()){
              $this->resultv["response"]="success";
@@ -87,6 +87,9 @@ class Profile extends User{
 
            }
 
+    }else{
+      $this->resultv["response"]="failed";
+      $this->resultv["error"]=$useremail;
     }
   }else{
     //attach error

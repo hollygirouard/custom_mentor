@@ -152,7 +152,7 @@ class User extends database{
      if(isset($_COOKIE["useremail"])){
        return $_COOKIE["useremail"];
      }else{
-       return false;
+       return 'notset';
      }
 
 
