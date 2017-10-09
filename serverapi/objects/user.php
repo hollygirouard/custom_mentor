@@ -38,7 +38,7 @@ class User extends database{
 
     public function getUserDetails(){
 
-        $useremail='test1@test1.com';//$this->is_loggedin();
+        $useremail=$this->email;
         try {
           $query = "SELECT *  FROM ".$this->user_table." u INNER JOIN ". $this->profile_table. " p ON u.id=p.fk_id  WHERE u.email=:email";
           $stmt = $this->conn->prepare($query);
@@ -48,6 +48,8 @@ class User extends database{
 
 
           $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+          unset($this->resultv['type']);
+          unset($this->resultv['email']);
           unset($results[0]['id']);
           unset($results[0]['password']);
           unset($results[0]['profile_id']);
@@ -83,10 +85,11 @@ class User extends database{
 
                     $this->resultv["response"]="success";
                     $this->resultv["error"]="";
-                    $this->resultv["type"]=$result->type;
+                  //  $this->resultv["type"]=$result->type;
                     $this->resultv["email"]=$result->email;
 
                     setcookie('useremail', $this->email, time() + (86400 * 30), "/");
+                    $this->getUserDetails();
                 }
             }
 

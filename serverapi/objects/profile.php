@@ -31,7 +31,7 @@ class Profile extends User{
   public function saveProfile(){
   try{
     //get email cookie
-    $useremail='test1@test1.com';//$this->is_loggedin();
+    $useremail=$this->is_loggedin();//'test1@test1.com';
     if($useremail!='notset'){
       //get the id for user email
       $query = "SELECT id

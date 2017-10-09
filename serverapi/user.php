@@ -17,7 +17,7 @@ $user->phone = array_key_exists("phone", $obj) ? $obj['phone']:'';
 $user->email = array_key_exists("email", $obj) ? $obj['email']:'';
 $user->password = array_key_exists("password", $obj) ? $obj['password']:'';
 $user->type = array_key_exists("type", $obj) ? $obj['type']:'';
-/*
+
 // if the form was signup is sent
 if($requesttype=="Signup"){
   $result = $user->create();
@@ -25,8 +25,8 @@ if($requesttype=="Signup"){
 elseif($requesttype=="Signin"){
 $result = $user->auth();
 }
-*/
-$result = $user->getUserDetails();
+
+
 //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email."}
 
 echo json_encode($user->resultv);
