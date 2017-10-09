@@ -3,7 +3,7 @@
 // include database connection
 include_once 'user.php';
 
-class Profile extends database{
+class Profile extends User{
   private $table_name = "profile";
 
   // object properties
@@ -25,7 +25,7 @@ class Profile extends database{
 
   public function __construct(){
       parent::__construct();
-      $this->$user_table=$this->getTableName();
+      $this->user_table = $this->getTableName();
   }
 
   public function saveProfile(){
