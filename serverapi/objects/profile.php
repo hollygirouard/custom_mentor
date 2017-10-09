@@ -9,7 +9,7 @@ class Profile extends database{
   // object properties
   public $id;
   public $goals;//What areas do you want to mentor?
-  public $service;//Explain how you can help
+  public $services;//Explain how you can help
   public $mentoring_levels;//What levels of mentoring do you wish to particpate
   public $contact;//how would you cantact the mentor
   public $weekTalk;//How often are you willing to communicate per week?
@@ -29,6 +29,7 @@ class Profile extends database{
   }
 
   public function saveProfile(){
+  try{
     //get email cookie
     $useremail=$this->is_loggedin();
     if($useremail!='false'){
@@ -46,12 +47,55 @@ class Profile extends database{
 
       $user = null;
       $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
-    }else{
-      //attach error
-      $this->resultv["response"]="failed";
-      $this->resultv["error"]="This User is not Logged In";
-    }
-  }
+      if(count($results) > 0) {
+          $result = $results[0];
+          $id=$result->id;
+          //insert details into profile Table
+          $query = "INSERT INTO ".$this->table_name."(fk_id, goals, services, mentoring_level, weektalk, contact, avialability, areaofexp, experience, fieldofstudy, education, managementool)
+          VALUES(:id, :goals, :services, :mentoring_level, :weekTalk, :contact, :avialability, :areaofexp, :experience, :fieldofstudy, :education, :managementool)";
 
+          // prepare query for execution
+          $stmt = $this->conn->prepare($query);
+
+          // sanitize
+          $services=htmlspecialchars(strip_tags($this->services));
+          $areaofexp=htmlspecialchars(strip_tags($this->areaofexp));
+          $experience=htmlspecialchars(strip_tags($this->experience));
+          $fieldofstudy=htmlspecialchars(strip_tags($this->fieldofstudy));
+          $education=htmlspecialchars(strip_tags($this->education));
+
+
+          // bind the parameters
+          $stmt->bindParam(':id', $id);
+          $stmt->bindParam(':goals', $this->goals);
+          $stmt->bindParam(':services', $services);
+          $stmt->bindParam(':mentoring_level', $this->mentoring_level);
+          $stmt->bindParam(':weektalk', $this->weekTalk);
+          $stmt->bindParam(':contact', $this->contact);
+          $stmt->bindParam(':avialability', $this->availability);
+          $stmt->bindParam(':areaofexp', $areaofexp);
+          $stmt->bindParam(':experience', $experience);
+          $stmt->bindParam(':fieldofstudy', $fieldofstudy);
+          $stmt->bindParam(':education', $education);
+          $stmt->bindParam(':managementool', $this->managementool);
+          // Execute the query
+           if($stmt->execute()){
+             $this->resultv["response"]="success";
+
+           }else{
+            $this->resultv["error"]= $this->conn->errorInfo();
+
+           }
+
+    }
+  }else{
+    //attach error
+    $this->resultv["response"]="failed";
+    $this->resultv["error"]="This User is not Logged In";
+  }
+}
+  catch(PDOException $exception){
+      die('ERROR: ' . $exception->getMessage());
+  }
 
 }

@@ -91,7 +91,7 @@ class User extends database{
                 $this->resultv["error"]= 'Your email has been registered. Please pick another email.';
             } else {
                 // insert query
-                $query = "INSERT INTO users(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
+                $query = "INSERT INTO ".$this->table_name."(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
 
                 // prepare query for execution
                 $stmt = $this->conn->prepare($query);
@@ -119,7 +119,7 @@ class User extends database{
                    $this->resultv["response"]="success";
 
                  }else{
-                  $this->resultv["error"]= $this->conn->errorInfo();;
+                  $this->resultv["error"]= $this->conn->errorInfo();
 
                  }
             }
@@ -132,7 +132,7 @@ class User extends database{
 
     public function update(){
 
-        $query = "UPDATE users SET password=:password  WHERE id=:id";
+        $query = "UPDATE ".$this->table_name." SET password=:password  WHERE id=:id";
 
         //prepare query for excecution
         $stmt = $this->conn->prepare($query);
