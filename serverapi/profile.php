@@ -31,11 +31,6 @@ $profile->management_tool = array_key_exists("managementTool", $obj) ? $obj['man
 if($requesttype=="createProfile"){
   $result = $profile->saveProfile();
 }
-elseif($requesttype=="getProfile"){
-
-}
-
-
 
 echo json_encode($profile->resultv);
 

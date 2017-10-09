@@ -4,7 +4,7 @@
 include_once 'objects/user.php';
 
 class Profile extends User{
-  private $table_name = "profile";
+
 
   // object properties
   public $id;
@@ -53,7 +53,7 @@ class Profile extends User{
           //decide whether its an update or a new addition
           //insert details into profile Table
 
-          $query = "UPDATE ".$this->table_name." SET goals=:goals, service=:services, mentoring_level=:mentoring_level, weektalk=:weekTalk, contact=:contact, avialability=:avialability,
+          $query = "UPDATE ".$this->profile_table." SET goals=:goals, service=:services, mentoring_level=:mentoring_level, weektalk=:weekTalk, contact=:contact, avialability=:avialability,
           areaofexp=:areaofexp, experience=:experience, fieldofstudy=:fieldofstudy, education=:education, managementool=:managementool WHERE fk_id=:id ";
 
 
@@ -104,4 +104,5 @@ class Profile extends User{
   }
 
 }
+
 }

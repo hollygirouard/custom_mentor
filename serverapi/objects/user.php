@@ -7,7 +7,8 @@ class User extends database{
 
     // database connection and table name
 
-    private $table_name = "users";
+    private $user_table = "users";
+    public $profile_table="profile";
 
     // object properties
     public $id;
@@ -22,24 +23,49 @@ class User extends database{
 
     public function __construct(){
         parent::__construct();
-        $this->setTableName($this->table_name);
+        $this->setTableName($this->user_table);
         $this->resultv["response"]="failed";
         $this->resultv["error"]="";
 
     }
 
     public function setTableName($table){
-      $this->table_name=$table;
+      $this->user_table=$table;
     }
     public function getTableName(){
-      return $this->table_name;
+      return $this->user_table;
     }
 
+    public function getUserDetails(){
 
+        $useremail='test1@test1.com';//$this->is_loggedin();
+        try {
+          $query = "SELECT *  FROM ".$this->user_table." u INNER JOIN ". $this->profile_table. " p ON u.id=p.fk_id  WHERE u.email=:email";
+          $stmt = $this->conn->prepare($query);
+          $stmt->bindParam(':email', $useremail);
+
+          $stmt->execute();
+
+
+          $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+          unset($results[0]['id']);
+          unset($results[0]['password']);
+          unset($results[0]['profile_id']);
+          unset($results[0]['fk_id']);
+          $results[0]['goals']=unserialize($results[0]['goals']);
+          $results[0]['contact']=unserialize($results[0]['contact']);
+          $results[0]['avialability']=unserialize($results[0]['avialability']);
+
+          $this->resultv['user_details']=$results[0];
+        }catch(PDOException $exception){
+            die('ERROR: ' . $exception->getMessage());
+        }
+
+    }
     public function auth() {
         try {
             $query = "SELECT type,id, email, password
-                FROM " . $this->table_name . "
+                FROM " . $this->user_table . "
                 WHERE email = :email";
 
             //prepare query for execution
@@ -74,7 +100,7 @@ class User extends database{
         try{
 
             $query = "SELECT id
-                FROM " . $this->table_name . "
+                FROM " . $this->user_table . "
                 WHERE email = :email";
 
             //prepare query for execution
@@ -91,8 +117,8 @@ class User extends database{
                 $this->resultv["error"]= 'Your email has been registered. Please pick another email.';
             } else {
                 // insert query
-                $query = "INSERT INTO ".$this->table_name."(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
-                $profile = "INSERT INTO profile(fk_id)VALUES(:id)";
+                $query = "INSERT INTO ".$this->user_table."(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
+                $profile = "INSERT INTO ".$this->profile_table."(fk_id)VALUES(:id)";
                 // prepare query for execution
                 $stmt = $this->conn->prepare($query);
 
@@ -138,7 +164,7 @@ class User extends database{
 
     public function update(){
 
-        $query = "UPDATE ".$this->table_name." SET password=:password  WHERE id=:id";
+        $query = "UPDATE ".$this->user_table." SET password=:password  WHERE id=:id";
 
         //prepare query for excecution
         $stmt = $this->conn->prepare($query);
