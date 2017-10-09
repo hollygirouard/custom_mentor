@@ -9,7 +9,7 @@ include_once 'objects/profile.php';
 
 // class instance
 
-private $user_table;
+
 $profile = new Profile();
 $requesttype=$_POST['requesttype'];
 $obj = json_decode($_POST['data'],true);
@@ -26,15 +26,22 @@ $highest_education = array_key_exists("education", $obj) ? $obj['education']:'';
 
 $management_tool = array_key_exists("managementTool", $obj) ? $obj['managementTool']:'';
 
+print_r($obj);
+
+/*
 // if the form was signup is sent
-if($requesttype=="Signup"){
-  $result = $user->create();
+if($requesttype=="createProfile"){
+  $result = $user->saveProfile();
 }
-elseif($requesttype=="Signin"){
-$result = $user->auth();
+elseif($requesttype=="updateProfile"){
+//$result = $user->auth();
+}
+elseif($requesttype=="getProfile"){
+
 }
 
-//sample response :{"response":"failed","error":"Your email has been registered. Please pick another email."}
 
-echo json_encode($user->resultv);
+
+echo json_encode($profile->resultv);
+*/
 ?>
