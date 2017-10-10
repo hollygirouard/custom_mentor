@@ -334,10 +334,9 @@ export default class PersonalityForm extends Component {
               <b>PHD</b>
             </label>
           </div>
-          <div className="radio">
+          <div >
             <label>
-              <input name="education" value={"Additional"} type="radio" onChange={this.handleChange.bind(this)}/>
-              <b>Additional Degrees and Certifications</b>
+              <b>Additional Degrees and Certifications:</b>
             </label>
             <br/>
 
