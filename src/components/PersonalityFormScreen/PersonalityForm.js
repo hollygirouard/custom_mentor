@@ -20,14 +20,15 @@
 
 
 import React, {Component} from "react";
+import axios from 'axios';
 
 export default class PersonalityForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       formValues: {
-        goals:{},
-        contact:{},
+        goals:[],
+        contact:[],
         availability:{}
       }
     }
@@ -44,7 +45,9 @@ export default class PersonalityForm extends Component {
   }
   checkedBox(event, formValues,name,value) {
     let checked = event.target.checked;
-    checked ? formValues[name][value]=checked:formValues[name][value]=checked
+    let array=formValues[name];
+    //checked ? formValues[name][value]=checked:formValues[name][value]=checked
+    checked ? array.push(value):array.splice( array.indexOf(value), 1 )//delete array[array.indexOf(value)]
     console.log(formValues)
     this.setState({formValues})
   }
@@ -53,20 +56,33 @@ export default class PersonalityForm extends Component {
     let name = event.target.name;
     let value = event.target.value;
     let checked = event.target.checked;
-    checked ? formValues[name][value]=[] :formValues[name][value]=false
+  //  checked ? formValues[name][value]=[] :formValues[name][value]=false
+  checked ? formValues[name][value]=[] :delete formValues[name][value]
     this.setState({formValues})
     console.log(formValues)
     console.log("time event", event.target)
   }
   timeSet(event){
-    console.log("time now", event.target)
+  //  console.log("time now", event.target)
     let formValues = this.state.formValues;
     let name = event.target.name;
     let value = event.target.value;
-    formValues.availability[name].push(value)
+    let timetype =event.target.getAttribute("data-type");
+
+    //formValues.availability[name].push(value)
+    formValues.availability[name][timetype]=value;
   }
   handleSubmit(event) {
     event.preventDefault();
+    axios({
+       method: 'POST',
+       url: '/custommentor/custom_mentor/serverapi/profile.php',
+       data: "requesttype=createProfile&data=" + (JSON.stringify(this.state.formValues))
+     }).then(function (response) {
+        console.log(response.data);
+     }).catch(function (error) {
+       console.log(error);
+     });
     console.log(this.state)
     // this.props.onMentorSubmit(this.state.formValues)
   }
@@ -190,7 +206,7 @@ export default class PersonalityForm extends Component {
           <label>
             <input value="monday" name = "availability" type="checkbox" checked={this.state.formValues["monday"]} onChange={this.timeChange.bind(this)}/>
             Monday {this.state.formValues.availability.monday
-              ? <div><input type="time" name="monday" onChange={this.timeSet.bind(this)}/><input type="time" name="monday" onChange={this.timeSet.bind(this)}/></div>
+              ? <div><input type="time" data-type="start" name="monday" onChange={this.timeSet.bind(this)}/><input type="time" data-type="end" name="monday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
@@ -198,7 +214,7 @@ export default class PersonalityForm extends Component {
           <label>
             <input value="tuesday" name = "availability" type="checkbox" checked={this.state.formValues["tuesday"]} onChange={this.timeChange.bind(this)}/>
             Tuesday {this.state.formValues.availability.tuesday
-              ? <div><input type="time" name="tuesday" onChange={this.timeSet.bind(this)}/><input type="time" name="tuesday" onChange={this.timeSet.bind(this)}/></div>
+              ? <div><input type="time"  data-type="start" name="tuesday" onChange={this.timeSet.bind(this)}/><input type="time"  data-type="end" name="tuesday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
@@ -206,7 +222,7 @@ export default class PersonalityForm extends Component {
           <label>
             <input value="wednesday" name = "availability" type="checkbox" checked={this.state.formValues["wednesday"]} onChange={this.timeChange.bind(this)}/>
             Wednesday {this.state.formValues.availability.wednesday
-              ? <div><input type="time" name="wednesday" onChange={this.timeSet.bind(this)}/><input type="time" name="wednesday" onChange={this.timeSet.bind(this)}/></div>
+              ? <div><input type="time"  data-type="start" name="wednesday" onChange={this.timeSet.bind(this)}/><input type="time" data-type="end" name="wednesday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
@@ -214,7 +230,7 @@ export default class PersonalityForm extends Component {
           <label>
             <input value="thursday" name = "availability" type="checkbox" checked={this.state.formValues["thursday"]} onChange={this.timeChange.bind(this)}/>
             Thursday {this.state.formValues.availability.thursday
-              ? <div><input type="time" name="thursday" onChange={this.timeSet.bind(this)}/><input type="time" name="thursday" onChange={this.timeSet.bind(this)}/></div>
+              ? <div><input type="time" data-type="start" name="thursday" onChange={this.timeSet.bind(this)}/><input type="time" data-type="end" name="thursday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
@@ -222,7 +238,7 @@ export default class PersonalityForm extends Component {
           <label>
             <input value="friday" name = "availability" type="checkbox" checked={this.state.formValues["friday"]} onChange={this.timeChange.bind(this)}/>
             Friday {this.state.formValues.availability.friday
-              ? <div><input type="time" name="friday" onChange={this.timeSet.bind(this)}/><input type="time" name="friday" onChange={this.timeSet.bind(this)}/></div>
+              ? <div><input type="time" data-type="start" name="friday" onChange={this.timeSet.bind(this)}/><input type="time" data-type="end" name="friday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
@@ -230,7 +246,7 @@ export default class PersonalityForm extends Component {
           <label>
             <input value="saturday" name = "availability" type="checkbox" checked={this.state.formValues["saturday"]} onChange={this.timeChange.bind(this)}/>
             Saturday {this.state.formValues.availability.saturday
-              ? <div><input type="time" name="saturday" onChange={this.timeSet.bind(this)}/><input type="time" name="saturday" onChange={this.timeSet.bind(this)}/></div>
+              ? <div><input type="time" data-type="start" name="saturday" onChange={this.timeSet.bind(this)}/><input type="time" data-type="end" name="saturday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
@@ -238,7 +254,7 @@ export default class PersonalityForm extends Component {
           <label>
             <input value="sunday" name = "availability" type="checkbox" checked={this.state.formValues["sunday"]} onChange={this.timeChange.bind(this)}/>
             Sunday {this.state.formValues.availability.sunday
-              ? <div><input type="time" name="sunday" onChange={this.timeSet.bind(this)}/><input type="time" name="sunday" onChange={this.timeSet.bind(this)}/></div>
+              ? <div><input type="time" data-type="start" name="sunday" onChange={this.timeSet.bind(this)}/><input type="time" data-type="end" name="sunday" onChange={this.timeSet.bind(this)}/></div>
               : null
 }
           </label>
