@@ -16,7 +16,8 @@ Developer - Jeff Diers
 
 Developer - Kara Fox  
 
-/************************************************************/
+/**************************************************************************************************************************/
+
 The application is made up of front end and back end:
 To run the back end in production mode :
 1.	Download wamp server (http://www.wampserver.com/en/ ) or xamp server (https://www.apachefriends.org/download.html). This helps to render the PHP files as well as handle database.
