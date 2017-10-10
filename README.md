@@ -2,7 +2,16 @@
 
 Built in ReactJS from using create-react-app - https://reactjs.org/docs/installation.html
 
-To begin server, run 'npm start'
+### Run Server
+`npm start`
+
+### Run Tests
+No tests available yet. Help by setting up a test!
+
+### Linting
+No linting available yet. Help by setting up a linter and suggesting linting rules!
+
+### Project Contributors
 
 Owner - Matt Sharratt
 
