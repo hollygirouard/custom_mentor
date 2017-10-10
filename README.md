@@ -32,5 +32,7 @@ For Wamp server:
 7.	Login to PHP my admin.
 8.	Create a database “custom_mentor “.
 9.	Click on the newly created Database. On the main horizontal menu, click import database.
+
+
 For Xamp server:
 The process is the same, the only difference is we don’t need to create a virtual host.
