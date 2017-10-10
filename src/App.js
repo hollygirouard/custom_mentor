@@ -21,7 +21,7 @@ export default class App extends Component {
 
     checkAuth(ComponentToRender) {
         console.log(this.props)
-        return props => this.props.isLoggedIn ? <ComponentToRender {...props} /> : 
+        return props => this.props.isLoggedIn ? <ComponentToRender {...props} /> :
             (<Redirect to={{
                 pathname: '/',
                 state: { from: props.location }
@@ -92,8 +92,8 @@ export default class App extends Component {
                 </div>
             </Router>
         );
-    }  
-    
+    }
+
     facebook() {
         window.open("https://www.facebook.com/blossomcarenetwork.org");
     }

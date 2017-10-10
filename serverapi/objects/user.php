@@ -1,9 +1,14 @@
 <?php
-class User{
+
+// include database connection
+include_once 'config/database.php';
+
+class User extends database{
 
     // database connection and table name
-    private $conn;
-    private $table_name = "users";
+
+    private $user_table = "users";
+    public $profile_table="profile";
 
     // object properties
     public $id;
@@ -16,17 +21,53 @@ class User{
 
 
 
-    public function __construct($db){
-        $this->conn = $db;
+    public function __construct(){
+        parent::__construct();
+        $this->setTableName($this->user_table);
         $this->resultv["response"]="failed";
         $this->resultv["error"]="";
 
     }
 
+    public function setTableName($table){
+      $this->user_table=$table;
+    }
+    public function getTableName(){
+      return $this->user_table;
+    }
+
+    public function getUserDetails(){
+
+        $useremail=$this->email;
+        try {
+          $query = "SELECT *  FROM ".$this->user_table." u INNER JOIN ". $this->profile_table. " p ON u.id=p.fk_id  WHERE u.email=:email";
+          $stmt = $this->conn->prepare($query);
+          $stmt->bindParam(':email', $useremail);
+
+          $stmt->execute();
+
+
+          $results=$stmt->fetchAll(PDO::FETCH_ASSOC);
+          unset($this->resultv['type']);
+          unset($this->resultv['email']);
+          unset($results[0]['id']);
+          unset($results[0]['password']);
+          unset($results[0]['profile_id']);
+          unset($results[0]['fk_id']);
+          $results[0]['goals']=unserialize($results[0]['goals']);
+          $results[0]['contact']=unserialize($results[0]['contact']);
+          $results[0]['avialability']=unserialize($results[0]['avialability']);
+
+          $this->resultv['user_details']=$results[0];
+        }catch(PDOException $exception){
+            die('ERROR: ' . $exception->getMessage());
+        }
+
+    }
     public function auth() {
         try {
             $query = "SELECT type,id, email, password
-                FROM " . $this->table_name . "
+                FROM " . $this->user_table . "
                 WHERE email = :email";
 
             //prepare query for execution
@@ -44,11 +85,11 @@ class User{
 
                     $this->resultv["response"]="success";
                     $this->resultv["error"]="";
-                    $this->resultv["type"]=$result->type;
+                  //  $this->resultv["type"]=$result->type;
                     $this->resultv["email"]=$result->email;
 
-                    $_SESSION['id'] = $this->id;
-                    $_SESSION['email'] = $this->email;
+                    setcookie('useremail', $this->email, time() + (86400 * 30), "/");
+                    $this->getUserDetails();
                 }
             }
 
@@ -62,7 +103,7 @@ class User{
         try{
 
             $query = "SELECT id
-                FROM " . $this->table_name . "
+                FROM " . $this->user_table . "
                 WHERE email = :email";
 
             //prepare query for execution
@@ -79,8 +120,8 @@ class User{
                 $this->resultv["error"]= 'Your email has been registered. Please pick another email.';
             } else {
                 // insert query
-                $query = "INSERT INTO users(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
-
+                $query = "INSERT INTO ".$this->user_table."(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
+                $profile = "INSERT INTO ".$this->profile_table."(fk_id)VALUES(:id)";
                 // prepare query for execution
                 $stmt = $this->conn->prepare($query);
 
@@ -104,10 +145,16 @@ class User{
 
                 // Execute the query
                  if($stmt->execute()){
-                   $this->resultv["response"]="success";
+                   $stmt = $this->conn->prepare($profile);
+                   $lastid=$this->conn->lastInsertId();
+                   $stmt->bindParam(':id', $lastid);
+                   if($stmt->execute()){
+                     $this->resultv["response"]="success";
+                   }else{$this->resultv["error"]= $this->conn->errorInfo();}
+
 
                  }else{
-                  $this->resultv["error"]= $this->conn->errorInfo();;
+                  $this->resultv["error"]= $this->conn->errorInfo();
 
                  }
             }
@@ -120,7 +167,7 @@ class User{
 
     public function update(){
 
-        $query = "UPDATE users SET password=:password  WHERE id=:id";
+        $query = "UPDATE ".$this->user_table." SET password=:password  WHERE id=:id";
 
         //prepare query for excecution
         $stmt = $this->conn->prepare($query);
@@ -137,15 +184,18 @@ class User{
 
     public function is_loggedin()
    {
-       return (isset($_SESSION['email']) && isset($_SESSION['id']));
+     if(isset($_COOKIE["useremail"])){
+       return $_COOKIE["useremail"];
+     }else{
+       return 'notset';
+     }
+
 
    }
 
       public function logout()
    {
-        session_destroy();
-        unset($_SESSION['email']);
-        unset($_SESSION['id']);
+        setcookie("useremail", "", time() - 3600);
         return true;
    }
 }

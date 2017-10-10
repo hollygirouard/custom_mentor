@@ -3,15 +3,13 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header('Access-Control-Allow-Methods: GET, POST, PUT');
 
-// include database connection
-include_once 'config/database.php';
+
 
 include_once 'objects/user.php';
 
 // class instance
-$database = new Database();
-$db = $database->getConnection();
-$user = new User($db);
+
+$user = new User();
 $requesttype=$_POST['requesttype'];
 $obj = json_decode($_POST['data'],true);
 $user->name = array_key_exists("name", $obj) ? $obj['name']:'';
@@ -27,6 +25,7 @@ if($requesttype=="Signup"){
 elseif($requesttype=="Signin"){
 $result = $user->auth();
 }
+
 
 //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email."}
 
