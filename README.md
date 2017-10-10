@@ -24,7 +24,7 @@ To run the back end  :
 2.	Install the software leaving everything to default (port, password e.t.c)
 3.	Take note of the file directory where the software is installed (e.g C:\wamp64 or C:\Xamp).
 For Wamp server:
-1.	Create a within you root directory (e.g. C:\wamp64\www\custommentor) folder to hold custom mentor files. Copy custom mentor files into the folder.
+1.	Create a within you root directory (e.g. C:\wamp64\www\custommentor or C:\xamp\htdocs) folder to hold custom mentor files. Copy custom mentor files into the folder.
 2.	Double click on the software icon, it should open a notification icon the task bar.
 3.	Left click on the icon, and click on local host (or preferably type localhost on your browser)
 4.	Next, we need to create a virtual host. To the left of your screen, you should see add virtual host (click it)
