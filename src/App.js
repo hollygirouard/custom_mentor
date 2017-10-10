@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Redirect, NavLink } from 'react-router-dom'
-
 import HomeContainer from './components/Home/HomeContainer'
 import UserContainer from './components/UserScreen/UserContainer'
 import PersonalityFormContainer from './components/PersonalityFormScreen/PersonalityFormContainer'
 import AccountContainer from './components/AccountScreen/AccountContainer'
 import SchedeuleContainer from './components/SchedeuleScreen/SchedeuleContainer'
 import Contact from './components/Home/Contact'
+import 'bootstrap/dist/css/bootstrap.css';
 
 const SCREENS = [
     {title: 'User Home', route: '/home', component: UserContainer, mainMenu: true},
