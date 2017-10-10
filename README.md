@@ -19,7 +19,7 @@ Developer - Kara Fox
 /**************************************************************************************************************************/
 
 The application is made up of front end and back end:
-To run the back end in production mode :
+To run the back end  :
 1.	Download wamp server (http://www.wampserver.com/en/ ) or xamp server (https://www.apachefriends.org/download.html). This helps to render the PHP files as well as handle database.
 2.	Install the software leaving everything to default (port, password e.t.c)
 3.	Take note of the file directory where the software is installed (e.g C:\wamp64 or C:\Xamp).
