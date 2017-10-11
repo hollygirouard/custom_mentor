@@ -42,6 +42,8 @@ export default class PersonalityForm extends Component {
     type === "checkbox" ? this.checkedBox(event,formValues,name,value) : formValues[name] = value;
     type === "time" ? this.inputTime(event,formValues,name,value):null
     this.setState({formValues})
+    console.log(formValues)
+
   }
   checkedBox(event, formValues,name,value) {
     let checked = event.target.checked;
@@ -76,7 +78,7 @@ export default class PersonalityForm extends Component {
     event.preventDefault();
     axios({
        method: 'POST',
-       url: '/custommentor/custom_mentor/serverapi/profile.php',
+       url: '/custom_mentor/serverapi/profile.php',
        data: "requesttype=createProfile&data=" + (JSON.stringify(this.state.formValues))
      }).then(function (response) {
         console.log(response.data);
