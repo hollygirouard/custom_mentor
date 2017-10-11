@@ -7,7 +7,7 @@ export default class Account extends Component {
             <div>
                 <h1>Account Screen</h1>
                 <h3>{user.name}</h3>
-                <h4>{user.status}</h4>
+                <h4>{user.type}</h4>
             </div>
         );
     }

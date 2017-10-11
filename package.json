@@ -6,6 +6,7 @@
     "availity-reactstrap-validation": "^1.4.3",
     "axios": "^0.16.2",
     "bootstrap": "^4.0.0-alpha.6",
+    "lodash": "^4.17.4",
     "react": "^15.6.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-addons-transition-group": "^15.6.2",

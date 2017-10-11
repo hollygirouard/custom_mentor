@@ -64,7 +64,7 @@ export default class PersonalityForm extends Component {
       let user = this.props.currentUser
     return (
       <div>
-        <h2>{user.status} Profile</h2>
+        <h2>{user.name} Profile</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <p>Goals: What area(s) do you want to mentor in?</p>
           <label>

@@ -25,7 +25,7 @@ class User{
 
     public function auth() {
         try {
-            $query = "SELECT type,id, email, password
+            $query = "SELECT name, type, id, email, password
                 FROM " . $this->table_name . "
                 WHERE email = :email";
 
@@ -36,6 +36,7 @@ class User{
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $this->resultv["type"]=$this->type;
+            $this->resultv["name"]=$this->name;
             $this->resultv["error"]="Wrong email and password Combination";
             $results=$stmt->fetchAll(PDO::FETCH_OBJ);
             if(count($results) > 0) {
@@ -45,6 +46,7 @@ class User{
                     $this->resultv["response"]="success";
                     $this->resultv["error"]="";
                     $this->resultv["type"]=$result->type;
+                    $this->resultv["name"]=$result->name;
                     $_SESSION['id'] = $this->id;
                     $_SESSION['email'] = $this->email;
                 }

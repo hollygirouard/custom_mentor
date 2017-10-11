@@ -1,5 +1,6 @@
 import {connect} from 'react-redux'
 import {authenticateUser} from '../../actions/login'
+import {createNewUser} from '../../actions/users'
 import SignForm from './SignForm'
 
 const mapStateToProps = (state) => {
@@ -12,9 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        authenticateUser: (userInfo) => {
-            return dispatch(authenticateUser(userInfo))
-        }
+        authenticateUser: (userInfo) => dispatch(authenticateUser(userInfo)),
+        createNewUser: (userInfo) => dispatch(createNewUser(userInfo))
     }
 }
 

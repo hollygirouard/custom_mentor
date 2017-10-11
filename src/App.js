@@ -20,7 +20,6 @@ const SCREENS = [
 export default class App extends Component {
 
     checkAuth(ComponentToRender) {
-        console.log(this.props)
         return props => this.props.isLoggedIn ? <ComponentToRender {...props} /> : 
             (<Redirect to={{
                 pathname: '/',

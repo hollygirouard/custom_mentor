@@ -38,7 +38,7 @@ export class Signup extends Component {
       this.formValidations(this.state.formValues);
       console.log("form into SQL", this.state.formValues);
       let form = this.state.formValues;
-      form.name&&form.email&&form.phone&&form.password&&form.password===form.confirmPassword ? this.postLogin(form):null;
+      form.name&&form.email&&form.phone&&form.password&&form.password===form.confirmPassword ? () => this.postLogin(form):null;
 
     }
 
@@ -51,19 +51,20 @@ export class Signup extends Component {
       this.forceUpdate()
     }
 
-    postLogin(form){
+    postLogin(userInfo){
       //send data to API
       console.log("sending data")
-      axios({
-        method: 'POST',
-        url: 'custommentor/custom_mentor/serverapi/user.php',
-        data: "requesttype=Signup&data=" + (JSON.stringify(form))
-      }).then(function(response) {
-        //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
-        console.log(response.data);
-      }).catch(function(error) {
-        console.log(error);
-      });
+      // axios({
+      //   method: 'POST',
+      //   url: 'custommentor/custom_mentor/serverapi/user.php',
+      //   data: "requesttype=Signup&data=" + (JSON.stringify(form))
+      // }).then(function(response) {
+      //   //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
+      //   console.log(response.data);
+      // }).catch(function(error) {
+      //   console.log(error);
+      // });
+      this.props.createNewUser(userInfo)
     }
 
     render() {

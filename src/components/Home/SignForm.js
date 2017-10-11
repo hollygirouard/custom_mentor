@@ -13,13 +13,12 @@ export default class SignForm extends Component {
     }
   }
 
-  signIn = (userInfo) => {
+  signIn(userInfo) {
     this.props.authenticateUser(userInfo)
-    
   }
 
-  signUp(member){
-    // console.log("signUp", member);
+  signUp(userInfo){
+    this.props.createNewUser(userInfo)
   }
 
   render() {
