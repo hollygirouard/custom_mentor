@@ -8,7 +8,9 @@ export default class FormBuilder extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            formValues: {}
+            formValues: {
+                education: "PHD"
+            }
         }
     }
 
@@ -46,13 +48,14 @@ export default class FormBuilder extends Component {
                 const options = []
                 options.push(<option key="select-one" value="">select...</option>)
                 _.forOwn(item.options, (option) => {
-                    options.push(<option key={option}>{option}</option>)
+                    options.push(<option key={option} value={option}>{option}</option>)
                 })
                 return (
                     <Input 
                         id={item.title}
                         type="select" 
                         name={item.key}
+                        value={this.state.formValues[item.key]}
                         onChange={(event) => this.handleChange(item, event)}
                         >
                         {options}
