@@ -54,7 +54,7 @@ class Profile extends User{
           //insert details into profile Table
 
           $query = "UPDATE ".$this->profile_table." SET goals=:goals, service=:services, mentoring_level=:mentoring_level, weektalk=:weekTalk, contact=:contact, avialability=:avialability,
-          areaofexp=:areaofexp, experience=:experience, fieldofstudy=:fieldofstudy, education=:education, managementool=:managementool WHERE fk_id=:id ";
+          areaofexp=:areaofexp, experience=:experience, fieldofstudy=:fieldofstudy, education=:education, managementool=:managementool, addition_degrees=:addition_degrees WHERE fk_id=:id ";
 
 
           // prepare query for execution
@@ -66,6 +66,7 @@ class Profile extends User{
           $experience=htmlspecialchars(strip_tags($this->experience));
           $fieldofstudy=htmlspecialchars(strip_tags($this->fieldofstudy));
           $education=htmlspecialchars(strip_tags($this->highest_education));
+          $addition_degrees=htmlspecialchars(strip_tags($this->addition_degrees));
 
           // bind the parameters
           $stmt->bindParam(':id', $id);
@@ -80,6 +81,7 @@ class Profile extends User{
           $stmt->bindParam(':fieldofstudy', $fieldofstudy);
           $stmt->bindParam(':education', $education);
           $stmt->bindParam(':managementool', $this->management_tool);
+          $stmt->bindParam(':addition_degrees', $this->addition_degrees);
           // Execute the query
            if($stmt->execute()){
              $this->resultv["response"]="success";
