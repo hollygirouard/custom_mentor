@@ -123,3 +123,10 @@ width:15%;
 .error{
   color: darkred;
 }
+
+
+/* PERSONALITY FORM */
+.personality-form {
+  padding-left: 5vw;
+  padding-right: 5vw;
+}

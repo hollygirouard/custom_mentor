@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
 import {authenticateUser} from '../../actions/login'
 import PersonalityForm from './PersonalityForm'
-import DynamicForm from './DynamicForm'
 
 const mapStateToProps = (state) => {
     return {
@@ -11,6 +10,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const PersonalityFormContainer = connect(mapStateToProps)(DynamicForm)
+const PersonalityFormContainer = connect(mapStateToProps)(PersonalityForm)
 
 export default PersonalityFormContainer
