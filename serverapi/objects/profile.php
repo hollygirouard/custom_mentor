@@ -1,7 +1,7 @@
 <?php
 
 // include database connection
-include_once 'objects/user.php';
+require_once 'objects/user.php';
 
 class Profile extends User{
 

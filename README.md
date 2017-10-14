@@ -5,6 +5,9 @@ Built in ReactJS from using create-react-app - https://reactjs.org/docs/installa
 ### Run Server
 `npm start`
 
+### Build Application
+`npm run build`
+
 ### Run Tests
 No tests available yet. Help by setting up a test!
 
