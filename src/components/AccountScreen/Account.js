@@ -20,9 +20,8 @@ toggle(tab) {
   }
 }
 render() {
-  // let user = this.props.currentUser.data.user_details
-  let user = {name:"Austin", type:"Mentor"}
-          console.log(user)
+  let user = this.props.currentUser.data.user_details
+
   return (
     <div>
       <div className="accountTitle">
