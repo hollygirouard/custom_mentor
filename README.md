@@ -7,6 +7,7 @@ Built in ReactJS from using create-react-app - https://reactjs.org/docs/installa
 
 ### Build Application
 `npm run build`
+
 copy serverapi folder into the build folder
 zip and deploy to aws
 
