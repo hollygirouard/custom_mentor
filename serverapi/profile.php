@@ -5,7 +5,7 @@ header('Access-Control-Allow-Methods: GET, POST, PUT');
 
 
 
-include_once 'objects/profile.php';
+require_once 'objects/profile.php';
 
 // class instance
 
@@ -23,8 +23,9 @@ $profile->experience = array_key_exists("expertisePara", $obj) ? $obj['expertise
 $profile->fieldofstudy = array_key_exists("studiesPara", $obj) ? $obj['studiesPara']:'';
 
 $profile->highest_education = array_key_exists("education", $obj) ? $obj['education']:'';
+$profile->highest_education = array_key_exists("education", $obj) ? $obj['education']:'';
 
-$profile->management_tool = array_key_exists("managementTool", $obj) ? $obj['managementTool']:'';
+$profile->addition_degrees = array_key_exists("additionalDegrees", $obj) ? $obj['additionalDegrees']:'';
 
 
 // if the form was signup is sent

@@ -5,6 +5,12 @@ Built in ReactJS from using create-react-app - https://reactjs.org/docs/installa
 ### Run Server
 `npm start`
 
+### Build Application
+`npm run build`
+
+copy serverapi folder into the build folder
+zip and deploy to aws
+
 ### Run Tests
 No tests available yet. Help by setting up a test!
 

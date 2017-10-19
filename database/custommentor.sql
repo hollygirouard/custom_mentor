@@ -2,10 +2,10 @@
 -- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 10, 2017 at 12:56 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: custommentor-db.ctqtl9iwo8il.us-east-2.rds.amazonaws.com:3306
+-- Generation Time: Oct 19, 2017 at 07:58 PM
+-- Server version: 5.6.35
+-- PHP Version: 7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `custom_mentor`
+-- Database: `custommentor`
 --
 
 -- --------------------------------------------------------
@@ -39,16 +39,18 @@ CREATE TABLE `profile` (
   `experience` varchar(255) DEFAULT NULL,
   `fieldofstudy` varchar(255) DEFAULT NULL,
   `education` varchar(255) DEFAULT NULL,
-  `managementool` varchar(255) DEFAULT NULL
+  `managementool` varchar(255) DEFAULT NULL,
+  `addition_degrees` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `profile`
 --
 
-INSERT INTO `profile` (`profile_id`, `fk_id`, `goals`, `service`, `mentoring_level`, `weektalk`, `contact`, `avialability`, `areaofexp`, `experience`, `fieldofstudy`, `education`, `managementool`) VALUES
-(1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `profile` (`profile_id`, `fk_id`, `goals`, `service`, `mentoring_level`, `weektalk`, `contact`, `avialability`, `areaofexp`, `experience`, `fieldofstudy`, `education`, `managementool`, `addition_degrees`) VALUES
+(1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 3, 'a:2:{i:0;s:11:"educational";i:1;s:8:"physical";}', 'asdasd', 'cheerleader', 'twice', 'a:1:{i:0;s:5:"email";}', 'a:1:{s:6:"friday";a:0:{}}', 'asd', 'asd', 'asd', 'HSGrade', NULL, 'asd');
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `phone`) VALUES
 (1, 'demo', 'demo@demo.com', '$2y$10$7/c79SOsg6OoDtDY5j710uulAZQADsoJwDwZ7VvnheBt8iYCEJ4hS', 'Mentee', '123123'),
-(2, 'demo2', 'demo2@demo.com', '$2y$10$1.aD/ecWVWBTO2JV0bb9i.r8zkvUViq0AWW83SqE32lITJjs5H9qi', 'Mentee', '123123');
+(2, 'demo2', 'demo2@demo.com', '$2y$10$1.aD/ecWVWBTO2JV0bb9i.r8zkvUViq0AWW83SqE32lITJjs5H9qi', 'Mentee', '123123'),
+(3, 'TestingAWS', 'TestingAWS@testing.com', '$2y$10$c8HJoAUkiSGAKAPH1nxl7.eTnHv88mDysX12M5J9OcPx2M.OoFwbq', 'Mentee', '123123');
 
 --
 -- Indexes for dumped tables
@@ -98,12 +101,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Constraints for dumped tables
 --

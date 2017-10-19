@@ -5,7 +5,7 @@ header('Access-Control-Allow-Methods: GET, POST, PUT');
 
 
 
-include_once 'objects/user.php';
+require_once 'objects/user.php';
 
 // class instance
 
