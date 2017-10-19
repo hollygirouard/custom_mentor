@@ -3,10 +3,10 @@
 class Database{
 
     // specify your own database credentials
-    private $host = "localhost";
+    private $host = "http://custommentor-env.mbkr62zap6.us-east-2.elasticbeanstalk.com/";
     private $db_name = "custom_mentor";
-    private $username = "root";
-    private $password = "";
+    private $username = "custommentor";
+    private $password = "custommentor";
     public $conn;
 
     // get the database connection

@@ -5,7 +5,7 @@ export default class Activities extends Component {
         let user = this.props.currentUser
         return (
             <div>
-                <h1>Activities Screen</h1>
+                <h1>Activities</h1>
             </div>
         );
     }

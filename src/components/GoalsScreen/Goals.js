@@ -1,13 +1,14 @@
 import React, {Component} from "react"
 import { Button } from 'reactstrap'
 
-export default class UserHome extends Component {
+export default class Goals extends Component {
     render() {
       let user = this.props.currentUser.data.user_details
         return (
             <div>
-                <h1>Welcome, {user.name}</h1>
-                <Button color="primary" onClick={() => this.props.userSignOut()}>Sign out</Button>
+                <h1>Goals</h1>
+                <h3>{user.name}</h3>
+                <h4>{user.type}</h4>
             </div>
         );
     }
