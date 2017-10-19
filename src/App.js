@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Redirect, NavLink } from 'react-router-dom'
 
 import HomeContainer from './components/Home/HomeContainer'
-import UserContainer from './components/UserScreen/UserContainer'
 import GoalsContainer from './components/GoalsScreen/GoalsContainer'
 import PersonalityFormContainer from './components/PersonalityFormScreen/PersonalityFormContainer'
 import AccountContainer from './components/AccountScreen/AccountContainer'
@@ -14,8 +13,7 @@ import BackgroundContainer from './components/BackgroundScreen/BackgroundContain
 import Contact from './components/Home/Contact'
 
 const SCREENS = [
-    {title: 'Home', route: '/home', component: UserContainer, mainMenu: true},
-    {title: 'My Profile', route: '/profile', component: AccountContainer, mainMenu: true},
+    {title: 'My Profile', route: '/home', component: AccountContainer, mainMenu: true},
     {title: 'Goals', route: '/goals', component: GoalsContainer, mainMenu: true},
     {title: 'Schedule', route: '/schedule', component: SchedeuleContainer, mainMenu: true},
     {title: 'Reviews', route: '/reviews', component: ReviewsContainer, mainMenu: true},
@@ -95,7 +93,7 @@ export default class App extends Component {
                         {this.renderNav()}
                     </div>
                     <div className="col-xs-10 home">
-                        <Route path='/' exact component={HomeContainer} />
+                        <Route path='/' exact component={AccountContainer} />
                         {this.renderRoutes()}
                     </div>
                 </div>
