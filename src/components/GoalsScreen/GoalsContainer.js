@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {userSignOut} from '../../actions/logout'
-import UserHome from './UserHome'
+import Goals from './Goals'
 
 const mapStateToProps = (state) => {
     return {
@@ -16,6 +16,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const UserContainer = connect(mapStateToProps, mapDispatchToProps)(UserHome)
+const GoalsContainer = connect(mapStateToProps, mapDispatchToProps)(Goals)
 
-export default UserContainer
+export default GoalsContainer

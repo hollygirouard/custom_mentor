@@ -123,3 +123,11 @@ width:15%;
 .error{
   color: darkred;
 }
+
+.accountTitle{
+  display: flex;
+  justify-content: space-between;
+}
+.accountTitle Button{
+  height: 50%;
+}
