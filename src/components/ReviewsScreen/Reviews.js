@@ -1,6 +1,9 @@
 import React from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import classnames from 'classnames';
+import {MentorReviews} from './MentorReviews';
+import {MyReviews} from './MyReviews';
+
 
 export default class Reviews extends React.Component {
   constructor(props) {
@@ -22,13 +25,14 @@ export default class Reviews extends React.Component {
   render() {
     return (
       <div>
+        <h1>Reviews</h1>
         <Nav tabs>
           <NavItem>
             <NavLink
               className={classnames({ active: this.state.activeTab === '1' })}
               onClick={() => { this.toggle('1'); }}
             >
-              Tab1
+              Reviews of My Mentors
             </NavLink>
           </NavItem>
           <NavItem>
@@ -36,35 +40,16 @@ export default class Reviews extends React.Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggle('2'); }}
             >
-              Moar Tabs
+              Reviews of Myself
             </NavLink>
           </NavItem>
         </Nav>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
-            <Row>
-              <Col sm="12">
-                <h4>Tab 1 Contents</h4>
-              </Col>
-            </Row>
+            <MentorReviews />
           </TabPane>
           <TabPane tabId="2">
-            <Row>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card body>
-                  <CardTitle>Special Title Treatment</CardTitle>
-                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                  <Button>Go somewhere</Button>
-                </Card>
-              </Col>
-            </Row>
+            <MyReviews />
           </TabPane>
         </TabContent>
       </div>

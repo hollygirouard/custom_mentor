@@ -11,6 +11,8 @@ import ReviewsContainer from './components/ReviewsScreen/ReviewsContainer'
 import EventsContainer from './components/EventsScreen/EventsContainer'
 import EducationContainer from './components/EducationScreen/EducationContainer'
 import BackgroundContainer from './components/BackgroundScreen/BackgroundContainer'
+import CommLogContainer from './components/CommLogScreen/CommLogContainer'
+
 import Contact from './components/Home/Contact'
 
 const SCREENS = [
@@ -19,6 +21,7 @@ const SCREENS = [
     {title: 'Goals', route: '/goals', component: GoalsContainer, mainMenu: true},
     {title: 'Schedule', route: '/schedule', component: SchedeuleContainer, mainMenu: true},
     {title: 'Reviews', route: '/reviews', component: ReviewsContainer, mainMenu: true},
+    {title: 'Community Log', route: '/commlog', component: CommLogContainer, mainMenu: true},
     {title: 'News & Events', route: '/events', component: EventsContainer, mainMenu: true},
     {title: 'Education & Training', route: '/education', component: EducationContainer, mainMenu: true},
     {title: 'Background Checks', route: '/background', component: BackgroundContainer, mainMenu: true},
@@ -95,7 +98,7 @@ export default class App extends Component {
                         {this.renderNav()}
                     </div>
                     <div className="col-xs-10 home">
-                        <Route path='/' exact component={AccountContainer} />
+                        <Route path='/' exact component={ReviewsContainer} />
                         {this.renderRoutes()}
                     </div>
                 </div>
