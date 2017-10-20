@@ -31,7 +31,7 @@ export const authenticateUser = (loginInfo) => {
 
         axios({
             method: 'POST',
-            url: 'http://localhost:8080/custom_mentor/serverapi/user.php',
+            url: '/serverapi/user.php',
             // url: '/serverapi/user.php',
             data: "requesttype=Signin&data=" + (JSON.stringify(loginInfo))
         }).then(function (response) {

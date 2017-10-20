@@ -5,7 +5,7 @@ export default class Schedeule extends Component {
         let user = this.props.currentUser
         return (
             <div>
-                <h1>Schedeule Screen</h1>
+                <h1>Schedule Screen</h1>
             </div>
         )
     }
