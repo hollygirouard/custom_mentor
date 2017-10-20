@@ -6,6 +6,22 @@ import {Milestones} from './Milestones';
 import {Steps} from './Steps';
 
 export default class Goals extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      activeTab: '1'
+    };
+  }
+
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
+  }
     render() {
       let user = this.props.currentUser.data.user_details
         return (
