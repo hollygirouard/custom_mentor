@@ -21,13 +21,12 @@ toggle(tab) {
 }
 render() {
   let user = this.props.currentUser.data.user_details
-
   return (
     <div>
       <div className="accountTitle">
 
       <h1>Welcome, {user.name}</h1>
-      <Button color="primary" onClick={() => this.props.userSignOut()}>Sign out</Button>
+      {/* <Button color="primary" onClick={() => this.props.userSignOut()}>Sign out</Button> */}
     </div>
 
       <h4>{user.type}</h4>

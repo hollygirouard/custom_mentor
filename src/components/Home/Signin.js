@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { BrowserRouter as Link } from 'react-router-dom'
 import axios from 'axios'
 
 export class Signin extends Component {
@@ -81,9 +80,7 @@ export class Signin extends Component {
                       : null}
                 </FormGroup>
                 {' '}
-                <Link to='mentor/home'>
                     <Button>Submit</Button>
-                </Link>
             </Form>
          </div>
 
