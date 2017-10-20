@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Redirect, NavLink } from 'react-router-
 
 import HomeContainer from './components/Home/HomeContainer'
 import UserContainer from './components/UserScreen/UserContainer'
-
 import GoalsContainer from './components/GoalsScreen/GoalsContainer'
 import PersonalityFormContainer from './components/PersonalityFormScreen/PersonalityFormContainer'
 import AccountContainer from './components/AccountScreen/AccountContainer'
@@ -96,7 +95,7 @@ export default class App extends Component {
                         {this.renderNav()}
                     </div>
                     <div className="col-xs-10 home">
-                        <Route path='/' exact component={HomeContainer} />
+                        <Route path='/' exact component={AccountContainer} />
                         {this.renderRoutes()}
                     </div>
                 </div>

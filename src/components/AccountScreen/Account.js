@@ -1,6 +1,10 @@
 import React, {Component} from "react";
 import { TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import classnames from 'classnames';
+import {Billing} from './Billing'
+import {Earnings} from './Earnings'
+import {Payments} from './Payments'
+
 
 export default class Account extends Component {
   constructor(props) {
@@ -20,9 +24,9 @@ toggle(tab) {
   }
 }
 render() {
-  let user = this.props.currentUser.data.user_details
-  // let user = {name:"Austin", type:"Mentor"}
-  //         console.log(user)
+  // let user = this.props.currentUser.data.user_details
+  let user = {name:"Austin", type:"Mentor"}
+          console.log(user)
   console.log(this.props)
   return (
     <div>
@@ -61,13 +65,13 @@ render() {
       </Nav>
       <TabContent activeTab={this.state.activeTab}>
         <TabPane tabId="1">
-
+          <Billing />
         </TabPane>
         <TabPane tabId="2">
-
+          <Earnings />
         </TabPane>
         <TabPane tabId="3">
-
+          <Payments />
         </TabPane>
       </TabContent>
     </div>
