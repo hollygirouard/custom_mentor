@@ -6,7 +6,7 @@ export default class CommLog extends Component {
       let user = this.props.currentUser.data.user_details
         return (
             <div>
-                <h1>Community Log</h1>
+                <h1>Communication Log</h1>
                 <h3>{user.name}</h3>
                 <h4>{user.type}</h4>
             </div>
