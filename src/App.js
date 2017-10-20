@@ -6,7 +6,7 @@ import UserContainer from './components/UserScreen/UserContainer'
 import GoalsContainer from './components/GoalsScreen/GoalsContainer'
 import PersonalityFormContainer from './components/PersonalityFormScreen/PersonalityFormContainer'
 import AccountContainer from './components/AccountScreen/AccountContainer'
-import SchedeuleContainer from './components/SchedeuleScreen/SchedeuleContainer'
+import ScheduleContainer from './components/ScheduleScreen/ScheduleContainer'
 import ReviewsContainer from './components/ReviewsScreen/ReviewsContainer'
 import EventsContainer from './components/EventsScreen/EventsContainer'
 import EducationContainer from './components/EducationScreen/EducationContainer'
@@ -19,7 +19,7 @@ const SCREENS = [
   {title: 'Home', route: '/home', component: UserContainer, mainMenu: true},
     {title: 'My Profile', route: '/profile', component: AccountContainer, mainMenu: true},
     {title: 'Goals', route: '/goals', component: GoalsContainer, mainMenu: true},
-    {title: 'Schedule', route: '/schedule', component: SchedeuleContainer, mainMenu: true},
+    {title: 'Schedule', route: '/schedule', component: ScheduleContainer, mainMenu: true},
     {title: 'Reviews', route: '/reviews', component: ReviewsContainer, mainMenu: true},
     {title: 'Community Log', route: '/commlog', component: CommLogContainer, mainMenu: true},
     {title: 'News & Events', route: '/events', component: EventsContainer, mainMenu: true},

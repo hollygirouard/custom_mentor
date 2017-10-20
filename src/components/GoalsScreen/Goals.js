@@ -1,5 +1,9 @@
 import React, {Component} from "react"
-import { Button } from 'reactstrap'
+import { TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import classnames from 'classnames';
+import {Achievement} from './Achievement';
+import {Milestones} from './Milestones';
+import {Steps} from './Steps';
 
 export default class Goals extends Component {
     render() {
@@ -9,7 +13,44 @@ export default class Goals extends Component {
                 <h1>Goals</h1>
                 <h3>{user.name}</h3>
                 <h4>{user.type}</h4>
-            </div>
+                <Nav tabs>
+                  <NavItem>
+                    <NavLink
+                      className={classnames({ active: this.state.activeTab === '1' })}
+                      onClick={() => { this.toggle('1'); }}
+                    >
+                      My Milestones
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={classnames({ active: this.state.activeTab === '2' })}
+                      onClick={() => { this.toggle('2'); }}
+                    >
+                      Milestone Steps
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={classnames({ active: this.state.activeTab === '3' })}
+                      onClick={() => { this.toggle('3'); }}
+                    >
+                      Achievement History
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+                <TabContent activeTab={this.state.activeTab}>
+                  <TabPane tabId="1">
+                    <Milestones />
+                  </TabPane>
+                  <TabPane tabId="2">
+                    <Steps />
+                  </TabPane>
+                  <TabPane tabId="3">
+                    <Achievement />
+                  </TabPane>
+                </TabContent>
+              </div>
         );
     }
 }

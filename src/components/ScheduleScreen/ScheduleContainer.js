@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {authenticateUser} from '../../actions/login'
-import Schedeule from './Schedeule'
+import Schedule from './Schedule'
 
 const mapStateToProps = (state) => {
     return {
@@ -10,6 +10,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const SchedeuleContainer = connect(mapStateToProps)(Schedeule)
+const ScheduleContainer = connect(mapStateToProps)(Schedule)
 
-export default SchedeuleContainer
+export default ScheduleContainer
