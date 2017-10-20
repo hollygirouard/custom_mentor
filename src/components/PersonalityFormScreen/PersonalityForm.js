@@ -78,7 +78,7 @@ export default class PersonalityForm extends Component {
     event.preventDefault();
     axios({
        method: 'POST',
-       url: '/custom_mentor/serverapi/profile.php',
+       url: '/serverapi/user.php',
        data: "requesttype=createProfile&data=" + (JSON.stringify(this.state.formValues))
      }).then(function (response) {
         console.log(response.data);

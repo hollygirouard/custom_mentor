@@ -15,7 +15,7 @@ import { BrowserRouter as Redirect } from 'react-router-dom'
 export default class Home extends Component {
     render() {
         if (this.props.isLoggedIn) {
-            this.props.history.push('/home')
+            this.props.history.push('/profile')
         }
 
         return (
