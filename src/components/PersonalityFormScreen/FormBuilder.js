@@ -8,9 +8,7 @@ export default class FormBuilder extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            formValues: {
-                education: "PHD"
-            }
+            formValues: {}
         }
     }
 
