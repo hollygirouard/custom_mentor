@@ -53,5 +53,77 @@ For Wamp server:
 9.	Click on the newly created Database. On the main horizontal menu, click import database.
 
 
+### To configure server for a development environment
+
+Note that code is commented for AWS production or development.  Swap the commented and uncommented code in the examples below
+to switch between development and production.
+
+
+1.  Configure database for local environment from AWS config:
+
+```
+// AWS Config
+
+// $this->host = $_SERVER['RDS_HOSTNAME'];
+// $this->db_name = $_SERVER['RDS_DB_NAME'];
+// $this->username = $_SERVER['RDS_USERNAME'];
+// $this->password = $_SERVER['RDS_PASSWORD'];
+// $this->port = $_SERVER['RDS_PORT'];
+
+// Development Config
+
+$this->host = 'localhost';
+$this->db_name = 'custom_mentor';
+$this->username = 'root';
+$this->password =  '';
+$this->port = '8080';
+```
+
+2. Change route in src/components/Home/Signup.js
+
+```
+postLogin(form){
+  //send data to API
+  axios({
+    method: 'POST',
+    // AWS Config
+    // url: '/serverapi/user.php',
+    // Development Congfig
+    url: 'http://localhost/custom_mentor/serverapi/user.php',
+    data: "requesttype=Signup&data=" + (JSON.stringify(form))
+  }).then(function(response) {
+    //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
+    console.log(response.data);
+  }).catch(function(error) {
+    console.log(error);
+  });
+}
+```
+
+3. Change route in login action at src/actions/login.js:
+
+```
+export const authenticateUser = (loginInfo) => {
+    return (dispatch) => {
+        dispatch(userLogin())
+
+        axios({
+            method: 'POST',
+            // AWS Config
+            // url: '/serverapi/user.php',
+            // Development Config
+            url: 'http://localhost/custom_mentor/serverapi/user.php',
+            data: "requesttype=Signin&data=" + (JSON.stringify(loginInfo))
+        }).then(function (response) {
+            //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
+            //sample response :{"response":"success","error":"",type:"Mentee"} :redirect to signin based on response
+            console.log(response.data);
+            return response.data.response === 'success' ? dispatch(userLoginSuccess(response)) : dispatch(userLoginFailure({message: "Invalid login credentials."}))
+        }).catch(function (error) {
+            console.log(error);
+        });
+```
+
+
 For Xamp server:
 The process is the same, the only difference is we don’t need to create a virtual host.
