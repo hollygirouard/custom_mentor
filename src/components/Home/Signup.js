@@ -48,11 +48,28 @@ export class Signup extends Component {
       this.forceUpdate()
     }
 
+    // postLogin(form){
+    //   //send data to API
+    //   axios({
+    //     method: 'POST',
+    //     url: '/serverapi/user.php',
+    //     data: "requesttype=Signup&data=" + (JSON.stringify(form))
+    //   }).then(function(response) {
+    //     //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
+    //     console.log(response.data);
+    //   }).catch(function(error) {
+    //     console.log(error);
+    //   });
+    // }
+
     postLogin(form){
       //send data to API
       axios({
         method: 'POST',
-        url: '/serverapi/user.php',
+        // AWS Config
+        // url: '/serverapi/user.php',
+        // Development Congfig
+        url: 'http://localhost/custom_mentor/serverapi/user.php',
         data: "requesttype=Signup&data=" + (JSON.stringify(form))
       }).then(function(response) {
         //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}

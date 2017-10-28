@@ -25,13 +25,33 @@ export const userLoginFailure = (errorMessage) => {
     };
 }
 
+// export const authenticateUser = (loginInfo) => {
+//     return (dispatch) => {
+//         dispatch(userLogin())
+
+//         axios({
+//             method: 'POST',
+//             url: '/serverapi/user.php',
+//             data: "requesttype=Signin&data=" + (JSON.stringify(loginInfo))
+//         }).then(function (response) {
+//             //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
+//             //sample response :{"response":"success","error":"",type:"Mentee"} :redirect to signin based on response
+//             console.log(response.data);
+//             return response.data.response === 'success' ? dispatch(userLoginSuccess(response)) : dispatch(userLoginFailure({message: "Invalid login credentials."}))
+//         }).catch(function (error) {
+//             console.log(error);
+//         });
+
 export const authenticateUser = (loginInfo) => {
     return (dispatch) => {
         dispatch(userLogin())
 
         axios({
             method: 'POST',
-            url: '/serverapi/user.php',
+            // AWS Config
+            // url: '/serverapi/user.php',
+            // Development Config
+            url: 'http://localhost/custom_mentor/serverapi/user.php',
             data: "requesttype=Signin&data=" + (JSON.stringify(loginInfo))
         }).then(function (response) {
             //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}

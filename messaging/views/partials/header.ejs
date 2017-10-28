@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Custom Mentor</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<header class="jumbotron">
+				<h1><a href="/">Custom Mentor</a></h1>
+					<% if(currentUser) {%>
+					<div>
+						<a class="login" href="/logout">Logout</a>
+					<% } else { %>
+						<a class="login" href="/login">Login</a>
+						<a class="login" href="/signup">Signup</a>
+					<% } %>
+					</div>
+			</header>
