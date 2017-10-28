@@ -1,21 +1,17 @@
-import {connect} from 'react-redux'
-import {userSignOut} from '../../actions/logout'
-import Goals from './Goals'
+import { connect } from 'react-redux';
+import { userSignOut } from '../../actions/logout';
+import Goals from './Goals';
 
-const mapStateToProps = (state) => {
-    return {
-        isLoggedIn: state.session.isLoggedIn,
-        currentUser: state.session.currentUser,
-        errorMessage: state.session.errorMessage
-    }
-}
+const mapStateToProps = state => ({
+  isLoggedIn: state.session.isLoggedIn,
+  currentUser: state.session.currentUser,
+  errorMessage: state.session.errorMessage,
+});
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        userSignOut: () => dispatch(userSignOut())
-    }
-}
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  userSignOut: () => dispatch(userSignOut()),
+});
 
-const GoalsContainer = connect(mapStateToProps, mapDispatchToProps)(Goals)
+const GoalsContainer = connect(mapStateToProps, mapDispatchToProps)(Goals);
 
-export default GoalsContainer
+export default GoalsContainer;
