@@ -8,8 +8,10 @@
 </head>
 <body>
 	<div class="container">
-	<%for(let i = 0; i < blogs.length; i++){%>
+	<%for(let i = blogs.length-1; i >= 0; i--){%>
 		<div class="card"><%-blogs[i].content%></div>
+		<div class="card-subtitle"><%=blogs[i].date%></div>
+
 	<%}%>
 </div>
 </body>
