@@ -3,36 +3,74 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>blog componenet</title>
-     <!-- Include external CSS. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
- 
-    <!-- Include Editor style. -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
-
-
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body class="container">
     <h1 class="text-center">Post a new blog</h1>
+    <div class="alertcontainer"></div>
     <form action="/" method="POST">
-        <textarea name="content" id="editor">This is some sample content.</textarea>
+        <!-- Create the editor container -->
+        <div id="editor">
+            <test type='text' name='content'>Hello World!</test>
+        </div>
         <input class='btn btn-success' type="submit" value="Post blog">
     </form>
-   <!-- Include external JS libs. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
- 
-    <!-- Include Editor JS files. -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.1/js/froala_editor.pkgd.min.js"></script>
- 
-    <!-- Initialize the editor. -->
-    <script> $(function() { $('textarea').froalaEditor(); }); </script>
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <!-- Initialize Quill editor -->
+    <script>
+    var toolbarOptions = [
+        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+        ['blockquote', 'code-block'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'indent': '-1' }, { 'indent': '+1' }], // outdent/indent
+
+        [{ 'size': ['small', false, 'large', 'huge'] }], // custom dropdown
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+        [{ 'color': [] }, { 'background': [] }], // dropdown with defaults from theme
+        [{ 'font': [] }],
+        [{ 'align': [] }],
+        ['clean'],
+        ['link','image'] // remove formatting button
+    ];
+
+    var quill = new Quill('#editor', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+
+    $('form').on('submit', (event) => {
+        event.preventDefault();
+        $.ajax({
+            url: '/',
+            type: 'POST',
+            data: {content: $('.ql-editor').html()},
+        })
+        .done(function(data) {
+            console.log("success");
+            console.log(data);
+            window.location.href += 'blogs';
+        })
+        .fail(function(err) {
+            console.log(err);
+            $('.alertcontainer').html($('<div>').addClass('alert alert-danger').text(err.statusText));
+            $('body').scrollTop(0);
+
+
+        })
+        .always(function() {
+            console.log("complete");
+        });
+        
+    });
+    </script>
 </body>
 
 </html>

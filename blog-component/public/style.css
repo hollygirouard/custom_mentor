@@ -9,3 +9,11 @@ input{
 h1 {
 	margin: 10px;
 }
+
+.card{
+	margin: 20px;
+}
+
+.card-body{
+	margin: 0;
+}
