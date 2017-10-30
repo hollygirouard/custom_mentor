@@ -1,5 +1,22 @@
 console.log('js working');
 $(document).ready(function(){
+
+
+	name = $('#name').val();
+
+	email = $('#email').val();
+
+	id = $(this).attr('data-id');
+
+	$.ajax({
+	  type: 'put',
+      url: '/messaging',
+      data:({ id: id,
+              name: name,
+              email: email,
+      })
+    });
+
 	console.log('query ready');
 	$( "#chatNow" ).click(function() {
 	    $( "#chatbox" ).slideToggle( "slow");
