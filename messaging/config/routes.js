@@ -36,8 +36,8 @@ router.route('/logout')
 router.route('/users')
 	.get(usersController.getUsers)
 
-router.route('/users/:id')
-	.get(messagesController.findUser)
+// router.route('/users/:id')
+// 	.get(messagesController.findUser)
 
 // get conversations
 router.route('/conversations')

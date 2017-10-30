@@ -46,8 +46,8 @@ function getMessagesById(request, response, next) {
 	});
 }
 
-// GET /user/:id
-function findUser(request, response, next) {
+// GET /conversations/:id
+function findConversationById(request, response, next) {
 	console.log("findUser controller hit");
 	console.log(request.params.id);
 	db.User.findOne({"_id": request.params.id}, function(err, user) {
@@ -60,6 +60,18 @@ function findUser(request, response, next) {
 	});
 }
 
+// POST /conversations
+function createNewConversation(request, response, next) {
+	console.log("createNewConversation route hit");
+	console.log(request.body);
+	// let newConversation = new db.Conversation({
+	// 	participants: {
+	// 		sender_id: request.user._id,
+	// 		recipient_id: request.body.recipient_id
+	// 	}
+	// });
+}
+
 
 
 module.exports = {
@@ -67,5 +79,4 @@ module.exports = {
   getUserConversations: getUserConversations,
   getMessages: getMessages,
   getMessagesById: getMessagesById,
-  findUser: findUser
 };
