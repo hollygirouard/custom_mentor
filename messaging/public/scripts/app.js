@@ -1,12 +1,32 @@
 console.log('js working');
 $(document).ready(function(){
 
+  $.ajax({
+    type: 'get',
+    url: '/users',
+  })
+  .done(function(data) {
+    console.log(data);
+    data.forEach(function(user) {
+      $('.table').append('<a type="button" class= "btn" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">' +user.local.email+ '</a>');
+      $('.table').append($('#messageBox'));
+    });
+
+
+  });
+
+  $('#userList').on('click', 'button', function(){
+    console.log($(this).attr('id'));
+    $('.table').empty();
+    $('.table').append("Jared Sucks");
+  });
+
 
 	email = $('#email').val();
 
     id = $(this).attr('recipient_id');
 
-<<<<<<< HEAD
+
     $('#email').on('load', function(event) {
         console.log(email);
     $.ajax({
@@ -26,7 +46,7 @@ $(document).ready(function(){
           })
         });
     });
-=======
+
 	$('#btn-chat').on('click', function(event) {
       event.preventDefault();
 		$.ajax({
@@ -38,7 +58,7 @@ $(document).ready(function(){
       	})
     	});
 	});
->>>>>>> b6869fab6a3555bb8e659ea780bf6d0bf1c39022
+
 
 	console.log('query ready');
 	$( "#chatNow" ).click(function() {
