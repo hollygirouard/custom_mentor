@@ -6,7 +6,7 @@ $(function() {
         })
         .done(function(data) {
             console.log("successful blog retrieve");
-            $('#blog-container').empty().append(render(data));
+            $('#blog-container').empty().append(render(data.blogs));
             $('.toggleData').hide();
             $('.card-header').on('click', 'button', function(event) {
             	console.log($(this).closest('.card').find('.card-body'));
@@ -27,14 +27,14 @@ $(function() {
 });
 
 
-const render = data => {
-  let blogs = "";
+const render = blogs => {
+  let blogshtml = "";
 
-  if (data.length === 0) return "<p>Blogs Coming soon!</p>";
-  else data.forEach(blog => {
+  if (blogs.length === 0) return "<p>Blogs Coming soon!</p>";
+  else blogs.forEach(blog => {
       let blogStr = `
       <div class="card" blog-id=${blog._id}>
-      	<div class="card-header"><h4>${blog.title} - <small class='text-muted'>${(new Date(blog.date).toLocaleString())}</small><button class="btn btn-secondary btn-sm float-right">Show More</button> </h4></div>
+      	<div class="card-header"><h4>${blog.title} - <small class='text-muted'>${(new Date(blog.date).toLocaleString())}</small><button class="btn btn-outline-secondary btn-sm float-right">Show More</button> </h4></div>
 				<div class='toggleData'><div class="card-body">${blog.content}</div>
 								<div class="card-footer">
 				<button class="btn btn-primary btn-share"><i class="fa fa-twitter" aria-hidden="true"></i> Tweet</button>
@@ -43,7 +43,7 @@ const render = data => {
 				</div>
 				</div>
 			</div>`;
-      blogs = blogStr + blogs;
+      blogshtml = blogStr + blogshtml;
   });
-  return blogs;
+  return blogshtml;
 };
