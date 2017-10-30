@@ -1,3 +1,5 @@
+const apiKey = require('../env.js');
+
 $( document ).ready(function() {
     console.log("ready!");
 
@@ -24,7 +26,8 @@ $( document ).ready(function() {
 	// Ajax call for first page of subreddit results
 	function redditCall() {
 		let searchQuery = $('input[name="query"]').val();
-		let URL = "https://www.reddit.com/r/" + searchQuery + ".json?count=" + count + "&after=" + after;
+		// let URL = "https://www.reddit.com/r/" + searchQuery + ".json?count=" + count + "&after=" + after;
+		let URL = "http://content.guardianapis.com/search?q=" + searchQuery + "&api-key="+ apiKey;
 		$.get(URL).done(function(data) {
 			console.log(URL);
 			let newsData = data.data.children;
