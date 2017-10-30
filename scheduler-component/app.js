@@ -22,7 +22,7 @@ $(document).ready(function() {
            $('#createEventModal #apptEndTime').val(end);
            $('#createEventModal #apptAllDay').val(allDay);
            $('#createEventModal #when').text(mywhen);
-           $('#createEventModal').modal('show');
+           $('#createEventModal').toggleClass('hide show');
        }
     });
 
