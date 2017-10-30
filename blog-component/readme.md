@@ -3,7 +3,7 @@ Users can access *Custom Mentor* **blog** and **event** postings as well as **ne
 
 Users with proper authorization are able to **compose** new posts.
 
-### How to run prototype the prototype:
+### How to run the prototype:
 `git pull origin news-feed`
 
 `git checkout news-feed`
@@ -55,6 +55,12 @@ Display news articles based on user search term.
 Prototyped using *The Guardian* API as a news source. There are many options available for news sources. Reddit (for its broad range of topics and ease of access) and RSS were also considered for this prototype.
 
 News links are rendered with jQuery in the prototype but this could easily be transferred to React
+
+When page is loaded, 75 of the most recent articles from The Guardian are added to the page.
+
+On search, 200 articles are loaded as a URL paramter for the API call. This could be changed to any number but was done so to limit the amount of API calls being made.
+
+When user scrolls to bottom of the page after a search has been made, the API call is made again and the page number of the results increases by 1 each time so content can keep being loading.
 
 ## Composer Page
 This page is for users who are authorized to create new posts that will appear on the Blogs/Events Page.

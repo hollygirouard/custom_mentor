@@ -41,7 +41,7 @@ $( document ).ready(function() {
 
 	  // Loads most recent articles as default
   function mostRecent() {
- 		 let URL = "http://content.guardianapis.com/search?q&page-size=200&order-by=newest&api-key=115c5979-da30-4257-b1ec-b3f0156feffa";
+ 		 let URL = "http://content.guardianapis.com/search?q&page-size=75&order-by=newest&api-key=115c5979-da30-4257-b1ec-b3f0156feffa";
  		 $.get(URL).done(function(data) {
  		 		let newsData = data.response.results;
  		 		for (let i = 0; i < newsData.length; i++) {
