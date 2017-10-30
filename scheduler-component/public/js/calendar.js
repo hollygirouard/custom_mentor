@@ -1,5 +1,6 @@
 $(function() {
   //loadEvents();
+  //getOauth();
   showTodaysDate();
   initializeCalendar();
   getCalendars();
@@ -7,6 +8,7 @@ $(function() {
   initializeLeftCalendar();
   disableEnter();
 });
+
 
       var CLIENT_ID = "1082211045508-24i6a5fm8bl0hec44t5sbt6pdj9e0cn9.apps.googleusercontent.com";
 
@@ -18,6 +20,7 @@ $(function() {
       var SCOPES = 'https://www.googleapis.com/auth/calendar';
 
       var authorizeButton = document.getElementById("authorize-button");
+      console.log(authorizeButton);
       var signoutButton = document.getElementById("signout-button");
 
      /**
