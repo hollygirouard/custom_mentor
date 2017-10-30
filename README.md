@@ -59,27 +59,11 @@ Note that code is commented for AWS production or development.  Swap the comment
 to switch between development and production.
 
 
-1.  Configure database for local environment from AWS config:
 
-```
-// AWS Config
 
-// $this->host = $_SERVER['RDS_HOSTNAME'];
-// $this->db_name = $_SERVER['RDS_DB_NAME'];
-// $this->username = $_SERVER['RDS_USERNAME'];
-// $this->password = $_SERVER['RDS_PASSWORD'];
-// $this->port = $_SERVER['RDS_PORT'];
 
-// Development Config
 
-$this->host = 'localhost';
-$this->db_name = 'custom_mentor';
-$this->username = 'root';
-$this->password =  '';
-$this->port = '8080';
-```
-
-2. Change route in src/components/Home/Signup.js
+1. Change route in src/components/Home/Signup.js
 
 ```
 postLogin(form){
@@ -100,7 +84,7 @@ postLogin(form){
 }
 ```
 
-3. Change route in login action at src/actions/login.js:
+2. Change route in login action at src/actions/login.js:
 
 ```
 export const authenticateUser = (loginInfo) => {
