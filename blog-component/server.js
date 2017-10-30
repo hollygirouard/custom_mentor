@@ -44,7 +44,7 @@ app.post('/', (req, res) => {
 
 app.get('/blogs', (req, res) => {
 	Blog.find({}, (err, blogs) => {
-		res.json(blogs);
+		res.json({blogs});
 	});
 });
 
