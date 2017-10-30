@@ -1,4 +1,5 @@
 var passport = require("passport");
+let db = require('../models');
 
 // GET /signup
 function getSignup(request, response, next) {
@@ -8,7 +9,7 @@ function getSignup(request, response, next) {
 // POST /signup
 function postSignup(request, response, next) {
 	let signupStrategy = passport.authenticate('local-signup', {
-		successRedirect: '/',
+		successRedirect: '/users',
 		failureRedirect: '/signup',
 		failureFlash: true
 	});
@@ -24,7 +25,7 @@ function getLogin(request, response, next) {
 // POST /login 
 function postLogin(request, response, next) {
 	let loginStrategy = passport.authenticate('local-login', {
-		successRedirect: '/',
+		successRedirect: '/users',
 		failureRedirect: '/login',
 		failureFlash : true
 	});
@@ -38,11 +39,20 @@ function getLogout(request, response, next) {
 	response.redirect('/login');
 }
 
+// GET /users
+function getUsers(request, response, next) {
+	console.log("getUsers controller hit");
+	db.User.find({}, function(err, users) {
+		response.json(users);
+	});
+}
+
 
 module.exports = {
   getLogin: getLogin,
   postLogin: postLogin ,
   getSignup: getSignup,
   postSignup: postSignup,
-  getLogout: getLogout
+  getLogout: getLogout,
+  getUsers: getUsers
 };

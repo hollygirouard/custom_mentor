@@ -53,17 +53,17 @@ let conversation_list = [
 	}
 ];
 
-console.log(message_list);
+// console.log(message_list);
 
-console.log(conversation_list);
+// console.log(conversation_list);
 
-db.Conversation.remove({}, function(err, conversations) {
-	db.Conversation.create(conversation_list, function(err, conversations) {
-		if (err) { return console.log('ERROR', err) ;}
-		console.log("all conversations:", conversations);
-		console.log("created", conversations.length);
-	});
-});
+// db.Conversation.remove({}, function(err, conversations) {
+// 	db.Conversation.create(conversation_list, function(err, conversations) {
+// 		if (err) { return console.log('ERROR', err) ;}
+// 		console.log("all conversations:", conversations);
+// 		console.log("created", conversations.length);
+// 	});
+// });
 
 db.Message.remove({}, function(err, messages){
 	db.Message.create(message_list, function(err, messages) {
