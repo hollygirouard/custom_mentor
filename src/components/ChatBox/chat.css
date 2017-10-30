@@ -1,3 +1,8 @@
+.avatar{
+    height: 75px;
+    width: 65px;
+}
+
 .chat {
     list-style: none;
     margin: 0;
@@ -47,20 +52,3 @@
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
 }
-
-/*#chatbox{
-	background-color: blue; 
-	height: 350px;
-	width: 260px;
-	position: fixed;
-	bottom: 0;
-	right: 20px;
-	border-radius: 7px;
-	display: none;
-}
-
-#chatNow{
-	 top: 10px;
-	 right: 10px;
-	 position: fixed;
-}*/
