@@ -1,41 +1,39 @@
-const apiKey = require('../env.js');
+const apiKey = "115c5979-da30-4257-b1ec-b3f0156feffa";
 
 $( document ).ready(function() {
     console.log("ready!");
 
   // Global Variables 
-    let count = 25;
-    let after;
+    let page = 1;
 
 	// On submit of search bar ajax call is make
 	$('#search-bar').submit(function() {
-		count = 25;
-		after = "";
+		page = 1;
 		event.preventDefault();
 		$('#news-feed').empty();
-		redditCall();
+		guardianCall();
 	});
 
 	// Loads more articles as the user scrolls down
 	$(window).scroll(function() {   
 		if($(window).scrollTop() + $(window).height() == $(document).height()) {
-			redditCall();
+			guardianCall();
 		}
 	});
 
 	// Ajax call for first page of subreddit results
-	function redditCall() {
+	function guardianCall() {
 		let searchQuery = $('input[name="query"]').val();
-		// let URL = "https://www.reddit.com/r/" + searchQuery + ".json?count=" + count + "&after=" + after;
-		let URL = "http://content.guardianapis.com/search?q=" + searchQuery + "&api-key="+ apiKey;
+		let URL = "http://content.guardianapis.com/search?q=" + searchQuery + "&page-size=200&page=" + page + "&api-key=" + apiKey;
 		$.get(URL).done(function(data) {
 			console.log(URL);
-			let newsData = data.data.children;
-			after = data.data.after;
+			let newsData = data.response.results;
+			console.log(newsData);
 			for (let i = 0; i < newsData.length; i++) {
-				$('#news-feed').append(('<div class="card">'+ '<a href="' + newsData[i].data.url + '" target="_blank">' + newsData[i].data.title + '</a>' + '</div>'));
+				$('#news-feed').append(('<div class="card">'+ '<a href="' + newsData[i].webUrl + '" target="_blank">' + '<h3 class="card-header">' + newsData[i].webTitle + '</h3>' + '</a>' + '<h5 class="news-section">' + "Section: " + newsData[i].sectionName + '</h5>' + '</div>'));
+				$('.card').append();
 			}
 		});
-		count+=25;
+		page++;
 	}
 });
