@@ -31,4 +31,8 @@ router.route('/')
  router.route('/logout')
  	.get(usersController.getLogout)
 
+// get all users
+	router.route('/users')
+	.get(usersController.getUsers)
+
 module.exports = router;
