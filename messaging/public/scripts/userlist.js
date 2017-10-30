@@ -8,7 +8,7 @@ $(document).ready(function(){
 	.done(function(data) {
 		console.log(data);
 		data.forEach(function(user) {
-			$('#userlist').append('<li id=' + user._id + '>'+'USER EMAIL:  ' + user.local.email + '</li>');
+			$('#userlist').append('<li id=' + user._id + '>'+'USER EMAIL:  ' + user.local.email + '</li><button class="btn btn-primary">Sweet Button</button>');
 		});
 	});
 
