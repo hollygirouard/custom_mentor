@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const usersController = require('../controllers/users');
 const staticsController = require('../controllers/statics');
+const messagesController = require('../controllers/messages');
 
 function authenticatedUser(req, res, next) {
 	if(req.isAuthenticated()) {return next();}
@@ -18,21 +19,37 @@ router.route('/')
 	.get(authenticatedUser, staticsController.home)
 
 // user sign up
- router.route('/signup')
+router.route('/signup')
  	.get(usersController.getSignup)
  	.post(usersController.postSignup)
 
 // user login
- router.route('/login')
+router.route('/login')
  	.get(usersController.getLogin)
  	.post(usersController.postLogin)
 
 // user logout
- router.route('/logout')
+router.route('/logout')
  	.get(usersController.getLogout)
 
 // get all users
-	router.route('/users')
+router.route('/users')
 	.get(usersController.getUsers)
+
+router.route('/users/:id')
+	.get(messagesController.findUser)
+
+// get conversations
+router.route('/conversations')
+	.get(messagesController.getConversations)
+
+// get user conversations
+router.route('/conversations/user')
+	.get(messagesController.getUserConversations)
+
+// get messages for user
+router.route('/messages')
+	.get(messagesController.getMessages)
+
 
 module.exports = router;
