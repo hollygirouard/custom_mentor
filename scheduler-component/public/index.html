@@ -18,6 +18,11 @@
     
     <!-- <script src='js/events.js'></script> -->
     <script src='js/calendar.js'></script>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+
 
 
     <!--[if lt IE 8]>
@@ -31,6 +36,8 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <p class="navbar-brand" id="todaysDate"></p>
+            <button id="authorize-button">Authorize</button>
+            <button id="signout-button">Sign Out</button>
         </div>
     </nav>
 
@@ -89,6 +96,8 @@
             </div>
         </div>
     </div>
+
+    
 </body>
 
 </html>
