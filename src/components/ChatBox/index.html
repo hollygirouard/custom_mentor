@@ -11,12 +11,10 @@
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
 	<!--Stylesheet-->
-	<link rel="stylesheet" type="text/css" href="chat.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 
 	<!--App Scripts-->
 	<script rel="stylesheet" type="text/javascript" src="chat.js"></script>
@@ -46,15 +44,20 @@
                                   </tr>
                                 </tbody>
                         </table>
-                        
+                        <button id="newMessage" class="btn">New Message</button>
                     </div>
-                    <a type="button" class= "btn" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">New Message
-                    </a>
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <div class="btn-group pull-right">
+                        <a type="button" class="btn btn-primary btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                    </div>
+                </div>
             <div class="panel-collapse collapse" id="collapseOne">
                 <div class="panel-body">
                     <ul class="chat">
                         <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="User Avatar" class="avatar" />
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
@@ -67,12 +70,12 @@
                             </div>
                         </li>
                         <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="User Avatar" class="avatar" />
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
-                                    <small class=" text-muted"><!-- <span class="glyphicon glyphicon-time"></span>13 mins ago</small>
- -->                                    <strong class="pull-right primary-font">Sally Smith</strong>
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
+                                    <strong class="pull-right primary-font">Sally Smith</strong>
                                 </div>
                                 <p>
                                     +1 pork belly vegan air plant copper mug selfies heirloom chartreuse, austin food truck kogi mustache fashion axe tacos.
@@ -80,12 +83,12 @@
                             </div>
                         </li>
                         <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="User Avatar" class="avatar" />
+                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
                                     <strong class="primary-font">Sally Smith</strong> <small class="pull-right text-muted">
-                                       <!--  <span class="glyphicon glyphicon-time"></span>14 mins ago</small> -->
+                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
                                 </div>
                                 <p>
                                    Direct trade poke yr bespoke ennui forage kinfolk. Lo-fi kale chips selvage, scenester air plant hell of jianbing celiac sartorial vape cloud bread twee four loko pork belly paleo. 
@@ -93,11 +96,11 @@
                             </div>
                         </li>
                         <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person_8x10.png" alt="User Avatar" class="avatar" />
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
                         </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
-                                    <small class=" text-muted"><!-- <span class="glyphicon glyphicon-time"></span>15 mins ago</small> -->
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
                                     <strong class="pull-right primary-font">John Smith</strong>
                                 </div>
                                 <p>
@@ -109,9 +112,9 @@
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Please type your message" />
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-sm" id="btn-chat">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
                                 Send</button>
                         </span>
                     </div>
