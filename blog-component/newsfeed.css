@@ -1,0 +1,15 @@
+form {
+	padding-bottom: 20px;
+}
+
+h1 {
+	display: inline;
+}
+
+p {
+	max-width: 50%;
+}
+
+body {
+	margin-left: 10%;
+}
