@@ -23,8 +23,15 @@ ul{
     background-color: #706f73; 
     color: white;
 }
+.btn:hover {
+    background-color: #F19F4D;
+}
 a {
     background-color: #706f73; 
+    margin: 5%;
+}
+a:hover {
+    background-color: #F19F4D;
 }
 .btn:focus {
     outline: 0;
