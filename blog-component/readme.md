@@ -49,18 +49,16 @@ The blog components take advantage of the Bootstrap Card:
 * Card Body - HTML Body of card (hidden until 'show more' button clicked)
 * Card Footer - Placeholder links for social media interaction
 
-## News Page
+## Reddit News Page
 Display news articles based on user search term.
 
-Prototyped using *The Guardian* API as a news source. There are many options available for news sources. Reddit (for its broad range of topics and ease of access) and RSS were also considered for this prototype.
+Prototyped using Reddit as a news source. There are many options available for news sources. RSS was also considered for this prototype.
 
 News links are rendered with jQuery in the prototype but this could easily be transferred to React
 
-When page is loaded, 75 of the most recent articles from The Guardian are added to the page.
+When page is loaded, all trending Reddit stories from front page of Reddit are appended.
 
-On search, 200 articles are loaded as a URL paramter for the API call. This could be changed to any number but was done so to limit the amount of API calls being made.
-
-When user scrolls to bottom of the page after a search has been made, the API call is made again and the page number of the results increases by 1 each time so content can keep being loading.
+On search all articles relevant to keyword are displayed as well as their subreddits.
 
 ## Composer Page
 This page is for users who are authorized to create new posts that will appear on the Blogs/Events Page.
