@@ -36,12 +36,15 @@ router.route('/logout')
 router.route('/users')
 	.get(usersController.getUsers)
 
-router.route('/users/:id')
-	.get(messagesController.findUser)
+// router.route('/users/:id')
+// 	.get(messagesController.findUser)
 
 // get conversations
 router.route('/conversations')
 	.get(messagesController.getConversations)
+
+router.route('/conversations')
+	.post(messagesController.postConversation)
 
 // get user conversations
 router.route('/conversations/user')
@@ -54,6 +57,10 @@ router.route('/messages')
 // get messages by conversation id
 router.route('/messages/:id')
 	.get(messagesController.getMessagesById)
+
+// post messages by conversation id
+router.route('/messages/:id')
+	.post(messagesController.postMessage)
 
 
 module.exports = router;

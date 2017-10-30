@@ -6,6 +6,7 @@ $(document).ready(function(){
 
     id = $(this).attr('recipient_id');
 
+<<<<<<< HEAD
     $('#email').on('load', function(event) {
         console.log(email);
     $.ajax({
@@ -25,6 +26,20 @@ $(document).ready(function(){
           })
         });
     });
+=======
+	$('#btn-chat').on('click', function(event) {
+      event.preventDefault();
+		$.ajax({
+	  		type: 'post',
+      		url: '/messages/59f61dbfde3d8554a0d5648e',
+      		data:({ 
+      			sender_id: "59f73fdde1e37857977e7eb5",
+      			content: "Wow this is sweet",
+      			conversation_id: "59f61dbfde3d8554a0d5648e"
+      	})
+    	});
+	});
+>>>>>>> b6869fab6a3555bb8e659ea780bf6d0bf1c39022
 
 	console.log('query ready');
 	$( "#chatNow" ).click(function() {
