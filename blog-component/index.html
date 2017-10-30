@@ -12,67 +12,13 @@
 </head>
 
 <body class="container">
-    <h1 class="text-center">Post a new blog</h1>
-    <div class="alertcontainer"></div>
-    <form action="/" method="POST">
-        <!-- Create the editor container -->
-        <div id="editor">
-            <test type='text' name='content'>Hello World!</test>
-        </div>
-        <input class='btn btn-success' type="submit" value="Post blog">
-    </form>
-    <!-- Include the Quill library -->
-    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
-    <!-- Initialize Quill editor -->
-    <script>
-    var toolbarOptions = [
-        ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-        ['blockquote', 'code-block'],
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-        [{ 'indent': '-1' }, { 'indent': '+1' }], // outdent/indent
+    <h1>News and Events</h1>
+    <nav class="nav nav-tabs">
+        <a class="nav-link active" href="#">Blog / Events</a>
+        <a class="nav-link" href="#">News</a>
+        <a class="nav-link" href="#">Blog Composer</a>
+    </nav>
 
-        [{ 'size': ['small', false, 'large', 'huge'] }], // custom dropdown
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-        [{ 'color': [] }, { 'background': [] }], // dropdown with defaults from theme
-        [{ 'font': [] }],
-        [{ 'align': [] }],
-        ['clean'],
-        ['link','image'] // remove formatting button
-    ];
-
-    var quill = new Quill('#editor', {
-        modules: {
-            toolbar: toolbarOptions
-        },
-        theme: 'snow'
-    });
-
-    $('form').on('submit', (event) => {
-        event.preventDefault();
-        $.ajax({
-            url: '/',
-            type: 'POST',
-            data: {content: $('.ql-editor').html()},
-        })
-        .done(function(data) {
-            console.log("success");
-            console.log(data);
-            window.location.href += 'blogs';
-        })
-        .fail(function(err) {
-            console.log(err);
-            $('.alertcontainer').html($('<div>').addClass('alert alert-danger').text(err.statusText));
-            $('body').scrollTop(0);
-
-
-        })
-        .always(function() {
-            console.log("complete");
-        });
-        
-    });
-    </script>
 </body>
 
 </html>
