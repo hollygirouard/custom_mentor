@@ -30,9 +30,10 @@
         <h2 class="text-center">Post a new blog</h2>
         <div class="alertcontainer"></div>
         <form action="/" method="POST">
+            <input id='blog-title' type="text" placeholder="Title" required>
             <!-- Create the editor container -->
             <div id="editor">
-                <test type='text' name='content'>Hello World!</test>
+                <textarea type='text' name='content'>Hello World!</textarea>
             </div>
             <input class='btn btn-success' type="submit" value="Post blog">
         </form>

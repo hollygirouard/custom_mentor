@@ -38,7 +38,7 @@ $('form').on('submit', (event) => {
     $.ajax({
         url: '/',
         type: 'POST',
-        data: {content: $('.ql-editor').html()},
+        data: {title: $('#blog-title').val(), content: $('.ql-editor').html()},
     })
     .done(function(data) {
         console.log("success");

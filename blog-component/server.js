@@ -10,6 +10,7 @@ let UserSchema = mongoose.Schema({
 });
 
 let BlogSchema = mongoose.Schema({
+	title: String,
 	date: { type: Date, default: Date.now },
 	content: String,
 });
@@ -31,7 +32,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
 	//res.sendFile(__dirname+ '/index.html');
 	Blog.find({}, (err, blogs) => {
-		res.render('blogs', {blogs});
+		res.sendFile(__dirname + '/blogs.html');
 	});
 });
 
@@ -43,7 +44,13 @@ app.post('/', (req, res) => {
 
 app.get('/blogs', (req, res) => {
 	Blog.find({}, (err, blogs) => {
-		res.render('blogs', {blogs});
+		res.json(blogs);
+	});
+});
+
+app.get('/blogs/:id', (req, res )=> {
+	Blog.findOne({_id: req.params.id}, (err, blog) =>{
+		res.json(blog);
 	});
 });
 
