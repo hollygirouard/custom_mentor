@@ -11,7 +11,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="style.css">
-	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="blogs.js"></script>
 </head>
 <body>
 <div class="container">
@@ -23,7 +24,10 @@
 	</nav>
 	
 	<!-- Render all blog components - newest first -->
-	<%for(let i = blogs.length-1; i >= 0; i--){%>
+	<div id="blog-container">
+		
+	</div>
+	<!-- <%for(let i = blogs.length-1; i >= 0; i--){%>
 		<div class="card">
 			<div class="card-header"><%=blogs[i].date%></div>
 			<div class="card-body"><%-blogs[i].content%></div>
@@ -33,7 +37,7 @@
 				<button class="btn btn-primary btn-share"><i class="fa fa-reddit" aria-hidden="true"></i> Share</button>
 			</div>
 		</div>
-	<%}%>
+	<%}%> -->
 </div>
 </body>
 </html>
