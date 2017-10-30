@@ -51,5 +51,9 @@ router.route('/conversations/user')
 router.route('/messages')
 	.get(messagesController.getMessages)
 
+// get messages by conversation id
+router.route('/messages/:id')
+	.get(messagesController.getMessagesById)
+
 
 module.exports = router;
