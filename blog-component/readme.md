@@ -29,11 +29,11 @@ Mongo used for quick prototype - could easily integrate with current backend
 JSON response:
 ```json
 {
-	blogs: [
+	"blogs": [
     	{
-        	title: String,
-            date: DateString,
-            content: HTML String
+        	"title": "String",
+            "date": "DateString",
+            "content": "HTML String"
         }
     ]
 }
@@ -69,8 +69,8 @@ The *submit button* sends JSON post data to backend DB and redirects to the blog
 Post JSON format:
 ```json
 	{
-    	title: String
-        content: HTML String
+    	"title": "String",
+        "content": "HTML String"
     }
 ```
 
