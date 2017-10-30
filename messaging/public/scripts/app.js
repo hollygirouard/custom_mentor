@@ -10,7 +10,7 @@ $(document).ready(function(){
       event.preventDefault();
 		$.ajax({
 	  		type: 'post',
-      		url: '/users',
+      		url: '/conversations',
       		data:({ id: recipient_id,
       	})
     	});
