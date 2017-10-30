@@ -2,17 +2,14 @@ console.log('js working');
 $(document).ready(function(){
 
 
-	name = $('#name').val();
-
 	email = $('#email').val();
 
-	id = $(this).attr('data-id');
+	id = $(this).attr('recipient_id');
 
 	$.ajax({
-	  type: 'put',
-      url: '/messaging',
+	  type: 'get',
+      url: '/users',
       data:({ id: recipient_id,
-              email: email
       })
     });
 
