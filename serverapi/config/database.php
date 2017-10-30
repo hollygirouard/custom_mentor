@@ -13,7 +13,7 @@ class Database{
 		$this->db_name = isset($_SERVER['RDS_DB_NAME']) ? $_SERVER['RDS_DB_NAME'] :"custom_mentor";
 		$this->username = isset($_SERVER['RDS_USERNAME']) ? $_SERVER['RDS_USERNAME'] :"root";
 		$this->password = isset($_SERVER['RDS_PASSWORD']) ?$_SERVER['RDS_PASSWORD'] :"";
-		$this->port = isset($_SERVER['RDS_PORT']) ? :"8080";
+		$this->port = isset($_SERVER['RDS_PORT']) ?$_SERVER['RDS_PORT'] :"8080";
 
         try{
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
