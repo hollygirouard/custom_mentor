@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {userSignOut} from '../../actions/logout'
-import Account from './Account'
+import Goals from './Goals'
 
 const mapStateToProps = (state) => {
     return {
@@ -9,13 +9,13 @@ const mapStateToProps = (state) => {
         errorMessage: state.session.errorMessage
     }
 }
+
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         userSignOut: () => dispatch(userSignOut())
     }
 }
 
+const GoalsContainer = connect(mapStateToProps, mapDispatchToProps)(Goals)
 
-const AccountContainer = connect(mapStateToProps)(Account)
-
-export default AccountContainer
+export default GoalsContainer

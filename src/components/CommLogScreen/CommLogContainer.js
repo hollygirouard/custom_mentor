@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {userSignOut} from '../../actions/logout'
-import Account from './Account'
+import CommLog from './CommLog'
 
 const mapStateToProps = (state) => {
     return {
@@ -9,13 +9,13 @@ const mapStateToProps = (state) => {
         errorMessage: state.session.errorMessage
     }
 }
+
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         userSignOut: () => dispatch(userSignOut())
     }
 }
 
+const CommLogContainer = connect(mapStateToProps, mapDispatchToProps)(CommLog)
 
-const AccountContainer = connect(mapStateToProps)(Account)
-
-export default AccountContainer
+export default CommLogContainer

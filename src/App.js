@@ -3,24 +3,36 @@ import { BrowserRouter as Router, Route, Redirect, NavLink } from 'react-router-
 
 import HomeContainer from './components/Home/HomeContainer'
 import UserContainer from './components/UserScreen/UserContainer'
+import GoalsContainer from './components/GoalsScreen/GoalsContainer'
 import PersonalityFormContainer from './components/PersonalityFormScreen/PersonalityFormContainer'
 import AccountContainer from './components/AccountScreen/AccountContainer'
-import SchedeuleContainer from './components/SchedeuleScreen/SchedeuleContainer'
+import ScheduleContainer from './components/ScheduleScreen/ScheduleContainer'
+import ReviewsContainer from './components/ReviewsScreen/ReviewsContainer'
+import EventsContainer from './components/EventsScreen/EventsContainer'
+import EducationContainer from './components/EducationScreen/EducationContainer'
+import BackgroundContainer from './components/BackgroundScreen/BackgroundContainer'
+import CommLogContainer from './components/CommLogScreen/CommLogContainer'
+
 import Contact from './components/Home/Contact'
 
 const SCREENS = [
-    {title: 'User Home', route: '/home', component: UserContainer, mainMenu: true},
+  {title: 'Home', route: '/home', component: UserContainer, mainMenu: true},
+    {title: 'My Profile', route: '/profile', component: AccountContainer, mainMenu: true},
+    {title: 'Goals', route: '/goals', component: GoalsContainer, mainMenu: true},
+    {title: 'Schedule', route: '/schedule', component: ScheduleContainer, mainMenu: true},
+    {title: 'Reviews', route: '/reviews', component: ReviewsContainer, mainMenu: true},
+    {title: 'Community Log', route: '/commlog', component: CommLogContainer, mainMenu: true},
+    {title: 'News & Events', route: '/events', component: EventsContainer, mainMenu: true},
+    {title: 'Education & Training', route: '/education', component: EducationContainer, mainMenu: true},
+    {title: 'Background Checks', route: '/background', component: BackgroundContainer, mainMenu: true},
     {title: 'Personality Form', route: '/form', component: PersonalityFormContainer, mainMenu: true},
-    {title: 'Account', route: '/account', component: AccountContainer, mainMenu: true},
-    {title: 'Activities', route: '/Activities', component: UserContainer, mainMenu: true},
-    {title: 'Schedule', route: '/Schedule', component: SchedeuleContainer, mainMenu: true},
     {title: 'Contact', route: '/contact', component: Contact, mainMenu: true}
 ]
 
 export default class App extends Component {
 
     checkAuth(ComponentToRender) {
-        console.log(this.props)
+        console.log("props",this.props)
         return props => this.props.isLoggedIn ? <ComponentToRender {...props} /> :
             (<Redirect to={{
                 pathname: '/',
