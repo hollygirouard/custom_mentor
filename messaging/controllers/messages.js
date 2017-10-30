@@ -49,6 +49,7 @@ function getMessagesById(request, response, next) {
 // POST /messages by Conversation id
 function postMessage(request, response, next) {
 	console.log("postMessage route hit");
+	console.log("SenderId:",request.user.id);
 	console.log(request.body);
 }
 

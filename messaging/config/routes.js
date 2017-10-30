@@ -18,6 +18,9 @@ function authenticatedUser(req, res, next) {
 router.route('/')
 	.get(authenticatedUser, staticsController.home)
 
+router.route('/userlist')
+	.get(authenticatedUser, staticsController.userlist)
+
 // user sign up
 router.route('/signup')
  	.get(usersController.getSignup)

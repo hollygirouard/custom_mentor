@@ -12,7 +12,6 @@ $(document).ready(function(){
 	  		type: 'post',
       		url: '/messages/59f61dbfde3d8554a0d5648e',
       		data:({ 
-      			sender_id: "59f73fdde1e37857977e7eb5",
       			content: "Wow this is sweet",
       			conversation_id: "59f61dbfde3d8554a0d5648e"
       	})
