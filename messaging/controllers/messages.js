@@ -46,6 +46,12 @@ function getMessagesById(request, response, next) {
 	});
 }
 
+// POST /messages by Conversation id
+function postMessage(request, response, next) {
+	console.log("postMessage route hit");
+	console.log(request.body);
+}
+
 // GET /conversations/:id
 function findConversationById(request, response, next) {
 	console.log("findUser controller hit");
@@ -79,5 +85,6 @@ module.exports = {
   getUserConversations: getUserConversations,
   getMessages: getMessages,
   getMessagesById: getMessagesById,
+  postMessage: postMessage,
   postConversation: postConversation
 };

@@ -58,5 +58,9 @@ router.route('/messages')
 router.route('/messages/:id')
 	.get(messagesController.getMessagesById)
 
+// post messages by conversation id
+router.route('/messages/:id')
+	.post(messagesController.postMessage)
+
 
 module.exports = router;
