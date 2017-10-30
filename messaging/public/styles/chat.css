@@ -23,16 +23,20 @@ ul{
     background-color: #706f73; 
     color: white;
 }
+
 .btn:hover {
     background-color: #F19F4D;
 }
+
 a {
     background-color: #706f73; 
     margin: 5%;
 }
+
 a:hover {
     background-color: #F19F4D;
 }
+
 .btn:focus {
     outline: 0;
     -webkit-box-shadow: none;
@@ -40,13 +44,14 @@ a:hover {
     border-radius: 3px;
     background-color: #706f73; 
 }
+
 html [type=button] {
     -webkit-appearance: none;
     color: white; 
 }
 
 img {
-    border-radius: 50%;
+    border-radius: 60%;
 }
 
 p {

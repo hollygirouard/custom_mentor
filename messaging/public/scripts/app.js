@@ -1,62 +1,47 @@
 console.log('js working');
 $(document).ready(function(){
 
+/*Requesting the users from the data base*/
   $.ajax({
     type: 'get',
     url: '/users',
   })
+  /*appending each user to a new button with list functionality*/
   .done(function(data) {
     console.log(data);
     data.forEach(function(user) {
       $('.table').append('<a type="button" class= "btn" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">' +user.local.email+ '</a>');
-      $('.table').append($('#messageBox'));
     });
-
-
   });
 
+/*add the user list to the table*/
   $('#userList').on('click', 'button', function(){
     console.log($(this).attr('id'));
     $('.table').empty();
-    $('.table').append("Jared Sucks");
   });
 
-
-	email = $('#email').val();
-
-    id = $(this).attr('recipient_id');
-
-
-    $('#email').on('load', function(event) {
-        console.log(email);
+/*send button pressed push data to conversations*/
+  $('#newMessage').on('submit', function(event) {
+    event.preventDefault();
     $.ajax({
-              type: 'get',
-              url: '/messages',
-              data:({ email: email,
-              })
-          });
+      type: 'post',
+      url: '/conversations',
+      data:({ id: recipient_id,
+      })
     });
+  });
 
-    $('#newMessage').on('submit', function(event) {
-      event.preventDefault();
-        $.ajax({
-              type: 'post',
-              url: '/conversations',
-              data:({ id: recipient_id,
-          })
-        });
-    });
-
+/*getting the content from the database to bring to the screen*/
 	$('#btn-chat').on('click', function(event) {
-      event.preventDefault();
+    event.preventDefault();
 		$.ajax({
-	  		type: 'post',
-      		url: '/messages/59f61dbfde3d8554a0d5648e',
-      		data:({ 
-      			content: "Wow this is sweet",
-      			conversation_id: "59f61dbfde3d8554a0d5648e"
-      	})
-    	});
+	  	type: 'post',
+      url: '/messages/59f61dbfde3d8554a0d5648e',
+      data:({ 
+      content: "Wow this is sweet",
+      conversation_id: "59f61dbfde3d8554a0d5648e"
+      })
+    });
 	});
 
 
