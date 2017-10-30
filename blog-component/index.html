@@ -3,28 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>blog componenet</title>
-    <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.1/classic/ckeditor.js"></script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body class="container">
-    <h1 class="text-center">Post a new blog</h1>
-    <form action="/" method="POST">
-        <textarea name="content" id="editor">This is some sample content.</textarea>
-        <input class='btn btn-success' type="submit" value="Post blog">
-    </form>
-    <script>
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    </script>
+    <h1>News and Events</h1>
+    <nav class="nav nav-tabs">
+        <a class="nav-link active" href="#">Blog / Events</a>
+        <a class="nav-link" href="#">News</a>
+        <a class="nav-link" href="#">Blog Composer</a>
+    </nav>
+
 </body>
 
 </html>

@@ -9,3 +9,16 @@ input{
 h1 {
 	margin: 10px;
 }
+
+.card{
+	margin: 20px;
+}
+
+.card-body{
+	margin: 0;
+}
+
+.btn-share {
+	font-size: 0.65em;
+	padding: 6px 5px;
+}

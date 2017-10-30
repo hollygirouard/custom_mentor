@@ -29,7 +29,10 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', (req, res) => {
-	res.sendFile(__dirname+ '/index.html');
+	//res.sendFile(__dirname+ '/index.html');
+	Blog.find({}, (err, blogs) => {
+		res.render('blogs', {blogs});
+	});
 });
 
 app.post('/', (req, res) => {
@@ -42,6 +45,14 @@ app.get('/blogs', (req, res) => {
 	Blog.find({}, (err, blogs) => {
 		res.render('blogs', {blogs});
 	});
+});
+
+app.get('/newsfeed', (req, res) => {
+	res.sendFile(__dirname+ '/newsfeed.html');
+});
+
+app.get('/composer', (req, res) => {
+	res.sendFile(__dirname+ '/composer.html');
 });
 
 app.listen(3000);
