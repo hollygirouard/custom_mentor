@@ -1,6 +1,12 @@
-#newMessage {
-    background-color: #2B3EF2 ;
+.btn {
+    background-color: #706f73 ; 
 }
+table{
+   border-radius: 3px;
+   background-color: #D9D9D9 ;
+   width: 30%;
+}
+
 table{
    border-radius: 3px;
 }
@@ -10,6 +16,7 @@ table{
 thead {
     background-color: #0909D9 ;
     border-radius: 3px;
+    color: white;
 }
 .avatar{
     height: 75px;
