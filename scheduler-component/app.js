@@ -1,19 +1,28 @@
 $(document).ready(function() {
+	// page is now ready, initialize the calendar...
+	$('#calendar').fullCalendar({
+        // put your options and callbacks here
+        googleCalendarApiKey: 'AIzaSyAt86N0u_orMzltEnOIRyKjt6oSXPJNtg8',
+        events: {
+            googleCalendarId: '3mrav4b3fk331159sl4o9j122s@group.calendar.google.com'
+        },
+      // dayClick: function() {
+      //  alert('a day has been clicked!');
+   // },
 
-      var calendar = $('#calendar').fullCalendar({
-      defaultView: 'agendaWeek',
-      editable: true,
+   		defaultView: 'agendaWeek',
+      	editable: true,
         selectable: true,
       //header and other values
-      select: function(start, end, allDay) {
+      	select: function(start, end, allDay) { // select
           endtime = $.fullCalendar.formatDate(end,'h:mm tt');
           starttime = $.fullCalendar.formatDate(start,'ddd, MMM d, h:mm tt');
           var mywhen = starttime + ' - ' + endtime;
-          $('#createEventModal #apptStartTime').val(start);
-          $('#createEventModal #apptEndTime').val(end);
-          $('#createEventModal #apptAllDay').val(allDay);
-          $('#createEventModal #when').text(mywhen);
-          $('#createEventModal').modal('show');
+           $('#createEventModal #apptStartTime').val(start);
+           $('#createEventModal #apptEndTime').val(end);
+           $('#createEventModal #apptAllDay').val(allDay);
+           $('#createEventModal #when').text(mywhen);
+           $('#createEventModal').modal('show');
        }
     });
 
@@ -40,4 +49,8 @@ $(document).ready(function() {
         },
         true);
    }
+
+
 });
+
+
