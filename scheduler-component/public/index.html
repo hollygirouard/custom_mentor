@@ -17,7 +17,12 @@
     <script type='text/javascript' src='fullcalendar/gcal.js'></script>
     
     <!-- <script src='js/events.js'></script> -->
-    <script src='js/calendar.js'></script>
+     <!-- <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){handleClientLoad()};"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>  -->
+    <script async defer src="https://apis.google.com/js/api.js"></script> 
+   
    
 
 
@@ -31,10 +36,12 @@
 
 <body>
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <p class="navbar-brand" id="todaysDate"></p>
-            <button id=“authorize-button” style=“display: none;“>Authorize</button>
-            <button id=“signout-button” style=“display: none;“>Sign Out</button>
+        <div class="container-fluid buttons-div">
+            <p id="todaysDate"></p>
+            <!-- class="navbar-brand"  -->
+            <button class=“authorize-button” >Authorize</button> 
+            <!-- /style=“display: none;“ -->
+            <button id=“signout-button”>Sign Out</button>
         </div>
     </nav>
 
@@ -94,8 +101,7 @@
         </div>
     </div>
 
-  <script src="https://apis.google.com/js/api.js">
-    </script>   
+    <script src='js/calendar.js'></script>  
 </body>
 
 </html>
