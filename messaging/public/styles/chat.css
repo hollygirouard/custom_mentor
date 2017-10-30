@@ -45,16 +45,25 @@ html [type=button] {
     color: white; 
 }
 
+img {
+    border-radius: 50%;
+}
 
+p {
+    font-size: 16px;
+    margin-top: 20px;
+}
+strong {
+    font-size: 20px;
+    color: black;
+    padding-top: 10%;
+    padding-bottom: 40%;
+}
 table{
     margin-top: 5%;
     border-radius: 3px;
 }
-.table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #eceeef;
-    border-radius: 5px;
-}
+
 .info {
     border: 2px black;
 }
