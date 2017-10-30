@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Custom Mentor Scheduler</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+	<script src='lib/jquery.min.js'></script>
+	<script src='lib/moment.min.js'></script>
+	<script src='fullcalendar/fullcalendar.js'></script>
+	<script type='text/javascript' src='fullcalendar/gcal.js'></script>
+</head>
+<body>
+<div id="calendar"></div>
+
+</body>
+<script>
+$(document).ready(function() {
+	// page is now ready, initialize the calendar...
+	$('#calendar').fullCalendar({
+        // put your options and callbacks here
+        googleCalendarApiKey: 'AIzaSyAt86N0u_orMzltEnOIRyKjt6oSXPJNtg8',
+        events: {
+            googleCalendarId: '3mrav4b3fk331159sl4o9j122s@group.calendar.google.com'
+        },
+        dayClick: function() {
+        alert('a day has been clicked!');
+    }
+
+	});
+});
+</script>
+</html>
