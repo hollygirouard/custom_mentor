@@ -11,9 +11,8 @@ $(document).ready(function(){
 	$.ajax({
 	  type: 'put',
       url: '/messaging',
-      data:({ id: id,
-              name: name,
-              email: email,
+      data:({ id: recipient_id,
+              email: email
       })
     });
 
