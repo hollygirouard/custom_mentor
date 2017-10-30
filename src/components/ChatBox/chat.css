@@ -1,3 +1,16 @@
+#newMessage {
+    background-color: #2B3EF2 ;
+}
+table{
+   border-radius: 3px;
+}
+.info {
+    border: 2px black;
+}
+thead {
+    background-color: #0909D9 ;
+    border-radius: 3px;
+}
 .avatar{
     height: 75px;
     width: 65px;

@@ -27,6 +27,26 @@
         <div class="col-md-8">
             <div class="panel panel-primary">
                 <div class="panel-heading" id="accordion">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                  <tr>
+                                    <!-- <th>Image</th> -->
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <!-- <td>{{pull image here}}</td> -->
+                                    <td class="info">{{name}}</td>
+                                    <td class="info">{{email}}</td>
+                                    <td><button class="btn">Send Message</button></td>
+                                  </tr>
+                                </tbody>
+                        </table>
+                        <button id="newMessage" class="btn">New Message</button>
+                    </div>
                     <span class="glyphicon glyphicon-comment"></span> Chat
                     <div class="btn-group pull-right">
                         <a type="button" class="btn btn-primary btn-xs" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
