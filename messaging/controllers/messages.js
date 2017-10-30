@@ -61,7 +61,7 @@ function findConversationById(request, response, next) {
 }
 
 // POST /conversations
-function createNewConversation(request, response, next) {
+function postConversation(request, response, next) {
 	console.log("createNewConversation route hit");
 	console.log(request.body);
 	// let newConversation = new db.Conversation({
@@ -79,4 +79,5 @@ module.exports = {
   getUserConversations: getUserConversations,
   getMessages: getMessages,
   getMessagesById: getMessagesById,
+  postConversation: postConversation
 };

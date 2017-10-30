@@ -43,6 +43,9 @@ router.route('/users')
 router.route('/conversations')
 	.get(messagesController.getConversations)
 
+router.route('/conversations')
+	.post(messagesController.postConversation)
+
 // get user conversations
 router.route('/conversations/user')
 	.get(messagesController.getUserConversations)
