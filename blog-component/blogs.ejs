@@ -22,10 +22,16 @@
 	    <a class="nav-link" href="/composer">Blog Composer</a>
 	</nav>
 	
+	<!-- Render all blog components - newest first -->
 	<%for(let i = blogs.length-1; i >= 0; i--){%>
 		<div class="card">
-			<div class="card-title"><%=blogs[i].date%></div>
-			<div class="card"><%-blogs[i].content%></div>
+			<div class="card-header"><%=blogs[i].date%></div>
+			<div class="card-body"><%-blogs[i].content%></div>
+			<div class="card-footer">
+				<button class="btn btn-primary btn-share"><i class="fa fa-twitter" aria-hidden="true"></i> Tweet</button>
+				<button class="btn btn-primary btn-share"><i class="fa fa-facebook" aria-hidden="true"></i> Like</button>
+				<button class="btn btn-primary btn-share"><i class="fa fa-reddit" aria-hidden="true"></i> Share</button>
+			</div>
 		</div>
 	<%}%>
 </div>
