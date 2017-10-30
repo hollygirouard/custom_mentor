@@ -6,12 +6,15 @@ $(document).ready(function(){
 
 	id = $(this).attr('recipient_id');
 
-	$.ajax({
-	  type: 'get',
-      url: '/users',
-      data:({ id: recipient_id,
-      })
-    });
+	$('#newMessage').on('submit', function(event) {
+      event.preventDefault();
+		$.ajax({
+	  		type: 'post',
+      		url: '/users',
+      		data:({ id: recipient_id,
+      	})
+    	});
+	});
 
 	console.log('query ready');
 	$( "#chatNow" ).click(function() {
