@@ -4,8 +4,29 @@ $(document).ready(function(){
 
 	email = $('#email').val();
 
-	id = $(this).attr('recipient_id');
+    id = $(this).attr('recipient_id');
 
+<<<<<<< HEAD
+    $('#email').on('load', function(event) {
+        console.log(email);
+    $.ajax({
+              type: 'get',
+              url: '/messages',
+              data:({ email: email,
+              })
+          });
+    });
+
+    $('#newMessage').on('submit', function(event) {
+      event.preventDefault();
+        $.ajax({
+              type: 'post',
+              url: '/conversations',
+              data:({ id: recipient_id,
+          })
+        });
+    });
+=======
 	$('#btn-chat').on('click', function(event) {
       event.preventDefault();
 		$.ajax({
@@ -17,6 +38,7 @@ $(document).ready(function(){
       	})
     	});
 	});
+>>>>>>> b6869fab6a3555bb8e659ea780bf6d0bf1c39022
 
 	console.log('query ready');
 	$( "#chatNow" ).click(function() {
