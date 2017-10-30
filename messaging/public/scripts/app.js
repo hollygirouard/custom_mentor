@@ -4,17 +4,27 @@ $(document).ready(function(){
 
 	email = $('#email').val();
 
-	id = $(this).attr('recipient_id');
+    id = $(this).attr('recipient_id');
 
-	$('#newMessage').on('submit', function(event) {
+    $('#email').on('load', function(event) {
+        console.log(email);
+    $.ajax({
+              type: 'get',
+              url: '/messages',
+              data:({ email: email,
+              })
+          });
+    });
+
+    $('#newMessage').on('submit', function(event) {
       event.preventDefault();
-		$.ajax({
-	  		type: 'post',
-      		url: '/conversations',
-      		data:({ id: recipient_id,
-      	})
-    	});
-	});
+        $.ajax({
+              type: 'post',
+              url: '/conversations',
+              data:({ id: recipient_id,
+          })
+        });
+    });
 
 	console.log('query ready');
 	$( "#chatNow" ).click(function() {
