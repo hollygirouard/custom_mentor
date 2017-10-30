@@ -15,7 +15,7 @@
     
     <div class="container">
         <h1>News and Events</h1>
-        
+
         <nav class="nav nav-tabs">
             <a class="nav-link" href="/">Blog / Events</a>
             <a class="nav-link" href="/newsFeed">News</a>
@@ -69,7 +69,7 @@
         .done(function(data) {
             console.log("success");
             console.log(data);
-            window.location.href += 'blogs';
+            window.location.href = '/';
         })
         .fail(function(err) {
             console.log(err);
