@@ -18,7 +18,6 @@
 
 
 var FC = $.fullCalendar;
-console.log(FC);
 var Promise = FC.Promise;
 var EventSource = FC.EventSource;
 console.log(EventSource);
