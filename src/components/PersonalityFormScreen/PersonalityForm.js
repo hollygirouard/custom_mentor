@@ -35,10 +35,10 @@ export default class PersonalityForm extends Component {
   }
 
   handleChange(event) {
-    const formValues = this.state.formValues;
-    const name = event.target.name;
-    const value = event.target.value;
-    const type = event.target.type;
+    const { formValues } = this.state;
+    const { name } = event.target;
+    const { value } = event.target;
+    const { type } = event.target;
     type === 'checkbox' ? this.checkedBox(event, formValues, name, value) : formValues[name] = value;
     type === 'time' ? this.inputTime(event, formValues, name, value) : null;
     this.setState({ formValues });
