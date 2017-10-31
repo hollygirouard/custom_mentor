@@ -1,14 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 
-export class MentorReviews extends Component {
+export default class MentorReviews extends Component {
+  render() {
+    return (
+      <div>
+        <h3>Reviews of Mentors</h3>
 
-
-    render() {
-        return (
-            <div>
-                <h3>Reviews of Mentors</h3>
-
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }

@@ -1,14 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 
-export class MyReviews extends Component {
+export default class MyReviews extends Component {
+  render() {
+    return (
+      <div>
+        <h3>Reviews of Myself</h3>
 
-
-    render() {
-        return (
-            <div>
-                <h3>Reviews of Myself</h3>
-
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }

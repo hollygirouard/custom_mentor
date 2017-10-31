@@ -1,14 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 
-export class Profile extends Component {
+export default class Profile extends Component {
+  render() {
+    return (
+      <div>
+        <h3>My Mentor&apos;s Profile</h3>
 
-
-    render() {
-        return (
-            <div>
-                <h3>My Mentor's Profile</h3>
-
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }
