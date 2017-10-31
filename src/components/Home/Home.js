@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Redirect } from 'react-router-dom';
+// import { BrowserRouter as Redirect } from 'react-router-dom';
 import Title from './Title';
 import SignFormContainer from './SignFormContainer';
 import About from './About';
