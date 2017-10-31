@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { NavLink, BrowserRouter as Link } from 'react-router-dom';
+// import { NavLink, BrowserRouter as Link } from 'react-router-dom';
 
 export default class Header extends Component {
-  facebook() {
+  static facebook() {
     window.open('https://www.facebook.com/blossomcarenetwork.org');
   }
-  twitter() {
+  static twitter() {
     window.open('https://twitter.com/BlossomCareCO');
   }
-  linkedin() {
+  static linkedin() {
     window.open('https://www.linkedin.com/company/3800360/');
   }
-  youtube() {
+  static youtube() {
     window.open('https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ');
   }
 
@@ -27,10 +27,12 @@ export default class Header extends Component {
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div className="socialLinks">
+          {/* eslint-disable */}
           <i onClick={this.facebook} className="fa fa-facebook-official" />
           <i onClick={this.twitter} className="fa fa-twitter-square" />
           <i onClick={this.linkedin} className="fa fa-linkedin-square" />
           <i onClick={this.youtube} className="fa fa-youtube-square" />
+          {/* eslint-enable */}
         </div>
       </div>
     );
