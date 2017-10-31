@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+/* eslint-disable max-len */
 export default class MenteeInfo extends Component {
   render() {
     return (
@@ -19,9 +20,7 @@ export default class MenteeInfo extends Component {
           <li>increased feeling of being more valued as an employee</li>
           <li>improved communication and expanded network</li>
           <li>130% greater likelihood of being in a leadership role</li>
-
         </ol>
-
       </div>
     );
   }
