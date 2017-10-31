@@ -1,3 +1,3 @@
-import session from './sessions'
+import session from './sessions';
 
-export {session};
+export { session };

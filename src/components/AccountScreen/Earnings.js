@@ -1,14 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 
-export class Earnings extends Component {
+export default class Earnings extends Component {
+  render() {
+    return (
+      <div>
+        <h3>Earnings</h3>
 
-
-    render() {
-        return (
-            <div>
-                <h3>Earnings</h3>
-
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }
