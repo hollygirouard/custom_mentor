@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
   errorMessage: state.session.errorMessage,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   userSignOut: () => dispatch(userSignOut()),
 });
 
