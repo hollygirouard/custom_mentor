@@ -5,6 +5,12 @@
 .navbar-default .navbar-brand img {
     max-height: 100%;
 }
+.banner {
+    margin-top: 80px;
+}
+.text-border {
+    margin-top: 70px;
+}
 .footer {
     padding: 0 0 20px;
 }
