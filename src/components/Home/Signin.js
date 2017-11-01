@@ -1,32 +1,31 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import axios from 'axios'
+import axios from 'axios';
 
-export class Signin extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            formValues: {},
-            formValidate: {}
+export default class Signin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formValues: {},
+      formValidate: {},
 
-        }
-    }
-    handleChange(event) {
-        event.preventDefault();
-        let formValues = this.state.formValues;
-        let name = event.target.name;
-        let value = event.target.value;
-        formValues[name] = value;
-        this.setState({formValues})
-        this.formValidations(formValues);
+    };
+  }
+  handleChange(event) {
+    event.preventDefault();
+    const formValues = this.state.formValues;
+    const name = event.target.name;
+    const value = event.target.value;
+    formValues[name] = value;
+    this.setState({ formValues });
+    this.formValidations(formValues);
+  }
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.onSignIn(this.state.formValues);
+    this.formValidations(this.state.formValues);
 
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.onSignIn(this.state.formValues);
-        this.formValidations(this.state.formValues);
-
-		//  axios({
+    //  axios({
     //     method: 'POST',
     //     url: '/custommentor/custom_mentor/serverapi/user.php',
     //     data: "requesttype=Signin&data=" + (JSON.stringify(this.state.formValues))
@@ -37,19 +36,18 @@ export class Signin extends Component {
     //   }).catch(function (error) {
     //     console.log(error);
     //   });
+  }
 
-    }
+  formValidations(form) {
+    form.email ? this.state.formValidate.emailInvalid = false : this.state.formValidate.emailInvalid = true;
+    form.password ? this.state.formValidate.passwordInvalid = false : this.state.formValidate.passwordInvalid = true;
+    this.forceUpdate();
+  }
 
-    formValidations(form) {
-      form.email ? this.state.formValidate.emailInvalid = false :this.state.formValidate.emailInvalid =true;
-      form.password ? this.state.formValidate.passwordInvalid = false :this.state.formValidate.passwordInvalid =true;
-      this.forceUpdate()
-    }
-
-    emailPass(response){
-      response.data.response === "failed" ? this.state.formValidate.emailPass = true : this.state.formValidate.emailPass = false;
-      this.forceUpdate()
-    }
+  emailPass(response) {
+    response.data.response === 'failed' ? this.state.formValidate.emailPass = true : this.state.formValidate.emailPass = false;
+    this.forceUpdate();
+  }
 
         render(){
         return (
@@ -98,6 +96,6 @@ export class Signin extends Component {
                 </div>
             </section>
 
-      )
-    }
+    );
+  }
 }

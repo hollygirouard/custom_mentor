@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import { Button, ButtonGroup } from 'reactstrap'
 
-import {Signup} from "./Signup";
-import {Signin} from "./Signin";
+import Signup from "./Signup";
+import Signin from "./Signin";
 
 export default class SignForm extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export default class SignForm extends Component {
 
   signIn = (userInfo) => {
     this.props.authenticateUser(userInfo)
-    
+
   }
 
   signUp(member){

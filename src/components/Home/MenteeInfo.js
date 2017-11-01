@@ -1,7 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 
-export class MenteeInfo extends Component {
-
+export default class MenteeInfo extends Component {
   render() {
     return (
       <div>
