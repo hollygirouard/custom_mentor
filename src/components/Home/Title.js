@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+/* eslint-disable max-len */
 export default class Title extends Component {
   render() {
     return (
@@ -11,7 +12,6 @@ export default class Title extends Component {
         <p>CustomMentor matches the specific needs of mentees with mentors who custom tailor their services to meet them.</p>
         <p>Choose from four levels of mentoring… Cheerleader, Mentor, Coach or Tutor.</p>
       </div>
-
     );
   }
 }
