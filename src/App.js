@@ -52,27 +52,26 @@ const SCREENS = [
 ];
 
 export default class App extends Component {
+  static facebook() {
+    window.open('https://www.facebook.com/blossomcarenetwork.org');
+  }
+  static twitter() {
+    window.open('https://twitter.com/BlossomCareCO');
+  }
+  static linkedin() {
+    window.open('https://www.linkedin.com/company/3800360/');
+  }
+  static youtube() {
+    window.open('https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ');
+  }
+
   checkAuth(ComponentToRender) {
-    console.log('props', this.props);
     return props => (this.props.isLoggedIn ? <ComponentToRender {...props} /> :
       (<Redirect to={{
                 pathname: '/',
                 state: { from: props.location },
             }}
       />));
-  }
-
-  facebook() {
-    window.open('https://www.facebook.com/blossomcarenetwork.org');
-  }
-  twitter() {
-    window.open('https://twitter.com/BlossomCareCO');
-  }
-  linkedin() {
-    window.open('https://www.linkedin.com/company/3800360/');
-  }
-  youtube() {
-    window.open('https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ');
   }
 
   renderRoutes() {
@@ -89,7 +88,7 @@ export default class App extends Component {
       </div>
     );
   }
-
+  /* eslint-disable */
   renderNav() {
     return (
       <div id={this.props.isLoggedIn ? 'member_sidebar' : 'documenter_sidebar'}>
@@ -104,6 +103,7 @@ export default class App extends Component {
       </div>
     );
   }
+  /* eslint-enable */
 
   renderLinks() {
     return this.props.isLoggedIn ? (
