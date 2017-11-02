@@ -1,3 +1,4 @@
+/* eslint-disable */
 import session from './sessions';
 
-export default { session };
+export { session };
