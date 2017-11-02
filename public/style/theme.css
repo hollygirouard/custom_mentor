@@ -369,7 +369,7 @@ Work Shop
 }
 .service-box{
     background: #fff;
-    padding: 60px 30px 80px;
+    padding: 20px 20px 40px;
     box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);
 }
 .icon-box i {
@@ -651,19 +651,24 @@ Footer
 .btn {
     padding: 10px 20px;
 }
-.light-form-button{
+.light-form-button {
     background: #00A7E1;
     border: 1px solid rgba(119, 81, 81, 0.34);
-    width: 24%;
     padding: 10px 10px;
     margin-bottom: 15px;
     color: #fff;: #fafafa;
     border: 1px solid rgba(119, 81, 81, 0.34);
-    width: 24%;
+    width: auto;
     margin-bottom: 15px;
-     -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.light-form-button:hover, .light-form-button.active:hover {
+    background: #025977;
+}
+.light-form-button.active {
+    background: #0b85af;
 }
 .btn-green, .btn-green:hover{
     background-color: #00A7E1;

@@ -100,16 +100,6 @@ export default class App extends Component {
                     </div>
                 </div>
             </nav>
-            // <div >
-            //     <a href ="#title"><img  alt = "" className="logo" src={process.env.PUBLIC_URL + '/image/CustomMentorLogo.png'}/></a>
-            //     {this.renderLinks()}
-            //     <div className="socialLinks">
-            //         <i onClick={this.facebook} className="fa fa-facebook-official"></i>
-            //         <i onClick={this.twitter} className="fa fa-twitter-square"></i>
-            //         <i onClick={this.linkedin} className="fa fa-linkedin-square"></i>
-            //         <i onClick={this.youtube} className="fa fa-youtube-square"></i>
-            //     </div>
-            // </div>
         )
     }
 
@@ -129,7 +119,7 @@ export default class App extends Component {
                   You can delete the links only if you purchased the pro version.
                   Licensing information: https://bootstrapmade.com/license/
                   Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Mentor */}
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade.com</a>
+                Designed by <a href="https://bootstrapmade.com/" target="blank">BootstrapMade.com</a>
               </div>
             </div>
           </footer>
@@ -160,10 +150,24 @@ export default class App extends Component {
                     {this.renderNav()}
                     {<div className="home">
                         <Route path='/' exact component={HomeContainer} />
+                        {this.renderRoutes()}
                         {this.renderFooter()}
                     </div>}
                 </div>
             </Router>
         );
+    }
+
+    facebook() {
+        window.open("https://www.facebook.com/blossomcarenetwork.org");
+    }
+    twitter() {
+        window.open("https://twitter.com/BlossomCareCO");
+    }
+    linkedin() {
+        window.open("https://www.linkedin.com/company/3800360/");
+    }
+    youtube() {
+        window.open("https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ");
     }
 }

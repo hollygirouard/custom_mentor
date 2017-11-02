@@ -53,48 +53,35 @@ export default class Signin extends Component {
         return (
 
 
-            <section id="contact" className="section-padding">
-                <div className="container">
-                    <div className="row">
-                        <div className="header-section text-center">
-                            <h2>Sign-in</h2>
-                        </div>
-                        <div id="sendmessage">Your message has been sent. Thank you!</div>
-                        <div id="errormessage"></div>
+            <div>
+                <Form onSubmit={this.handleSubmit.bind(this)}>
+                <FormGroup color={this.state.formValidate.emailInvalid ? "error":"null"}>
+                    <Label for="exampleEmail">Email</Label>{' '}
+                    <Input type="email" name="email" placeholder="E-mail" value={this.state.formValues["email"]} onChange={this.handleChange.bind(this)} />
+                    {this.state.formValidate.emailInvalid
+                        ? <p className ="error">Please input E-mail.</p>
 
-                        <div className="col-md-6 col-sm-6 col-xs-12 left">
-                            <Form onSubmit={this.handleSubmit.bind(this)}>
-                            <FormGroup color={this.state.formValidate.emailInvalid ? "error":"null"}>
-                                <Label for="exampleEmail">Email</Label>{' '}
-                                <Input type="email" name="email" placeholder="E-mail" value={this.state.formValues["email"]} onChange={this.handleChange.bind(this)} />
-                                {this.state.formValidate.emailInvalid
-                                    ? <p className ="error">Please input E-mail.</p>
+                        : null}
+                        {this.state.formValidate.emailPass
+                        ? <p className ="error">E-mail and password do not match.</p>
 
-                                    : null}
-                                    {this.state.formValidate.emailPass
-                                    ? <p className ="error">E-mail and password do not match.</p>
+                        : null}
+                </FormGroup>
+                {' '}
+                <FormGroup color={this.state.formValidate.passwordInvalid ? "error":"null"}>
 
-                                    : null}
-                            </FormGroup>
-                            {' '}
-                            <FormGroup color={this.state.formValidate.passwordInvalid ? "error":"null"}>
+                    <Label for="examplePassword">Password</Label>{' '}
+                    <Input type="password" name="password" placeholder="Password" value={this.state.formValues["password"]} onChange={this.handleChange.bind(this)} />
+                    {this.state.formValidate.passwordInvalid
+                        ?
+                            <p className ="error">Please input password</p>
 
-                                <Label for="examplePassword">Password</Label>{' '}
-                                <Input type="password" name="password" placeholder="Password" value={this.state.formValues["password"]} onChange={this.handleChange.bind(this)} />
-                                {this.state.formValidate.passwordInvalid
-                                    ?
-                                        <p className ="error">Please input password</p>
-
-                                    : null}
-                            </FormGroup>
-                            {' '}
-                                <button type="submit" class="form contact-form-button light-form-button oswald light">Sign In</button>
-                            </Form>
-                            <hr className="bottom-line" />
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        : null}
+                </FormGroup>
+                {' '}
+                    <button type="submit" className="light-form-button">Sign In</button>
+                </Form>
+            </div>
 
     );
   }
