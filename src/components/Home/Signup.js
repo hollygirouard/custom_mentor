@@ -68,7 +68,7 @@ export default class Signup extends Component {
       url: '/serverapi/user.php',
       // Development Config
       // url: 'http://localhost/custom_mentor/serverapi/user.php',
-      data: `requesttype=Signup&data=${JSON.stringify(form)}`,
+      data: `requesttype=Signup&data=${JSON.stringify(form)}`
     }).then((response) => {
       // sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
       console.log(response.data);
