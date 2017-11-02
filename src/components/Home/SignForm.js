@@ -24,8 +24,8 @@ export default class SignForm extends Component {
 
   render() {
     return(
-      <div className="row">
-        <div class="col-2">
+      <div>
+        <div className="text-center">
           <ButtonGroup>
             <Button className="form oswald light" active={this.state.loginVisible} color="primary" onClick={() => this.onLogin()}>Sign-in</Button>
             <Button className="form oswald light" active={this.state.signinVisible} color="primary" onClick={() => this.onSignin()}>Sign-up</Button>
