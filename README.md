@@ -2,6 +2,9 @@
 
 Built in ReactJS from using create-react-app - https://reactjs.org/docs/installation.html
 
+### Install Dependencies
+`npm install`
+
 ### Run Server
 `npm start`
 
@@ -15,7 +18,27 @@ zip and deploy to aws
 No tests available yet. Help by setting up a test!
 
 ### Linting
-No linting available yet. Help by setting up a linter and suggesting linting rules!
+We are using Eslint with the AirBnB style guide for React.js.
+
+#### To get it up and running:
+
+Quick start documentation: https://eslint.org/docs/user-guide/getting-started
+
+1. Make sure Eslint is supported in your text editor.  Installation varies.
+2. Globally install Eslint:
+  `npm install -g eslint`
+3. Often times, your text editor needs to be closed and reopened for linting to take effect.
+4. To lint from command line in the project root directory:
+  `npm run lint`
+4. Rules can be amended or turned off by modifying the .eslintrc.json file.
+5. To turn off rules for a snippet of code (e.g. turn off no-console for http requests)
+  ```
+  /* eslint-disable no-console */
+  // Your code Here
+  /* eslint-enable no-console */
+  ```
+
+  Configuraton Documentation: https://eslint.org/docs/user-guide/configuring
 
 ### Tools
 https://reactstrap.github.io/components/
