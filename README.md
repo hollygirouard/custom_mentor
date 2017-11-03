@@ -15,7 +15,7 @@ zip and deploy to aws
 No tests available yet. Help by setting up a test!
 
 ### Linting
-No linting available yet. Help by setting up a linter and suggesting linting rules!
+https://eslint.org/
 
 ### Tools
 https://reactstrap.github.io/components/
@@ -24,15 +24,9 @@ https://reactstrap.github.io/components/
 
 Owner - Matt Sharratt
 
-Project Manager - Holly White
+Project Manager/Developer - Holly White
 
-Developer - Austin Edwards
-
-Developer - Kelvin Sajere
-
-Developer - Jeff Diers
-
-Developer - Kara Fox  
+Developers - Austin Edwards, Kelvin Sajere, Jeff Diers, Kara Fox, James Sullivan, Jake Feldman, Gabi Procell, Zeb Girouard & General Assembly Denver WDI5
 
 /**************************************************************************************************************************/
 
