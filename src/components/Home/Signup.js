@@ -67,7 +67,6 @@ export default class Signup extends Component {
   render() {
     return (
       <div>
-        <h3>Sign-up</h3>
         <Form className="signup-container" onSubmit={this.handleSubmit.bind(this)}>
           <div>
             <FormGroup color={this.state.formValidate.nameInvalid ? 'error' : 'null'}>
@@ -124,7 +123,7 @@ export default class Signup extends Component {
                 <option value="Both">Both</option>
               </Input>
             </FormGroup>
-            <Button>Submit</Button>
+            <button type="submit" className="light-form-button">Sign Un</button>
             {' '}
           </div>
         </Form>
