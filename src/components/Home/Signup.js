@@ -32,10 +32,11 @@ export default class Signup extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onSignUp(this.state.formValues);
-    this.formValidations(this.state.formValues);
     const form = this.state.formValues;
-    form.name && form.email && form.phone && form.password && form.password === form.confirmPassword ? this.postLogin(form) : null;
+    if(form.name && form.email && form.phone && form.password && form.password === form.confirmPassword) {
+      this.props.onSignUp(this.state.formValues);
+    }
+    this.formValidations(this.state.formValues);
   }
 
   formValidations(form) {
@@ -45,23 +46,6 @@ export default class Signup extends Component {
     form.password ? this.state.formValidate.passwordInvalid = false : this.state.formValidate.passwordInvalid = true;
     form.password !== form.confirmPassword ? this.state.formValidate.passwordMatch = true : this.state.formValidate.passwordMatch = false;
     this.forceUpdate();
-  }
-
-  postLogin(form) {
-    // send data to API
-    axios({
-      method: 'POST',
-      // AWS Config
-      url: '/serverapi/user.php',
-      // Development Config
-      // url: 'http://localhost/custom_mentor/serverapi/user.php',
-      data: `requesttype=Signup&data=${JSON.stringify(form)}`,
-    }).then((response) => {
-      // sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
-      console.log(response.data);
-    }).catch((error) => {
-      console.log(error);
-    });
   }
 
   render() {

@@ -62,18 +62,18 @@ export default class App extends Component {
       />));
   }
 
-  facebook() {
-    window.open('https://www.facebook.com/blossomcarenetwork.org');
-  }
-  twitter() {
-    window.open('https://twitter.com/BlossomCareCO');
-  }
-  linkedin() {
-    window.open('https://www.linkedin.com/company/3800360/');
-  }
-  youtube() {
-    window.open('https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ');
-  }
+  renderRoutes() {
+        return (
+            <div>
+                {
+                    SCREENS.map(screen => (
+                        <Route path={screen.route} key={screen.route} exact
+                                render={this.checkAuth(screen.component)} />
+                    ))
+                }
+            </div>
+        );
+    }
 
     renderNav() {
         return (
@@ -152,6 +152,7 @@ export default class App extends Component {
                         <Route path='/' exact component={HomeContainer} />
                         {this.renderFooter()}
                     </div>}
+                    {this.renderRoutes()}
                 </div>
             </Router>
         );

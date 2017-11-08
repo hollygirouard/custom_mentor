@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { authenticateUser } from '../../actions/login';
+import { createNewUser } from '../../actions/user';
 import Home from './Home';
 
 const mapStateToProps = state => ({
@@ -8,6 +9,11 @@ const mapStateToProps = state => ({
   errorMessage: state.session.errorMessage,
 });
 
-const HomeContainer = connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  authenticateUser: userInfo => dispatch(authenticateUser(userInfo)),
+  createNewUser: newUserInfo => dispatch(createNewUser(newUserInfo)),
+});
+
+const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);
 
 export default HomeContainer;

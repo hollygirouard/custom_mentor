@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Redirect } from 'react-router-dom';
 import Title from './Title';
-import SignFormContainer from './SignFormContainer';
+import SignForm from './SignForm';
 import About from './About';
 import Contact from './Contact';
 // import {Header} from "./Header";
@@ -18,7 +18,12 @@ export default class Home extends Component {
     return (
       <div>
         <div id="title"><Title /></div>
-        <div id="signin"><SignFormContainer /></div>
+        <div id="signin">
+          <SignForm 
+            authenticateUser={this.props.authenticateUser}
+            createNewUser={this.props.createNewUser}
+          />
+        </div>
         <div id="menteeInfo"><MenteeInfo /></div>
         <div id="mentorInfo"><MentorInfo /></div>
         <div id="about"><About /></div>

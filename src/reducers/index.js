@@ -1,3 +1,4 @@
 import session from './sessions';
+import user from './users';
 
-export { session };
+export { session, user };
