@@ -174,7 +174,7 @@ export default class Signup extends Component {
                 <option value="Both">Both</option>
               </Input>
             </FormGroup>
-            <Button>Submit</Button>
+            <button type="submit" className="light-form-button">Sign Un</button>
             {' '}
           </div>
         </Form>
