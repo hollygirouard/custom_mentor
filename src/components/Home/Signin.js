@@ -75,6 +75,11 @@ export default class Signin extends Component {
             {this.state.formValidate.emailInvalid
                       ? <p className="error">Please input E-mail.</p>
 
+                      : null}
+            {this.state.formValidate.emailPass
+                        ? <p className="error">E-mail and password do not match.</p>
+
+                        : null}
             <Label for="examplePassword">Password</Label>{' '}
             <Input
               type="password"
