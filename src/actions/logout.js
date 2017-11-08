@@ -5,7 +5,7 @@ export const userLogout = () => ({
 });
 
 export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
-export const userLogoutSuccess = user => ({
+export const userLogoutSuccess = () => ({
   type: USER_LOGOUT_SUCCESS,
   isLoggedIn: false,
 });

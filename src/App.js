@@ -52,8 +52,21 @@ const SCREENS = [
 ];
 
 export default class App extends Component {
+  static facebook() {
+    window.open('https://www.facebook.com/blossomcarenetwork.org');
+  }
+  static twitter() {
+    window.open('https://twitter.com/BlossomCareCO');
+  }
+  static linkedin() {
+    window.open('https://www.linkedin.com/company/3800360/');
+  }
+  static youtube() {
+    window.open('https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ');
+  }
+
+
   checkAuth(ComponentToRender) {
-    console.log('props', this.props);
     return props => (this.props.isLoggedIn ? <ComponentToRender {...props} /> :
       (<Redirect to={{
                 pathname: '/',
@@ -63,19 +76,21 @@ export default class App extends Component {
   }
 
   renderRoutes() {
-        return (
-            <div>
-                {
-                    SCREENS.map(screen => (
-                        <Route path={screen.route} key={screen.route} exact
-                                render={this.checkAuth(screen.component)} />
-                    ))
-                }
-            </div>
-        );
-    }
-
-    renderNav() {
+    return (
+      <div>
+        {SCREENS.map(screen => (
+          <Route
+            path={screen.route}
+            key={screen.route}
+            exact
+            render={this.checkAuth(screen.component)}
+          />
+        ))}
+      </div>
+    );
+  }
+    
+  renderNav() {
         return (
             <nav className="navbar navbar-default navbar-fixed-top" id={ this.props.isLoggedIn ? "member_sidebar" : "documenter_sidebar" }>
                 <div className="container">
@@ -156,18 +171,5 @@ export default class App extends Component {
                 </div>
             </Router>
         );
-    }
-
-    facebook() {
-        window.open("https://www.facebook.com/blossomcarenetwork.org");
-    }
-    twitter() {
-        window.open("https://twitter.com/BlossomCareCO");
-    }
-    linkedin() {
-        window.open("https://www.linkedin.com/company/3800360/");
-    }
-    youtube() {
-        window.open("https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ");
     }
 }

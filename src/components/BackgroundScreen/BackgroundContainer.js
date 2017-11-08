@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { authenticateUser } from '../../actions/login';
+// import { authenticateUser } from '../../actions/login';
 import Background from './Background';
 
 const mapStateToProps = state => ({
@@ -8,6 +8,6 @@ const mapStateToProps = state => ({
   errorMessage: state.session.errorMessage,
 });
 
-const BackgroundContainer = connect(mapStateToProps)(Background);
+const BackgroundContainer = connect(mapStateToProps, null)(Background);
 
 export default BackgroundContainer;

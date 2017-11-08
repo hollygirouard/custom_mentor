@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { authenticateUser } from '../../actions/login';
+// import { authenticateUser } from '../../actions/login';
 import Schedule from './Schedule';
 
 const mapStateToProps = state => ({
@@ -8,6 +8,6 @@ const mapStateToProps = state => ({
   errorMessage: state.session.errorMessage,
 });
 
-const ScheduleContainer = connect(mapStateToProps)(Schedule);
+const ScheduleContainer = connect(mapStateToProps, null)(Schedule);
 
 export default ScheduleContainer;

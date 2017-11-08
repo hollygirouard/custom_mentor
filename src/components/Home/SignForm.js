@@ -1,16 +1,24 @@
-import React, {Component} from "react";
-import { Button, ButtonGroup } from 'reactstrap'
+import React, { Component } from 'react';
+import { Button, ButtonGroup } from 'reactstrap';
 
-import Signup from "./Signup";
-import Signin from "./Signin";
+import Signup from './Signup';
+import Signin from './Signin';
 
 export default class SignForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loginVisible: true,
-      signinVisible: false
-    }
+      signinVisible: false,
+    };
+  }
+
+  onLogin() {
+    this.setState({ loginVisible: true, signinVisible: false });
+  }
+
+  onSignin() {
+    this.setState({ loginVisible: false, signinVisible: true });
   }
 
   signIn = (userInfo) => {
@@ -100,11 +108,4 @@ export default class SignForm extends Component {
       </div>
     )
   }
-
-  onLogin() {
-      this.setState({loginVisible: true, signinVisible:false});
-  }
-  onSignin() {
-      this.setState({loginVisible: false, signinVisible:true});
-  }
-};
+}

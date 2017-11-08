@@ -8,11 +8,11 @@ const mapStateToProps = state => ({
   errorMessage: state.session.errorMessage,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   userSignOut: () => dispatch(userSignOut()),
 });
 
 
-const AccountContainer = connect(mapStateToProps)(Account);
+const AccountContainer = connect(mapStateToProps, mapDispatchToProps)(Account);
 
 export default AccountContainer;
