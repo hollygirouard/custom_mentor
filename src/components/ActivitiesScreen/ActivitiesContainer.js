@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { authenticateUser } from '../../actions/login';
+// import { authenticateUser } from '../../actions/login';
 import Activities from './Activities';
 
 const mapStateToProps = state => ({
@@ -8,6 +8,6 @@ const mapStateToProps = state => ({
   errorMessage: state.session.errorMessage,
 });
 
-const ActivitiesContainer = connect(mapStateToProps)(Activities);
+const ActivitiesContainer = connect(mapStateToProps, null)(Activities);
 
 export default ActivitiesContainer;

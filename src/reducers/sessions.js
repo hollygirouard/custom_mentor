@@ -1,4 +1,3 @@
-
 const initialState = {
   sendAuthRequest: false,
   isLoggedIn: false,

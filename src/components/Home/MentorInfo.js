@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+/* eslint-disable max-len */
 export default class MentorInfo extends Component {
   render() {
     return (

@@ -6,6 +6,7 @@
     "availity-reactstrap-validation": "^1.4.3",
     "axios": "^0.16.2",
     "bootstrap": "^4.0.0-alpha.6",
+    "classnames": "^2.2.5",
     "react": "^15.6.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-addons-transition-group": "^15.6.2",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "./node_modules/.bin/eslint ./"
   },
   "devDependencies": {
     "eslint": "^4.10.0",

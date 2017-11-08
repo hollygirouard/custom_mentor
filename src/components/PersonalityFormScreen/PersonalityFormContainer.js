@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { authenticateUser } from '../../actions/login';
+// import { authenticateUser } from '../../actions/login';
 import PersonalityForm from './PersonalityForm';
 
 const mapStateToProps = state => ({
@@ -8,6 +8,6 @@ const mapStateToProps = state => ({
   errorMessage: state.session.errorMessage,
 });
 
-const PersonalityFormContainer = connect(mapStateToProps)(PersonalityForm);
+const PersonalityFormContainer = connect(mapStateToProps, null)(PersonalityForm);
 
 export default PersonalityFormContainer;
