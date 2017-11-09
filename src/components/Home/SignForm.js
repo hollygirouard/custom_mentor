@@ -63,7 +63,11 @@ export default class SignForm extends Component {
                   : null
               }
               {this.state.signinVisible
-                  ? <Signup onSignUp={member => this.signUp(member)} />
+                  ?
+                    <Signup
+                      onSignUp={member => this.signUp(member)}
+                      errorMessage={this.props.newUserMessage}
+                    />
                   : null
               }
             </div>

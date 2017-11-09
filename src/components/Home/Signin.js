@@ -46,7 +46,7 @@ export default class Signin extends Component {
     response.data.response === 'failed' ? this.state.formValidate.emailPass = true : this.state.formValidate.emailPass = false;
     this.forceUpdate();
   }
-    /* eslint-enable */
+  /* eslint-enable */
 
   render() {
     return (

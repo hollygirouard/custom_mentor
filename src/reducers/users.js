@@ -5,13 +5,13 @@ const initialState = {
     errorMessage: null,
   };
   
-  const user = (state = initialState, action) => {
+  const users = (state = initialState, action) => {
     switch (action.type) {
       case 'NEW_USER_SUCCESS':
         return Object.assign({}, state, {
           creatingUser: false,
           currentUser: action.user,
-          errorMessage: null,
+          errorMessage: action.errorMessage,
         });
   
       case 'NEW_USER':
@@ -32,5 +32,5 @@ const initialState = {
     }
   };
   
-  export default user;
+  export default users;
   /* eslint-disable */

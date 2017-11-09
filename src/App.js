@@ -52,19 +52,6 @@ const SCREENS = [
 ];
 
 export default class App extends Component {
-  static facebook() {
-    window.open('https://www.facebook.com/blossomcarenetwork.org');
-  }
-  static twitter() {
-    window.open('https://twitter.com/BlossomCareCO');
-  }
-  static linkedin() {
-    window.open('https://www.linkedin.com/company/3800360/');
-  }
-  static youtube() {
-    window.open('https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ');
-  }
-
   checkAuth(ComponentToRender) {
     return props => (this.props.isLoggedIn ? <ComponentToRender {...props} /> :
       (<Redirect to={{
@@ -116,22 +103,31 @@ export default class App extends Component {
     );
   }
 
+  /* eslint-disable */
   renderFooter() {
     return (
       <footer id="footer" className="footer">
         <div className="container text-center">
           <ul className="social-links">
             <li>
-              <button onClick={this.facebook}><i className="fa fa-facebook fa-fw" /></button>
+              <a href="https://www.facebook.com/blossomcarenetwork.org" target="_blank" rel="noopener noreferrer">
+                <i className="fa fa-facebook fa-fw" />
+              </a>
             </li>
             <li>
-              <button onClick={this.twitter}><i className="fa fa-twitter fa-fw" /></button>
+              <a href="https://twitter.com/BlossomCareCO" target="_blank" rel="noopener noreferrer">
+                <i className="fa fa-twitter fa-fw" />
+              </a>
             </li>
             <li>
-              <button onClick={this.linkedin}><i className="fa fa-linkedin fa-fw" /></button>
+              <a href="https://www.linkedin.com/company/3800360/" target="_blank" rel="noopener noreferrer">
+                <i className="fa fa-linkedin fa-fw" />
+              </a>
             </li>
             <li>
-              <button onClick={this.youtube}><i className="fa fa-youtube fa-fw" /></button>
+              <a href="https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ" target="_blank" rel="noopener noreferrer">
+                <i className="fa fa-youtube fa-fw" />
+              </a>
             </li>
           </ul>
           ©2017 CustomMentor.com | All rights reserved
@@ -146,6 +142,7 @@ export default class App extends Component {
       </footer>
     );
   }
+  /* eslint-enable */
 
   renderLinks() {
     return this.props.isLoggedIn ? (

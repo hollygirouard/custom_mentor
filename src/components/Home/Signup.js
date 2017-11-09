@@ -18,7 +18,6 @@ export default class Signup extends Component {
         emailInvalid: null,
         phoneInvalid: null,
         passwordInvalid: null,
-
       },
     };
     this.handleChange = this.handleChange.bind(this);
@@ -77,7 +76,7 @@ export default class Signup extends Component {
                 type="text"
                 name="name"
                 placeholder="Name"
-                value={this.state.formValues.name}
+                value={this.state.formValues.name || ''}
                 onChange={this.handleChange}
               />
               {this.state.formValidate.nameInvalid
@@ -92,7 +91,7 @@ export default class Signup extends Component {
                 type="tel"
                 name="phone"
                 placeholder="Phone"
-                value={this.state.formValues.phone}
+                value={this.state.formValues.phone || ''}
                 onChange={this.handleChange}
               />
               {this.state.formValidate.phoneInvalid
@@ -105,8 +104,8 @@ export default class Signup extends Component {
               <Input
                 type="email"
                 name="email"
-                placeholder="E-ail"
-                value={this.state.formValues.mail}
+                placeholder="Email"
+                value={this.state.formValues.email || ''}
                 onChange={this.handleChange}
               />
               {this.state.formValidate.emailInvalid
@@ -122,7 +121,7 @@ export default class Signup extends Component {
                 type="password"
                 name="password"
                 placeholder="Password"
-                value={this.state.formValues.password}
+                value={this.state.formValues.password || ''}
                 onChange={this.handleChange}
               />
               {this.state.formValidate.passwordInvalid
@@ -137,7 +136,7 @@ export default class Signup extends Component {
                 type="password"
                 name="confirmPassword"
                 placeholder="Confirm Password"
-                value={this.state.formValues.confirmPassword}
+                value={this.state.formValues.confirmPassword || ''}
                 onChange={this.handleChange}
               />
               {this.state.formValidate.passwordMatch
@@ -162,6 +161,10 @@ export default class Signup extends Component {
               </Input>
             </FormGroup>
             <button type="submit" className="light-form-button">Sign Un</button>
+            {this.props.errorMessage
+                ? <p className="error">{this.props.errorMessage}</p>
+
+                : null}
             {' '}
           </div>
         </Form>

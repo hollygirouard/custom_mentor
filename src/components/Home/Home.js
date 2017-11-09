@@ -22,6 +22,7 @@ export default class Home extends Component {
           <SignForm
             authenticateUser={this.props.authenticateUser}
             createNewUser={this.props.createNewUser}
+            newUserMessage={this.props.newUserMessage}
           />
         </div>
         <div id="menteeInfo"><MenteeInfo /></div>
