@@ -97,7 +97,7 @@ export default class PersonalityForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="screen">
         <h2>Mentor Profile</h2>
         <form onSubmit={this.handleSubmit}>
           <p><b>Goals: What area(s) do you want to mentor in?</b></p>

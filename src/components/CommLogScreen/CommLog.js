@@ -7,8 +7,7 @@ export default class CommLog extends Component {
   render() {
     const user = this.props.currentUser.data.user_details;
     return (
-      <div>
-
+      <div className="screen">
         <h1>Communication Log</h1>
         <h3>{user.name}</h3>
         <h4>{user.type}</h4>

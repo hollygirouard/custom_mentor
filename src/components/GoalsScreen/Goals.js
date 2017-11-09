@@ -25,7 +25,7 @@ export default class Goals extends Component {
   render() {
     const user = this.props.currentUser.data.user_details;
     return (
-      <div>
+      <div className="screen">
         <h1>Goals</h1>
         <h3>{user.name}</h3>
         <h4>{user.type}</h4>

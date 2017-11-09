@@ -65,7 +65,6 @@ export default class App extends Component {
     window.open('https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ');
   }
 
-
   checkAuth(ComponentToRender) {
     return props => (this.props.isLoggedIn ? <ComponentToRender {...props} /> :
       (<Redirect to={{
@@ -105,13 +104,7 @@ export default class App extends Component {
                         </a>
                     </div>
                     <div className="collapse navbar-collapse" id="myNavbar">
-                        <ul className="nav navbar-nav navbar-right">
-                            <li><a href ="#signin">Sign-In/Sign-Up</a></li>
-                            <li><a href ="#menteeInfo">Find a Mentor</a></li>
-                            <li><a href ="#mentorInfo">Become a Mentor</a></li>
-                            <li><a href ="#about">About</a></li>
-                            <li><a href ="#contact">Contact</a></li>
-                        </ul>
+                        {this.renderLinks()}
                     </div>
                 </div>
             </nav>
@@ -123,10 +116,10 @@ export default class App extends Component {
             <footer id="footer" className="footer">
             <div className="container text-center">        
               <ul className="social-links">
-                <li><a href="#" onClick={this.facebook}><i className="fa fa-facebook fa-fw"></i></a></li>
-                <li><a href="#" onClick={this.twitter}><i className="fa fa-twitter fa-fw"></i></a></li>
-                <li><a href="#" onClick={this.linkedin}><i className="fa fa-linkedin fa-fw"></i></a></li>
-                <li><a href="#" onClick={this.youtube}><i className="fa fa-youtube fa-fw"></i></a></li>
+                <li><a href="" onClick={this.facebook}><i className="fa fa-facebook fa-fw"></i></a></li>
+                <li><a href="" onClick={this.twitter}><i className="fa fa-twitter fa-fw"></i></a></li>
+                <li><a href="" onClick={this.linkedin}><i className="fa fa-linkedin fa-fw"></i></a></li>
+                <li><a href="" onClick={this.youtube}><i className="fa fa-youtube fa-fw"></i></a></li>
               </ul>
               ©2017 CustomMentor.com | All rights reserved
               <div className="credits">
@@ -143,7 +136,7 @@ export default class App extends Component {
 
     renderLinks() {
         return this.props.isLoggedIn ? (
-            <ul className="nav">
+            <ul className="nav navbar-nav navbar-right">
                 {
                     SCREENS
                         .filter(item => item.mainMenu)
@@ -152,9 +145,14 @@ export default class App extends Component {
                         ))
                 }
             </ul>
-        ) : (
-            <ul className="nav" >
-            </ul>
+        ) : (    
+        <ul className="nav navbar-nav navbar-right">
+            <li><a href ="#signin">Sign-In/Sign-Up</a></li>
+            <li><a href ="#menteeInfo">Find a Mentor</a></li>
+            <li><a href ="#mentorInfo">Become a Mentor</a></li>
+            <li><a href ="#about">About</a></li>
+            <li><a href ="#contact">Contact</a></li>
+        </ul>
         )
     }
 
