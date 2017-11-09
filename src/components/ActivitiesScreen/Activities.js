@@ -4,7 +4,7 @@ export default class Activities extends Component {
   render() {
     // const user = this.props.currentUser;
     return (
-      <div>
+      <div className="screen">
         <h1>Activities</h1>
       </div>
     );

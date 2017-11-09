@@ -4,7 +4,7 @@ export default class Events extends Component {
   render() {
     // const user = this.props.currentUser;
     return (
-      <div>
+      <div className="screen">
         <h1>Events Screen</h1>
       </div>
     );

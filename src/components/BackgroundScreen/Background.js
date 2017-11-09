@@ -4,7 +4,7 @@ export default class Background extends Component {
   render() {
     // const user = this.props.currentUser;
     return (
-      <div>
+      <div className="screen">
         <h1>Background Screen</h1>
       </div>
     );

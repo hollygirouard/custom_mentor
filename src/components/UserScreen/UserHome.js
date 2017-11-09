@@ -6,7 +6,7 @@ export default class UserHome extends Component {
     const user = this.props.currentUser.data.user_details;
 
     return (
-      <div>
+      <div className="screen">
         <h1>User Home Screen</h1>
         <h3>{user.name}</h3>
         <h4>{user.type}</h4>
