@@ -52,20 +52,6 @@ const SCREENS = [
 ];
 
 export default class App extends Component {
-  static facebook() {
-    window.open('https://www.facebook.com/blossomcarenetwork.org');
-  }
-  static twitter() {
-    window.open('https://twitter.com/BlossomCareCO');
-  }
-  static linkedin() {
-    window.open('https://www.linkedin.com/company/3800360/');
-  }
-  static youtube() {
-    window.open('https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ');
-  }
-
-
   checkAuth(ComponentToRender) {
     return props => (this.props.isLoggedIn ? <ComponentToRender {...props} /> :
       (<Redirect to={{
@@ -89,87 +75,118 @@ export default class App extends Component {
       </div>
     );
   }
-    
+
   renderNav() {
-        return (
-            <nav className="navbar navbar-default navbar-fixed-top" id={ this.props.isLoggedIn ? "member_sidebar" : "documenter_sidebar" }>
-                <div className="container">
-                    <div className="navbar-header">
-                        <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
-                        <a className="navbar-brand" href="index.html">
-                        <img  alt = "CustomMentor" className="logo" src={process.env.PUBLIC_URL + '/image/CustomMentorLogo.png'}/>
-                        </a>
-                    </div>
-                    <div className="collapse navbar-collapse" id="myNavbar">
-                        <ul className="nav navbar-nav navbar-right">
-                            <li><a href ="#signin">Sign-In/Sign-Up</a></li>
-                            <li><a href ="#menteeInfo">Find a Mentor</a></li>
-                            <li><a href ="#mentorInfo">Become a Mentor</a></li>
-                            <li><a href ="#about">About</a></li>
-                            <li><a href ="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        )
-    }
+    return (
+      <nav className="navbar navbar-default navbar-fixed-top" id={this.props.isLoggedIn ? 'member_sidebar' : 'documenter_sidebar'}>
+        <div className="container">
+          <div className="navbar-header">
+            <button
+              type="button"
+              className="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#myNavbar"
+            >
+              <span className="icon-bar" />
+              <span className="icon-bar" />
+              <span className="icon-bar" />
+            </button>
+            <a className="navbar-brand" href="index.html">
+              <img alt="CustomMentor" className="logo" src={`${process.env.PUBLIC_URL}/image/CustomMentorLogo.png`} />
+            </a>
+          </div>
+          <div className="collapse navbar-collapse" id="myNavbar">
+            {this.renderLinks()}
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
-    renderFooter() {
-        return(
-            <footer id="footer" className="footer">
-            <div className="container text-center">        
-              <ul className="social-links">
-                <li><a href="#" onClick={this.facebook}><i className="fa fa-facebook fa-fw"></i></a></li>
-                <li><a href="#" onClick={this.twitter}><i className="fa fa-twitter fa-fw"></i></a></li>
-                <li><a href="#" onClick={this.linkedin}><i className="fa fa-linkedin fa-fw"></i></a></li>
-                <li><a href="#" onClick={this.youtube}><i className="fa fa-youtube fa-fw"></i></a></li>
-              </ul>
-              ©2017 CustomMentor.com | All rights reserved
-              <div className="credits">
-                  {/* All the links in the footer should remain intact.
-                  You can delete the links only if you purchased the pro version.
-                  Licensing information: https://bootstrapmade.com/license/
-                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Mentor */}
-                Designed by <a href="https://bootstrapmade.com/" target="blank">BootstrapMade.com</a>
-              </div>
+  /* eslint-disable */
+  renderFooter() {
+    return (
+      <footer id="footer" className="footer">
+        <div className="container text-center">
+          <ul className="social-links">
+            <li>
+              <a href="https://www.facebook.com/blossomcarenetwork.org" target="_blank" rel="noopener noreferrer">
+                <i className="fa fa-facebook fa-fw" />
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/BlossomCareCO" target="_blank" rel="noopener noreferrer">
+                <i className="fa fa-twitter fa-fw" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/3800360/" target="_blank" rel="noopener noreferrer">
+                <i className="fa fa-linkedin fa-fw" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/channel/UCA1mpGozH327Ca2NfSSYUEQ" target="_blank" rel="noopener noreferrer">
+                <i className="fa fa-youtube fa-fw" />
+              </a>
+            </li>
+          </ul>
+          ©2017 CustomMentor.com | All rights reserved
+          <div className="credits">
+            {/* All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Mentor */}
+            Designed by <a href="https://bootstrapmade.com/" target="blank">BootstrapMade.com</a>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+  /* eslint-enable */
+
+  renderLinks() {
+    return this.props.isLoggedIn ? (
+      <ul className="nav navbar-nav navbar-right">
+        {
+            SCREENS
+                .filter(item => item.mainMenu)
+                .map(screen => (
+                  <li key={screen.title}>
+                    <NavLink
+                      to={screen.route}
+                      key={screen.title}
+                    >
+                      {screen.title}
+                    </NavLink>
+                  </li>
+                ))
+        }
+      </ul>
+    ) : (
+      <ul className="nav navbar-nav navbar-right">
+        <li><a href="#signin">Sign-In/Sign-Up</a></li>
+        <li><a href="#menteeInfo">Find a Mentor</a></li>
+        <li><a href="#mentorInfo">Become a Mentor</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    );
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+          {this.renderNav()}
+          {
+            <div className="home">
+              <Route path="/" exact component={HomeContainer} />
+              {this.renderRoutes()}
+              {this.renderFooter()}
             </div>
-          </footer>
-        )
-    }
-
-    renderLinks() {
-        return this.props.isLoggedIn ? (
-            <ul className="nav">
-                {
-                    SCREENS
-                        .filter(item => item.mainMenu)
-                        .map(screen => (
-                            <li key={screen.title}><NavLink to={screen.route} key={screen.title}>{screen.title}</NavLink></li>
-                        ))
-                }
-            </ul>
-        ) : (
-            <ul className="nav" >
-            </ul>
-        )
-    }
-
-    render() {
-        return (
-            <Router>
-                <div>
-                    {this.renderNav()}
-                    {<div className="home">
-                        <Route path='/' exact component={HomeContainer} />
-                        {this.renderRoutes()}
-                        {this.renderFooter()}
-                    </div>}
-                </div>
-            </Router>
-        );
-    }
+          }
+        </div>
+      </Router>
+    );
+  }
 }

@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Redirect } from 'react-router-dom';
 import Title from './Title';
 import SignForm from './SignForm';
 import About from './About';
 import Contact from './Contact';
-// import {Header} from "./Header";
 import MenteeInfo from '../Home/MenteeInfo';
 import MentorInfo from '../Home/MentorInfo';
 
 
 export default class Home extends Component {
-  render() {
-    if (this.props.isLoggedIn) {
+  componentWillUpdate(newProps) {
+    if (newProps.isLoggedIn) {
       this.props.history.push('/profile');
     }
+  }
 
+  render() {
     return (
       <div>
         <div id="title"><Title /></div>
         <div id="signin">
-          <SignForm 
+          <SignForm
             authenticateUser={this.props.authenticateUser}
             createNewUser={this.props.createNewUser}
+            newUserMessage={this.props.newUserMessage}
           />
         </div>
         <div id="menteeInfo"><MenteeInfo /></div>

@@ -7,9 +7,10 @@ const mapStateToProps = state => ({
   isLoggedIn: state.session.isLoggedIn,
   currentUser: state.session.currentUser,
   errorMessage: state.session.errorMessage,
+  newUserMessage: state.users.errorMessage,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   authenticateUser: userInfo => dispatch(authenticateUser(userInfo)),
   createNewUser: newUserInfo => dispatch(createNewUser(newUserInfo)),
 });

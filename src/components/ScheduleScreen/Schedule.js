@@ -5,7 +5,7 @@ export default class Schedule extends Component {
   render() {
     // const user = this.props.currentUser;
     return (
-      <div>
+      <div className="screen">
         <h1>Schedule Screen</h1>
         <Appointment />
       </div>

@@ -24,7 +24,7 @@ export default class Reviews extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="screen">
         <h1>Reviews</h1>
         <Nav tabs>
           <NavItem>

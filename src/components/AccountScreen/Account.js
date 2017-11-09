@@ -26,7 +26,7 @@ export default class Account extends Component {
   render() {
     const user = this.props.currentUser.data.user_details;
     return (
-      <div>
+      <div className="screen">
         <div className="accountTitle">
 
           <h1>Welcome, {user.name}</h1>

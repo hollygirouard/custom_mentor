@@ -1,5 +1,5 @@
 /* eslint-disable */
 import session from './sessions';
-import user from './users';
+import users from './users';
 
-export { session, user };
+export { session, users };

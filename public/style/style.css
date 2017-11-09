@@ -14,3 +14,7 @@
 .footer {
     padding: 0 0 20px;
 }
+.screen {
+    margin-top: 220px;
+    min-height: calc(100vh - 220px)
+}
