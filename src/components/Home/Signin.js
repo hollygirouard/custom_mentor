@@ -8,7 +8,7 @@ export default class Signin extends Component {
       formValues: {},
       formValidate: {
         email: false,
-        password: false
+        password: false,
       },
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,7 +27,7 @@ export default class Signin extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let formValues = this.state.formValues
+    const { formValues } = this.state;
     this.props.onSignIn(formValues);
     // this.formValidations(this.state.formValues);
   }
@@ -91,5 +91,3 @@ export default class Signin extends Component {
     );
   }
 }
-
-

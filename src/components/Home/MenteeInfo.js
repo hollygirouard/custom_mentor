@@ -21,7 +21,7 @@ export default class MenteeInfo extends Component {
                       <p>Whether it is saving for a vacation or retirement, losing weight or getting fit, starting a business or getting a promotion, passing a course or finding your life’s purpose, and anything else, a good mentor is essential.</p>
                     </div>
                     <div className="fea-img pull-left">
-                      <i className="fa fa-css3"></i>
+                      <i className="fa fa-css3" />
                     </div>
                   </div>
                 </div>
@@ -29,11 +29,10 @@ export default class MenteeInfo extends Component {
                   <div className="col-md-4">
                     <div className="heading pull-right">
                       <h4>Personalized Experience</h4>
-                      <p>Specific personalities and needs of every person vary, so we tailor to your exact specifications.
-                        We create a secure atmosphere and match for your personalized profile.</p>
+                      <p>Specific personalities and needs of every person vary, so we tailor to your exact specifications. We create a secure atmosphere and match for your personalized profile.</p>
                     </div>
                     <div className="fea-img pull-left">
-                      <i className="fa fa-drupal"></i>
+                      <i className="fa fa-drupal" />
                     </div>
                   </div>
                 </div>
@@ -53,7 +52,7 @@ export default class MenteeInfo extends Component {
                       {/* <p>Encouragement for faster learning and growth—both personal and professional</p> */}
                     </div>
                     <div className="fea-img pull-left">
-                      <i className="fa fa-trophy"></i>
+                      <i className="fa fa-trophy" />
                     </div>
                   </div>
                 </div>

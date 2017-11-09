@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 const initialState = {
     creatingUser: false,
     currentUser: null,
@@ -33,4 +33,4 @@ const initialState = {
   };
   
   export default user;
-  
+  /* eslint-disable */

@@ -39,14 +39,18 @@ export default class Signup extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const form = this.state.formValues;
-    if(form.name && form.email && form.phone && form.password && form.password === form.confirmPassword) {
+    if (form.name &&
+        form.email &&
+        form.phone &&
+        form.password &&
+        form.password === form.confirmPassword) {
       this.props.onSignUp(this.state.formValues);
     }
     this.formValidations(this.state.formValues);
   }
 
   formValidations(form) {
-    const { formValidate } = this.state
+    const { formValidate } = this.state;
     form.name ? formValidate.nameInvalid = false :
       formValidate.nameInvalid = true;
     form.email ? formValidate.emailInvalid = false :
@@ -57,7 +61,7 @@ export default class Signup extends Component {
       formValidate.passwordInvalid = true;
     form.password !== form.confirmPassword ? formValidate.passwordMatch = true :
       formValidate.passwordMatch = false;
-    this.setState({ formValidate })
+    this.setState({ formValidate });
     this.forceUpdate();
   }
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios'
 
 export const NEW_USER = 'NEW_USER';
@@ -23,7 +24,7 @@ export const newUserFailure = (errorMessage) => {
         type: NEW_USER_FAILURE,
         errorMessage,
     };
-}
+};
 
 export const createNewUser = (newUserInfo) => {
     return (dispatch) => {
@@ -47,3 +48,4 @@ export const createNewUser = (newUserInfo) => {
         });
     }
 }
+/* eslint-disable */
