@@ -165,9 +165,9 @@ export default class App extends Component {
                     {this.renderNav()}
                     {<div className="home">
                         <Route path='/' exact component={HomeContainer} />
+                        {this.renderRoutes()}
                         {this.renderFooter()}
                     </div>}
-                    {this.renderRoutes()}
                 </div>
             </Router>
         );

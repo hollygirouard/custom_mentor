@@ -6,7 +6,10 @@ export default class Signin extends Component {
     super(props);
     this.state = {
       formValues: {},
-      formValidate: {},
+      formValidate: {
+        email: false,
+        password: false
+      },
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -24,13 +27,18 @@ export default class Signin extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onSignIn(this.state.formValues);
-    this.formValidations(this.state.formValues);
+    let formValues = this.state.formValues
+    this.props.onSignIn(formValues);
+    // this.formValidations(this.state.formValues);
   }
   /* eslint-disable */
   formValidations(form) {
-    form.email ? this.state.formValidate.emailInvalid = false : this.state.formValidate.emailInvalid = true;
-    form.password ? this.state.formValidate.passwordInvalid = false : this.state.formValidate.passwordInvalid = true;
+    const { formValidate } = this.state
+    const emailValid = form.email ? false : true;
+    const passwordValid = form.password ? false : true;
+    formValidate.email= emailValid
+    formValidate.password = passwordValid
+    this.setState({ formValidate })   
     this.forceUpdate();
   }
 
@@ -51,7 +59,7 @@ export default class Signin extends Component {
               type="email"
               name="email"
               placeholder="E-mail"
-              value={this.state.formValues.email}
+              value={this.state.formValues.email || ''}
               onChange={this.handleChange}
             />
             {this.state.formValidate.emailInvalid
@@ -67,7 +75,7 @@ export default class Signin extends Component {
               type="password"
               name="password"
               placeholder="Password"
-              value={this.state.formValues.password}
+              value={this.state.formValues.password || ''}
               onChange={this.handleChange}
             />
             {this.state.formValidate.passwordInvalid

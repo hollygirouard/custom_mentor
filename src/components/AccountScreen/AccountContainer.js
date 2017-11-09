@@ -12,7 +12,6 @@ const mapDispatchToProps = dispatch => ({
   userSignOut: () => dispatch(userSignOut()),
 });
 
-
 const AccountContainer = connect(mapStateToProps, mapDispatchToProps)(Account);
 
 export default AccountContainer;
