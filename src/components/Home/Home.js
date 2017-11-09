@@ -10,11 +10,13 @@ import MentorInfo from '../Home/MentorInfo';
 
 
 export default class Home extends Component {
-  render() {
-    if (this.props.isLoggedIn) {
+  componentWillUpdate(newProps) {
+    if (newProps.isLoggedIn) {
       this.props.history.push('/profile');
     }
+  }
 
+  render() {
     return (
       <div>
         <div id="title"><Title /></div>

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import {
-  Button,
   Form,
   FormGroup,
   Label,
@@ -15,7 +13,13 @@ export default class Signup extends Component {
       formValues: {
         type: 'Mentee',
       },
-      formValidate: {},
+      formValidate: {
+        nameInvalid: null,
+        emailInvalid: null,
+        phoneInvalid: null,
+        passwordInvalid: null,
+
+      },
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,16 +46,18 @@ export default class Signup extends Component {
   }
 
   formValidations(form) {
-    form.name ? this.state.formValidate.nameInvalid = false :
-      this.state.formValidate.nameInvalid = true;
-    form.email ? this.state.formValidate.emailInvalid = false :
-      this.state.formValidate.emailInvalid = true;
-    form.phone ? this.state.formValidate.phoneInvalid = false :
-      this.state.formValidate.phoneInvalid = true;
-    form.password ? this.state.formValidate.passwordInvalid = false :
-      this.state.formValidate.passwordInvalid = true;
-    form.password !== form.confirmPassword ? this.state.formValidate.passwordMatch = true :
-      this.state.formValidate.passwordMatch = false;
+    const { formValidate } = this.state
+    form.name ? formValidate.nameInvalid = false :
+      formValidate.nameInvalid = true;
+    form.email ? formValidate.emailInvalid = false :
+      formValidate.emailInvalid = true;
+    form.phone ? formValidate.phoneInvalid = false :
+      formValidate.phoneInvalid = true;
+    form.password ? formValidate.passwordInvalid = false :
+      formValidate.passwordInvalid = true;
+    form.password !== form.confirmPassword ? formValidate.passwordMatch = true :
+      formValidate.passwordMatch = false;
+    this.setState({ formValidate })
     this.forceUpdate();
   }
 

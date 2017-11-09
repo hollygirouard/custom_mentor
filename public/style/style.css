@@ -2,6 +2,9 @@
     height: 70px;
     margin: 5px;
 }
+.navbar {
+    position: unset;
+}
 .navbar-default .navbar-brand img {
     max-height: 100%;
 }
