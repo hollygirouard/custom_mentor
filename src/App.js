@@ -91,7 +91,7 @@ export default class App extends Component {
               <span className="icon-bar" />
               <span className="icon-bar" />
             </button>
-            <a className="navbar-brand" href="index.html">
+            <a className="navbar-brand" href="/">
               <img alt="CustomMentor" className="logo" src={`${process.env.PUBLIC_URL}/image/CustomMentorLogo.png`} />
             </a>
           </div>
