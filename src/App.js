@@ -5,6 +5,7 @@ import HomeContainer from './components/Home/HomeContainer';
 import UserContainer from './components/UserScreen/UserContainer';
 import GoalsContainer from './components/GoalsScreen/GoalsContainer';
 import PersonalityFormContainer from './components/PersonalityFormScreen/PersonalityFormContainer';
+import PersonalityFormContainer from './components/MentorSearch/MentorSearchContainer';
 import AccountContainer from './components/AccountScreen/AccountContainer';
 import ScheduleContainer from './components/ScheduleScreen/ScheduleContainer';
 import ReviewsContainer from './components/ReviewsScreen/ReviewsContainer';
@@ -180,7 +181,7 @@ export default class App extends Component {
           {this.renderNav()}
           {
             <div className="home">
-              <Route path="/" exact component={HomeContainer} />
+              <Route path="/" exact component={MentorSearchContainer} />
               {this.renderRoutes()}
               {this.renderFooter()}
             </div>
