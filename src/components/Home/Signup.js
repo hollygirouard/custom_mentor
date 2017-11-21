@@ -160,7 +160,7 @@ export default class Signup extends Component {
                 <option value="Both">Both</option>
               </Input>
             </FormGroup>
-            <button type="submit" className="light-form-button">Sign Un</button>
+            <button type="submit" className="light-form-button">Sign Up</button>
             {this.props.errorMessage
                 ? <p className="error">{this.props.errorMessage}</p>
 
