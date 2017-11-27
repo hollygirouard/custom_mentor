@@ -80,13 +80,28 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `phone`) VALUES
 -- Indexes for dumped tables
 --
 
+CREATE TABLE `blogs` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `date` datetime NOT NULL,
+  `content` text NOT NULL,
+  `author_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_id` (`author_id`),
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3,
+  CONSTRAINT `blogs_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+INSERT INTO `blogs` VALUES ('test title', '2017-11-27 14:50:30', 'this is the content', 1);
 --
 -- Indexes for table `profile`
 --
 ALTER TABLE `profile`
   ADD PRIMARY KEY (`profile_id`),
   ADD KEY `fk_id` (`fk_id`);
-
 --
 -- Indexes for table `users`
 --
