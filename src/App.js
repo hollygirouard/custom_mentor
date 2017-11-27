@@ -5,7 +5,7 @@ import HomeContainer from './components/Home/HomeContainer';
 import UserContainer from './components/UserScreen/UserContainer';
 import GoalsContainer from './components/GoalsScreen/GoalsContainer';
 import PersonalityFormContainer from './components/PersonalityFormScreen/PersonalityFormContainer';
-import PersonalityFormContainer from './components/MentorSearch/MentorSearchContainer';
+import MentorSearchContainer from './components/MentorSearch/MentorSearchContainer';
 import AccountContainer from './components/AccountScreen/AccountContainer';
 import ScheduleContainer from './components/ScheduleScreen/ScheduleContainer';
 import ReviewsContainer from './components/ReviewsScreen/ReviewsContainer';
@@ -46,6 +46,9 @@ const SCREENS = [
   },
   {
     title: 'Personality Form', route: '/form', component: PersonalityFormContainer, mainMenu: true,
+  },
+  {
+    title: 'MentorSearch Form', route: '/form', component: MentorSearchContainer, mainMenu: true,
   },
   {
     title: 'Contact', route: '/contact', component: Contact, mainMenu: true,
