@@ -1,89 +1,93 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import axios from 'axios'
 
-export class Signin extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            formValues: {},
-            formValidate: {}
+export default class Signin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formValues: {},
+      formValidate: {
+        email: false,
+        password: false,
+      },
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-        }
-    }
-    handleChange(event) {
-        event.preventDefault();
-        let formValues = this.state.formValues;
-        let name = event.target.name;
-        let value = event.target.value;
-        formValues[name] = value;
-        this.setState({formValues})
-        this.formValidations(formValues);
+  handleChange(event) {
+    event.preventDefault();
+    const { formValues } = this.state;
+    const { name } = event.target;
+    const { value } = event.target;
+    formValues[name] = value;
+    this.setState({ formValues });
+    this.formValidations(formValues);
+  }
 
-    }
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.onSignIn(this.state.formValues);
-        this.formValidations(this.state.formValues);
+  handleSubmit(event) {
+    event.preventDefault();
+    const { formValues } = this.state;
+    this.props.onSignIn(formValues);
+    // this.formValidations(this.state.formValues);
+  }
+  /* eslint-disable */
+  formValidations(form) {
+    const { formValidate } = this.state
+    const emailValid = form.email ? false : true;
+    const passwordValid = form.password ? false : true;
+    formValidate.email= emailValid
+    formValidate.password = passwordValid
+    this.setState({ formValidate })   
+    this.forceUpdate();
+  }
 
-		//  axios({
-    //     method: 'POST',
-    //     url: '/custommentor/custom_mentor/serverapi/user.php',
-    //     data: "requesttype=Signin&data=" + (JSON.stringify(this.state.formValues))
-    //   }).then(function (response) {
-    //     //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
-    //     //sample response :{"response":"success","error":"",type:"Mentee"} :redirect to signin based on response
-    //     console.log(response.data);
-    //   }).catch(function (error) {
-    //     console.log(error);
-    //   });
+  emailPass(response) {
+    response.data.response === 'failed' ? this.state.formValidate.emailPass = true : this.state.formValidate.emailPass = false;
+    this.forceUpdate();
+  }
+  /* eslint-enable */
 
-    }
-
-    formValidations(form) {
-      form.email ? this.state.formValidate.emailInvalid = false :this.state.formValidate.emailInvalid =true;
-      form.password ? this.state.formValidate.passwordInvalid = false :this.state.formValidate.passwordInvalid =true;
-      this.forceUpdate()
-    }
-
-    emailPass(response){
-      response.data.response === "failed" ? this.state.formValidate.emailPass = true : this.state.formValidate.emailPass = false;
-      this.forceUpdate()
-    }
-
-        render(){
-        return (
-          <div>
-            <h3>Sign-in</h3>
-            <Form onSubmit={this.handleSubmit.bind(this)}>
-              <FormGroup color={this.state.formValidate.emailInvalid ? "error":"null"}>
-                    <Label for="exampleEmail">Email</Label>{' '}
-                    <Input type="email" name="email" placeholder="E-mail" value={this.state.formValues["email"]} onChange={this.handleChange.bind(this)} />
-                    {this.state.formValidate.emailInvalid
-                      ? <p className ="error">Please input E-mail.</p>
+  render() {
+    return (
+      <div>
+        <h3>Sign-in</h3>
+        <Form onSubmit={this.handleSubmit}>
+          <FormGroup color={this.state.formValidate.emailInvalid ? 'error' : 'null'}>
+            <Label for="exampleEmail">Email</Label>{' '}
+            <Input
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              value={this.state.formValues.email || ''}
+              onChange={this.handleChange}
+            />
+            {this.state.formValidate.emailInvalid
+                      ? <p className="error">Please input E-mail.</p>
 
                       : null}
-                      {this.state.formValidate.emailPass
-                        ? <p className ="error">E-mail and password do not match.</p>
+            {this.state.formValidate.emailPass
+                        ? <p className="error">E-mail and password do not match.</p>
 
                         : null}
-                </FormGroup>
-                {' '}
-                <FormGroup color={this.state.formValidate.passwordInvalid ? "error":"null"}>
-
-                    <Label for="examplePassword">Password</Label>{' '}
-                    <Input type="password" name="password" placeholder="Password" value={this.state.formValues["password"]} onChange={this.handleChange.bind(this)} />
-                    {this.state.formValidate.passwordInvalid
+            <Label for="examplePassword">Password</Label>{' '}
+            <Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={this.state.formValues.password || ''}
+              onChange={this.handleChange}
+            />
+            {this.state.formValidate.passwordInvalid
                       ?
-                          <p className ="error">Please input password</p>
+                        <p className="error">Please input password</p>
 
                       : null}
-                </FormGroup>
-                {' '}
-                    <Button>Submit</Button>
-            </Form>
-         </div>
-
-      )
-    }
+          </FormGroup>
+          {' '}
+          <Button>Submit</Button>
+        </Form>
+      </div>
+    );
+  }
 }

@@ -9,7 +9,7 @@ export default class Events extends Component {
     render() {
         let user = this.props.currentUser
         return (
-            <div className="container">
+            <div className="screen">
                 <h1>Events Screen</h1>
                 <EventsNav></EventsNav>
                 <Switch>

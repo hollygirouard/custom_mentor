@@ -1,14 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 
-export class Appointment extends Component {
+export default class Appointment extends Component {
+  render() {
+    return (
+      <div>
+        <h3>Appointment Details</h3>
 
-
-    render() {
-        return (
-            <div>
-                <h3>Appointment Details</h3>
-
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }

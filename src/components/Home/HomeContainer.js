@@ -1,15 +1,20 @@
-import {connect} from 'react-redux'
-import {authenticateUser} from '../../actions/login'
-import Home from './Home'
+import { connect } from 'react-redux';
+import { authenticateUser } from '../../actions/login';
+import { createNewUser } from '../../actions/user';
+import Home from './Home';
 
-const mapStateToProps = (state) => {
-    return {
-        isLoggedIn: state.session.isLoggedIn,
-        currentUser: state.session.currentUser,
-        errorMessage: state.session.errorMessage
-    }
-}
+const mapStateToProps = state => ({
+  isLoggedIn: state.session.isLoggedIn,
+  currentUser: state.session.currentUser,
+  errorMessage: state.session.errorMessage,
+  newUserMessage: state.users.errorMessage,
+});
 
-const HomeContainer = connect(mapStateToProps)(Home)
+const mapDispatchToProps = dispatch => ({
+  authenticateUser: userInfo => dispatch(authenticateUser(userInfo)),
+  createNewUser: newUserInfo => dispatch(createNewUser(newUserInfo)),
+});
 
-export default HomeContainer
+const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);
+
+export default HomeContainer;

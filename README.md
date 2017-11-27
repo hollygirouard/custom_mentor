@@ -2,6 +2,9 @@
 
 Built in ReactJS from using create-react-app - https://reactjs.org/docs/installation.html
 
+### Install Dependencies
+`npm install`
+
 ### Run Server
 `npm start`
 
@@ -15,7 +18,29 @@ zip and deploy to aws
 No tests available yet. Help by setting up a test!
 
 ### Linting
-No linting available yet. Help by setting up a linter and suggesting linting rules!
+We are using Eslint with the AirBnB style guide for React.js.
+
+#### To get it up and running:
+
+Quick start documentation: https://eslint.org/docs/user-guide/getting-started
+
+1. Make sure Eslint is supported in your text editor.  Installation varies.
+2. Globally install Eslint:
+  `npm install -g eslint`
+3. Often times, your text editor needs to be closed and reopened for linting to take effect.
+4. To lint from command line in the project root directory:
+  `npm run lint`
+4. Rules can be amended or turned off by modifying the .eslintrc.json file.
+5. To turn off rules for a snippet of code (e.g. turn off no-console for http requests)
+  ```
+  /* eslint-disable no-console */
+  // Your code Here
+  /* eslint-enable no-console */
+  ```
+
+  Configuraton Documentation: https://eslint.org/docs/user-guide/configuring
+
+https://eslint.org/
 
 ### Tools
 https://reactstrap.github.io/components/
@@ -24,15 +49,9 @@ https://reactstrap.github.io/components/
 
 Owner - Matt Sharratt
 
-Project Manager - Holly White
+Project Manager/Developer - Holly White
 
-Developer - Austin Edwards
-
-Developer - Kelvin Sajere
-
-Developer - Jeff Diers
-
-Developer - Kara Fox  
+Developers - Austin Edwards, Kelvin Sajere, Jeff Diers, Kara Fox, James Sullivan, Jake Feldman, Gabi Procell, Zeb Girouard & General Assembly Denver WDI5
 
 /**************************************************************************************************************************/
 
@@ -59,27 +78,11 @@ Note that code is commented for AWS production or development.  Swap the comment
 to switch between development and production.
 
 
-1.  Configure database for local environment from AWS config:
 
-```
-// AWS Config
 
-// $this->host = $_SERVER['RDS_HOSTNAME'];
-// $this->db_name = $_SERVER['RDS_DB_NAME'];
-// $this->username = $_SERVER['RDS_USERNAME'];
-// $this->password = $_SERVER['RDS_PASSWORD'];
-// $this->port = $_SERVER['RDS_PORT'];
 
-// Development Config
 
-$this->host = 'localhost';
-$this->db_name = 'custom_mentor';
-$this->username = 'root';
-$this->password =  '';
-$this->port = '8080';
-```
-
-2. Change route in src/components/Home/Signup.js
+1. Change route in src/components/Home/Signup.js
 
 ```
 postLogin(form){
@@ -100,7 +103,7 @@ postLogin(form){
 }
 ```
 
-3. Change route in login action at src/actions/login.js:
+2. Change route in login action at src/actions/login.js:
 
 ```
 export const authenticateUser = (loginInfo) => {

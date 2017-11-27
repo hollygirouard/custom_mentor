@@ -1,15 +1,13 @@
-import {connect} from 'react-redux'
-import {authenticateUser} from '../../actions/login'
-import Schedule from './Schedule'
+import { connect } from 'react-redux';
+// import { authenticateUser } from '../../actions/login';
+import Schedule from './Schedule';
 
-const mapStateToProps = (state) => {
-    return {
-        isLoggedIn: state.session.isLoggedIn,
-        currentUser: state.session.currentUser,
-        errorMessage: state.session.errorMessage
-    }
-}
+const mapStateToProps = state => ({
+  isLoggedIn: state.session.isLoggedIn,
+  currentUser: state.session.currentUser,
+  errorMessage: state.session.errorMessage,
+});
 
-const ScheduleContainer = connect(mapStateToProps)(Schedule)
+const ScheduleContainer = connect(mapStateToProps, null)(Schedule);
 
-export default ScheduleContainer
+export default ScheduleContainer;

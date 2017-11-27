@@ -1,8 +1,8 @@
 import React from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
-import {MentorReviews} from './MentorReviews';
-import {MyReviews} from './MyReviews';
+import MentorReviews from './MentorReviews';
+import MyReviews from './MyReviews';
 
 
 export default class Reviews extends React.Component {
@@ -11,20 +11,20 @@ export default class Reviews extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: '1'
+      activeTab: '1',
     };
   }
 
   toggle(tab) {
     if (this.state.activeTab !== tab) {
       this.setState({
-        activeTab: tab
+        activeTab: tab,
       });
     }
   }
   render() {
     return (
-      <div>
+      <div className="screen">
         <h1>Reviews</h1>
         <Nav tabs>
           <NavItem>
