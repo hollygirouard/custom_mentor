@@ -36,7 +36,7 @@ export const createNewUser = (newUserInfo) => {
             // AWS Config
             // url: '/serverapi/user.php',
             // Development Config
-            url: 'http://custom.mentor.app/serverapi/user.php',
+            url: 'http://localhost/custommentor/custom_mentor/serverapi/user.php',
             data: "requesttype=Signup&data=" + (JSON.stringify(newUserInfo))
         }).then(function (response) {
             //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}
