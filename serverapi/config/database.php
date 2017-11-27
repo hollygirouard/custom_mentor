@@ -1,30 +1,23 @@
 <?php
 //session_start();
-
 class Database{
-
-
     public $conn;
     // get the database connection
     public function __construct() {
-
         $this->conn = null;
-		$this->host = $_SERVER['RDS_HOSTNAME'];
-		$this->db_name = $_SERVER['RDS_DB_NAME'];
-		$this->username = $_SERVER['RDS_USERNAME'];
-		$this->password = $_SERVER['RDS_PASSWORD'];
-		$this->port = $_SERVER['RDS_PORT'];
-
+        $this->host = isset($_SERVER['RDS_HOSTNAME'])?$_SERVER['RDS_HOSTNAME']:"localhost";
+        $this->db_name = isset($_SERVER['RDS_DB_NAME']) ? $_SERVER['RDS_DB_NAME'] :"custom_mentor";
+        $this->username = isset($_SERVER['RDS_USERNAME']) ? $_SERVER['RDS_USERNAME'] :"root";
+        $this->password = isset($_SERVER['RDS_PASSWORD']) ?$_SERVER['RDS_PASSWORD'] :"root";
+        $this->port = isset($_SERVER['RDS_PORT']) ?$_SERVER['RDS_PORT'] :"8080";
         try{
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
         }catch(PDOException $exception){
             echo "Connection error: " . $exception->getMessage();
         }
-
         //return $this->conn;
     }
 }
-
 ?>
+

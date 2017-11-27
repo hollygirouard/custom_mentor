@@ -98,7 +98,7 @@ export default class App extends Component {
                         {this.renderNav()}
                     </div>
                     <div className="col-xs-10 home">
-                        <Route path='/' exact component={HomeContainer} />
+                        <Route path='/' exact component={EventsContainer} />
                         {this.renderRoutes()}
                     </div>
                 </div>
