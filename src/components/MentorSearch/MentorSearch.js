@@ -1,6 +1,7 @@
 import React, {PropTypes, Component} from 'react';
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Select from 'react-select';
+import axios from 'axios';
 
 import {ReactSelectize, SimpleSelect, MultiSelect} from 'react-selectize';
 import 'react-select/dist/react-select.css';
@@ -53,12 +54,13 @@ export default class MentorSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      crazy: false,
+
       contact: [],
       mentorlevel:'',
       goals:[],
       availability:[],
       edulevel:'',
+      name:'',
     };
     this.handle_goals = this.handle_goals.bind(this);
     this.handle_mentor_level = this.handle_mentor_level.bind(this);
@@ -66,17 +68,20 @@ export default class MentorSearch extends Component {
     this.handle_availaiblity = this.handle_availaiblity.bind(this);
     this.handle_edu = this.handle_edu.bind(this);
     this.handle_submit = this.handle_submit.bind(this);
+    this.handle_input = this.handle_input.bind(this);
 
   }
 
   handle_input(event) {
-
+//console.log(event.target.value);
     this.setState({ name:event.target.value });
+      console.log(this.state);
   }
 
   handle_goals(value) {
 
     this.setState({ goals:value });
+      console.log(this.state);
   }
   handle_mentor_level(value) {
     console.log(this.state);
@@ -96,6 +101,16 @@ export default class MentorSearch extends Component {
   }
   handle_submit(event){
     event.preventDefault();
+
+    axios({
+      method: 'POST',
+      url: 'http://localhost:8080/custommentor/custom_mentor/serverapi/user.php',
+      data: `requesttype=SearchMentor&data=${JSON.stringify(this.state)}`,
+    }).then((response) => {
+      console.log(response.data);
+    }).catch((error) => {
+      console.log(error);
+    });
     console.log(this.state);
 
   }
@@ -112,11 +127,11 @@ export default class MentorSearch extends Component {
         return (
             <div className="screen">
                 <h2>Mentor Search</h2>
-                
+
 
                     <Col sm={2}>
               <Form onSubmit={this.handle_submit}>
-               <Input type="text" name="name" id="exampleEmail" placeholder="Enter A Mentor Name" />
+               <Input type="text" name="name" value={this.state.name} id="exampleEmail" placeholder="Enter A Mentor Name" onInput={this.handle_input}/>
                 <br/>
                    <Select multi simpleValue value={this.state.goals} placeholder="Goals " options={goals} onChange={this.handle_goals} /><br/>
 

@@ -12,22 +12,15 @@ require_once 'objects/user.php';
 $user = new User();
 $requesttype=$_POST['requesttype'];
 $obj = json_decode($_POST['data'],true);
-$user->name = array_key_exists("name", $obj) ? $obj['name']:'';
-$user->phone = array_key_exists("phone", $obj) ? $obj['phone']:'';
-$user->email = array_key_exists("email", $obj) ? $obj['email']:'';
-$user->password = array_key_exists("password", $obj) ? $obj['password']:'';
-$user->type = array_key_exists("type", $obj) ? $obj['type']:'';
+
 
 // if the form was signup is sent
-if($requesttype=="Signup"){
-  $result = $user->create();
-}
-elseif($requesttype=="Signin"){
-$result = $user->auth();
+if($requesttype=="SearchMentor"){
+echo "hahahaha"
 }
 
 
 //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email."}
 
-echo json_encode($user->resultv);
+
 ?>
