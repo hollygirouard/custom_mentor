@@ -1,5 +1,5 @@
 import React, {PropTypes, Component} from 'react';
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Select from 'react-select';
 
 import {ReactSelectize, SimpleSelect, MultiSelect} from 'react-selectize';
@@ -69,6 +69,11 @@ export default class MentorSearch extends Component {
 
   }
 
+  handle_input(event) {
+
+    this.setState({ name:event.target.value });
+  }
+
   handle_goals(value) {
 
     this.setState({ goals:value });
@@ -107,27 +112,35 @@ export default class MentorSearch extends Component {
         return (
             <div className="screen">
                 <h2>Mentor Search</h2>
+                
+
+                    <Col sm={2}>
               <Form onSubmit={this.handle_submit}>
-                 <Col sm={2}>
-                   <Select multi simpleValue value={this.state.goals} placeholder="Goals " options={goals} onChange={this.handle_goals} />
-                </Col>
-                <Col sm={2}>
+               <Input type="text" name="name" id="exampleEmail" placeholder="Enter A Mentor Name" />
+                <br/>
+                   <Select multi simpleValue value={this.state.goals} placeholder="Goals " options={goals} onChange={this.handle_goals} /><br/>
+
+
                <Select simpleValue value={this.state.mentorlevel} placeholder="Mentoring Level" options={mentorlevel} onChange={this.handle_mentor_level} />
-               </Col>
-               <Col sm={2}>
+<br/>
+
               <Select multi simpleValue value={this.state.contact} placeholder=" Contact" options={contact} onChange={this.handle_contact} />
-              </Col>
-              <Col sm={2}>
+<br/>
+
              <Select multi simpleValue value={this.state.availability} placeholder=" Availability" options={availability} onChange={this.handle_availaiblity} />
-             </Col>
-             <Col sm={2}>
+<br/>
+
             <Select  simpleValue value={this.state.edulevel} placeholder=" Educational Level" options={edulevel} onChange={this.handle_edu} />
-            </Col>
-            <Col sm={2}>
+<br/>
                 <Button color="primary" size="sm">Search</Button>{' '}
-           </Col>
+
          </Form>
-         
+       </Col>
+       <Col sm={10}>
+         asdasd
+       </Col>
+
+
             </div>
         );
     }

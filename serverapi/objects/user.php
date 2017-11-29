@@ -164,6 +164,10 @@ class User extends database{
         }
     }
 
+    public function search_mentor(){
+      
+    }
+
 
     public function update(){
 

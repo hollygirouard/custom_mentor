@@ -24,10 +24,13 @@ if($requesttype=="Signup"){
 }
 elseif($requesttype=="Signin"){
 $result = $user->auth();
+}elseif($requesttype=="SearchMentor"){
+echo "hahah";
 }
+
 
 
 //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email."}
 
-echo json_encode($user->resultv);
+//echo json_encode($user->resultv);
 ?>
