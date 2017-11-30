@@ -50,19 +50,19 @@ class User extends database
         $useremail = $this->email;
         try {
 
-          $profile_query = "SELECT * FROM  " . $this->profile_table . "";
+            $profile_query = "SELECT * FROM  " . $this->profile_table . "";
 
-      $user_query="SELECT * FROM  " . $this->user_table . " WHERE email='$useremail'";
-      $availibility_query = $this->generate_search_query('', $this->avaliability_table, 'av_day');
-      $contact_query      = $this->generate_search_query('', $this->contact_table, 'contact_type');
-      $goals_query        = $this->generate_search_query('', $this->goals_table, 'goals');
-          $query= "SELECT u.name,u.email,u.type,u.phone,gl.goals,p.service,p.mentoring_level,p.education,av.av_day,av.av_time,cm.contact_type FROM ($user_query)as u  left join ($profile_query) as p on u.id=p.user_fk
+            $user_query         = "SELECT * FROM  " . $this->user_table . " WHERE email='$useremail'";
+            $availibility_query = $this->generate_search_query('', $this->avaliability_table, 'av_day');
+            $contact_query      = $this->generate_search_query('', $this->contact_table, 'contact_type');
+            $goals_query        = $this->generate_search_query('', $this->goals_table, 'goals');
+            $query              = "SELECT u.name,u.email,u.type,u.phone,gl.goals,p.service,p.mentoring_level,p.education,av.av_day,av.av_time,cm.contact_type FROM ($user_query)as u  left join ($profile_query) as p on u.id=p.user_fk
             left   join ($availibility_query) as av on u.id=av.user_fk
             left   join ($contact_query)as cm on u.id=cm.user_fk
             left   join ($goals_query)as gl on u.id=gl.user_fk ";
 
 
-            $stmt  = $this->conn->prepare($query);
+            $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':email', $useremail);
 
             $stmt->execute();
@@ -141,10 +141,10 @@ class User extends database
                 $this->resultv["error"] = 'Your email has been registered. Please pick another email.';
             } else {
                 // insert query
-                $query   = "INSERT INTO " . $this->user_table . "(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
+                $query = "INSERT INTO " . $this->user_table . "(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
 
                 // prepare query for execution
-                $stmt    = $this->conn->prepare($query);
+                $stmt = $this->conn->prepare($query);
 
                 // sanitize
                 $name            = htmlspecialchars(strip_tags($this->name));
@@ -167,7 +167,7 @@ class User extends database
                 // Execute the query
                 if ($stmt->execute()) {
 
-                        $this->resultv["response"] = "success";
+                    $this->resultv["response"] = "success";
 
 
                 } else {
@@ -258,7 +258,7 @@ class User extends database
     //this is a utitlity function to help generate the search filter queries
     private function generate_search_query($string, $tbname, $column)
     {
-      $time         = $tbname == $this->avaliability_table ? ', GROUP_CONCAT(av_time) as av_time' : '';
+        $time = $tbname == $this->avaliability_table ? ', GROUP_CONCAT(av_time) as av_time' : '';
         if ($string != '') {
             //convert to an array
             $string      = explode(',', $string);
