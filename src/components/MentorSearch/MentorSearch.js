@@ -3,7 +3,7 @@ import { ListGroup,ListGroupItem,Alert,Container, Row, Col, Button, Form, FormGr
 import Select from 'react-select';
 import axios from 'axios';
 
-import {ReactSelectize, SimpleSelect, MultiSelect} from 'react-selectize';
+
 import 'react-select/dist/react-select.css';
 
 const goals = [
