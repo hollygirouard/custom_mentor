@@ -76,7 +76,7 @@ class Profile extends User{
           $availability="INSERT INTO ".$this->avaliability_table."(user_fk,av_day,av_time) VALUES $availability_string";
           $contact="INSERT INTO ".$this->contact_table."(user_fk,contact_type) VALUES $contact_string";
           $goals="INSERT INTO ".$this->goals_table."(user_fk,goals) VALUES $goals_string";
-echo $contact;
+
           //clear table with that id to avoid duplicate
           $this->conn->exec("DELETE FROM ".$this->profile_table." WHERE user_fk=$id; DELETE FROM ".$this->avaliability_table." WHERE user_fk=$id ;DELETE FROM ".$this->contact_table." WHERE user_fk=$id;DELETE FROM ".$this->goals_table." WHERE user_fk=$id");
 

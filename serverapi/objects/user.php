@@ -204,7 +204,7 @@ class User extends database
         $availibility_query = $this->generate_search_query($availability, $this->avaliability_table, 'av_day');
         $contact_query      = $this->generate_search_query($contact, $this->contact_table, 'contact_type');
         $goals_query        = $this->generate_search_query($goals, $this->goals_table, 'goals');
-        $join_query         = "SELECT u.name,u.email,u.phone,gl.goals,p.service,p.mentoring_level,p.education,av.av_day,av.av_time,cm.contact_type FROM ($user_query) as u join ($profile_query) as p on u.id=p.user_fk
+        $join_query         = "SELECT u.name,u.email,u.phone,gl.goals,p.service,p.mentoring_level,p.education,p.weektalk,av.av_day,av.av_time,cm.contact_type FROM ($user_query) as u join ($profile_query) as p on u.id=p.user_fk
             join ($availibility_query) as av on u.id=av.user_fk
             join ($contact_query)as cm on u.id=cm.user_fk
             join ($goals_query)as gl on u.id=gl.user_fk";

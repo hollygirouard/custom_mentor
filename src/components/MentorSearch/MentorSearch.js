@@ -47,7 +47,7 @@ const edulevel = [
     { label: 'Associate Degree', value: 'Associate Degree' },
     { label: 'Bachelors', value: 'Bachelors' },
     { label: 'Masters', value: 'Masters' },
-    { label: 'P.H.D', value: 'P.H.D' },
+    { label: 'P.H.D', value: 'PHD' },
 
 
 ];
@@ -79,7 +79,7 @@ export default class MentorSearch extends Component {
 
   }
   handle_reset(event){
-  this.setState({ searchfilter:{...this.state.searchfilter, name:'',goals:'',mentorlevel:'',contact:'',availability:'',edulevel:''} });
+  this.setState({ searchfilter:{...this.state.searchfilter, name:'',goals:'',mentorlevel:'',contact:'',availability:'',edulevel:''} ,response:''});
   }
   handle_input(event) {
 //console.log(event.target.value);
@@ -113,7 +113,7 @@ export default class MentorSearch extends Component {
   //  if(this.state.searchfilter && this.state.searchfilter.length > 0){
       axios({
         method: 'POST',
-        url: 'http://custommentor/custom_mentor/serverapi/searchmentor.php',
+        url: '/serverapi/searchmentor.php',
         data: `requesttype=SearchMentor&data=${JSON.stringify(this.state.searchfilter)}`,
       }).then((response) => {
           this.setState({...this.state.response, response:response.data });
