@@ -1,14 +1,16 @@
 <?php
 
-// include database connection
+// This File maps to the profile table , availablilty ,goals and contact table
+//include user.php
 require_once 'objects/user.php';
 
+//inherit from user
 class Profile extends User
 {
 
 
-    // object properties
-    public $id;
+    // All vairables
+    private $id;
     public $goals; //What areas do you want to mentor?
     public $services; //Explain how you can help
     public $mentoring_levels; //What levels of mentoring do you wish to particpate
@@ -30,6 +32,7 @@ class Profile extends User
         //$this->user_table = $this->getTableName();
     }
 
+//Save user data into the profile , availability, contact and goalse tables
     public function saveProfile()
     {
         try {
@@ -54,8 +57,8 @@ class Profile extends User
 
                 if (count($results) > 0) {
                     $id      = $results[0]['id'];
-                    //decide whether its an update or a new addition
-                    //insert details into profile Table
+
+                    //Generate Insert Query for profile table
                     $profile = "INSERT INTO " . $this->profile_table . "(user_fk,service,mentoring_level,weektalk,areaofexp,experience,fieldofstudy,education,managementool,addition_degrees)
           VALUES(:id, :services, :mentoring_level, :weektalk, :areaofexp, :experience, :fieldofstudy, :education, :managementool, :addition_degrees)";
 
@@ -72,7 +75,7 @@ class Profile extends User
 
                     }
 
-
+                    //convert the array to string ('value1'),('value2')
                     $availability_string = implode(',', $availability_array);
                     $contact_string      = $this->gen_multi_insert_query($this->contact, $id);
                     $goals_string        = $this->gen_multi_insert_query($this->goals, $id);
@@ -114,31 +117,35 @@ class Profile extends User
                     $stmt->bindParam(':education', $education);
                     $stmt->bindParam(':managementool', $this->management_tool);
                     $stmt->bindParam(':addition_degrees', $this->addition_degrees);
-                    // Execute the query
+                    // Execute the queries
                     if ($stmt->execute() && $stmt2->execute() && $stmt3->execute() && $stmt4->execute()) {
-                        //if( $stmt4->execute()){
+                        //if successfull
                         $this->resultv["response"] = "Success";
 
                     } else {
+                      //failed query due to query error
                         $this->resultv["error"] = $this->conn->errorInfo();
 
                     }
 
                 } else {
+                  // Such User doesnt exist
                     $this->resultv["response"] = "failed";
-                    $this->resultv["error"]    = $useremail;
+                    $this->resultv["error"]    = 'User Not Found';
                 }
             } else {
-                //attach error
+                //Cookie for that user doesnt exist: meaning the user is not logged in
                 $this->resultv["response"] = "failed";
                 $this->resultv["error"]    = "This User is not Logged In";
             }
         }
+        //catch exception for the database interaction
         catch (PDOException $exception) {
             die('ERROR: ' . $exception->getMessage());
         }
 
     }
+    //This function is used to generate queries in the format ('email'),('phone'),('text') for multiple data insertion
     private function gen_multi_insert_query($array, $id)
     {
         $array_query = array();

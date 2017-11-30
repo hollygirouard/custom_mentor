@@ -1,5 +1,5 @@
 <?php
-
+//User methods
 // include database connection
 require_once 'config/database.php';
 
@@ -34,7 +34,7 @@ class User extends database
         $this->resultv["error"]    = "";
 
     }
-
+    //setters and getter to make table available out side class
     public function setTableName($table)
     {
         $this->user_table = $table;
@@ -43,13 +43,13 @@ class User extends database
     {
         return $this->user_table;
     }
-
+    //used to get full details of a user
     public function getUserDetails()
     {
-
+        //based on the email passed during loggin process
         $useremail = $this->email;
         try {
-
+            //generating queries from all tables
             $profile_query = "SELECT * FROM  " . $this->profile_table . "";
 
             $user_query         = "SELECT * FROM  " . $this->user_table . " WHERE email='$useremail'";
@@ -74,17 +74,20 @@ class User extends database
             unset($results[0]['id']);
 
 
-
+            //attach result for display
             $this->resultv['user_details'] = $results[0];
         }
+        //catch exception during database interaction
         catch (PDOException $exception) {
             die('ERROR: ' . $exception->getMessage());
         }
 
     }
+    //this is used to authenticate a user during login
     public function auth()
     {
         try {
+            //get the user email
             $query = "SELECT type,id, email, password
                 FROM " . $this->user_table . "
                 WHERE email = :email";
@@ -98,15 +101,18 @@ class User extends database
             $this->resultv["type"]  = $this->type;
             $this->resultv["error"] = "Wrong email and password Combination";
             $results                = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+            //if email exist in the user table
             if (count($results) > 0) {
                 $result = $results[0];
+                //validate the password agiasnt the email
                 if (password_verify($this->password, $result->password)) {
 
                     $this->resultv["response"] = "success";
                     $this->resultv["error"]    = "";
                     //  $this->resultv["type"]=$result->type;
                     $this->resultv["email"]    = $result->email;
-
+                    //set the cookie for the user
                     setcookie('useremail', $this->email, time() + (86400 * 30), "/");
                     $this->getUserDetails();
                 }
@@ -114,15 +120,16 @@ class User extends database
 
 
         }
+        //catc exception for database interaction
         catch (PDOException $exception) {
             die('ERROR: ' . $exception->getMessage());
         }
     }
-
+    //used to create a new user
     public function create()
     {
         try {
-
+            //generate query to check if the email already exist in the table : email is unique
             $query = "SELECT id
                 FROM " . $this->user_table . "
                 WHERE email = :email";
@@ -137,10 +144,13 @@ class User extends database
             $user                  = null;
             $results               = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $this->resultv["type"] = $this->type;
+
             if (count($results) > 0) {
+                //the email exists in the table already
                 $this->resultv["error"] = 'Your email has been registered. Please pick another email.';
             } else {
-                // insert query
+                //new email entry
+                // create insert query into the user table
                 $query = "INSERT INTO " . $this->user_table . "(name,email,password,phone,type)VALUES(:name, :email, :password, :phone, :type)";
 
                 // prepare query for execution
@@ -166,7 +176,7 @@ class User extends database
 
                 // Execute the query
                 if ($stmt->execute()) {
-
+                    //successfull query
                     $this->resultv["response"] = "success";
 
 
@@ -180,14 +190,15 @@ class User extends database
             die('ERROR: ' . $exception->getMessage());
         }
     }
-
+    //search mentor function : with  optional parameter
     public function search_mentor($name, $goals, $contact, $availability, $edulevel, $mentorlevel)
     {
-        //generating query'
+        //generating query for user table, filter by mentor and name if user types a name during search'
         $nameq      = $name != "" ? "and name='$name'" : "";
         $user_query = "SELECT id,name,email,phone
           FROM " . $this->user_table . "
           WHERE type = 'Mentor' $nameq";
+
         //if user search based on mentor level and education level
         if ($mentorlevel != "" && $edulevel != "") {
             $profile_query = "SELECT * FROM  " . $this->profile_table . " WHERE education='$edulevel' and mentoring_level='$mentorlevel'";
@@ -201,26 +212,33 @@ class User extends database
             $profile_query = "SELECT * FROM  " . $this->profile_table . "";
         }
 
+        //generate query using utitlity function called generate_search _query: search quert is similar to profile query above
         $availibility_query = $this->generate_search_query($availability, $this->avaliability_table, 'av_day');
         $contact_query      = $this->generate_search_query($contact, $this->contact_table, 'contact_type');
         $goals_query        = $this->generate_search_query($goals, $this->goals_table, 'goals');
-        $join_query         = "SELECT u.name,u.email,u.phone,gl.goals,p.service,p.mentoring_level,p.education,p.weektalk,av.av_day,av.av_time,cm.contact_type FROM ($user_query) as u join ($profile_query) as p on u.id=p.user_fk
-            join ($availibility_query) as av on u.id=av.user_fk
-            join ($contact_query)as cm on u.id=cm.user_fk
-            join ($goals_query)as gl on u.id=gl.user_fk";
+        //create a join from all search query result
+        $join_query         = "SELECT u.name,u.email,u.phone,gl.goals,p.service,p.mentoring_level,p.education,p.weektalk,av.av_day,av.av_time,cm.contact_type FROM ($user_query) as u left join ($profile_query) as p on u.id=p.user_fk
+          left   join ($availibility_query) as av on u.id=av.user_fk
+          left   join ($contact_query)as cm on u.id=cm.user_fk
+          left   join ($goals_query)as gl on u.id=gl.user_fk";
 
         $stmt = $this->conn->prepare($join_query);
         $stmt->execute();
         $results = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-        //  $result = $results[0];
-        $this->resultv["count"]    = count($results);
-        $this->resultv["response"] = $results;
+        if (count($results) > 0) {
+            //the email exists in the table already
+            $this->resultv["response"] = $results;
 
+        } else {
+            $this->resultv["response"] = '';
+        }
+
+        $this->resultv["count"] = count($results);
 
     }
 
-
+    //used to update password
     public function update()
     {
 
@@ -238,7 +256,7 @@ class User extends database
         // execute the query
         return ($stmt->execute());
     }
-
+    //check if a user is looged in
     public function is_loggedin()
     {
         if (isset($_COOKIE["useremail"])) {
@@ -249,13 +267,14 @@ class User extends database
 
 
     }
-
+    //log out a user by deleting cookie
     public function logout()
     {
         setcookie("useremail", "", time() - 3600);
         return true;
     }
     //this is a utitlity function to help generate the search filter queries
+    //: SELECT user_fk, GROUP_CONCAT(av_day) as av_day, av_time from availability group by user_fk
     private function generate_search_query($string, $tbname, $column)
     {
         $time = $tbname == $this->avaliability_table ? ', GROUP_CONCAT(av_time) as av_time' : '';
@@ -273,7 +292,7 @@ class User extends database
             $query_string = implode('', $query_array);
             //this is used only to get the time for availability
 
-
+            //generate the query
             $query = "SELECT user_fk, GROUP_CONCAT($column) as $column $time FROM   " . $tbname . " WHERE $query_string group by user_fk";
 
         } else {
