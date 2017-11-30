@@ -75,9 +75,12 @@ export default class MentorSearch extends Component {
     this.handle_edu = this.handle_edu.bind(this);
     this.handle_submit = this.handle_submit.bind(this);
     this.handle_input = this.handle_input.bind(this);
+    this.handle_reset = this.handle_reset.bind(this);
 
   }
-
+  handle_reset(event){
+  this.setState({ searchfilter:{...this.state.searchfilter, name:'',goals:'',mentorlevel:'',contact:'',availability:'',edulevel:''} });
+  }
   handle_input(event) {
 //console.log(event.target.value);
     this.setState({ searchfilter:{...this.state.searchfilter, name:event.target.value} });
@@ -157,7 +160,7 @@ export default class MentorSearch extends Component {
 
             <Select  simpleValue value={this.state.searchfilter.edulevel} placeholder=" Educational Level" options={edulevel} onChange={this.handle_edu} />
 <br/>
-                <Button color="primary" size="sm">Search</Button>  <Button color="primary" size="sm">Search</Button><br></br><br></br>{' '}
+                <Button color="primary" size="sm">Search</Button>  <Button color="info" size="sm" onClick={this.handle_reset}>Reset</Button><br></br><br></br>{' '}
                 {this.state.error ?
                   <Alert color="danger">
                         {this.state.error}
