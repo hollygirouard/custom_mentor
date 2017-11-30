@@ -7,23 +7,25 @@ import {ReactSelectize, SimpleSelect, MultiSelect} from 'react-selectize';
 import 'react-select/dist/react-select.css';
 
 const goals = [
-    { label: 'Education', value: 'Education' },
-    { label: 'Finiancial', value: 'Finiancial' },
-    { label: 'Spiritual', value: 'Spiritual' },
-    { label: 'Physical(Health)', value: 'Physical' },
+    { label: 'Education', value: 'educational' },
+    { label: 'Finiancial', value: 'financial' },
+    { label: 'Spiritual', value: 'spiritual' },
+    { label: 'Physical', value: 'physical' },
+      { label: 'Other', value: 'other' },
 
 ];
 const contact = [
-    { label: 'Email', value: 'Email' },
-    { label: 'Phone', value: 'Phone' },
-    { label: 'SMS', value: 'SMS' },
+    { label: 'Email', value: 'email' },
+    { label: 'Phone', value: 'phone' },
+    { label: 'Text', value: 'text' },
 
 
 ];
 const mentorlevel = [
-    { label: 'Cheer Leader', value: 'Cheerleader' },
-    { label: 'Mentor', value: 'Mentor' },
-    { label: 'Coach', value: 'Coach' },
+    { label: 'Cheer leader', value: 'cheerleader' },
+    { label: 'Mentor', value: 'mentor' },
+    { label: 'Coach', value: 'coach' },
+    { label: 'Tutor', value: 'tutor' },
 
 
 ];

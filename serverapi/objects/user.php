@@ -189,8 +189,14 @@ $join_query="SELECT u.name,u.email,u.phone,gl.goals,p.service,p.mentoring_level,
             join ($contact_query)as cm on u.id=cm.user_fk
             join ($goals_query)as gl on u.id=gl.user_fk";
 
+$stmt = $this->conn->prepare($join_query);
+$stmt->execute();
+$results=$stmt->fetchAll(PDO::FETCH_OBJ);
 
-    return $join_query;
+  //  $result = $results[0];
+    $this->resultv["count"]= count($results);
+    $this->resultv["response"]= $results;
+    
 
     }
 

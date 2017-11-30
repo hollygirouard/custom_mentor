@@ -23,7 +23,7 @@ $mentorlevel =$obj['mentorlevel'];
 // if the form was signup is sent
 if($requesttype=="SearchMentor"){
 $result=$user->search_mentor($name,$goals, $contact, $availability, $edulevel,$mentorlevel);
-echo $result;
+echo json_encode($user->resultv);
 }
 
 
