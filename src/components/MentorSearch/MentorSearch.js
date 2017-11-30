@@ -2,8 +2,6 @@ import React, {PropTypes, Component} from 'react';
 import { ListGroup,ListGroupItem,Alert,Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Select from 'react-select';
 import axios from 'axios';
-
-import {ReactSelectize, SimpleSelect, MultiSelect} from 'react-selectize';
 import 'react-select/dist/react-select.css';
 
 const goals = [
