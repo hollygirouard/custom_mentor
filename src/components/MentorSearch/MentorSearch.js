@@ -1,5 +1,5 @@
 import React, {PropTypes, Component} from 'react';
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { ListGroup,ListGroupItem,Alert,Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Select from 'react-select';
 import axios from 'axios';
 
@@ -56,13 +56,17 @@ export default class MentorSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      searchfilter:{
       contact: [],
       mentorlevel:'',
       goals:[],
       availability:[],
       edulevel:'',
       name:'',
+    },
+      response:[],
+      error:'',
+
     };
     this.handle_goals = this.handle_goals.bind(this);
     this.handle_mentor_level = this.handle_mentor_level.bind(this);
@@ -76,47 +80,51 @@ export default class MentorSearch extends Component {
 
   handle_input(event) {
 //console.log(event.target.value);
-    this.setState({ name:event.target.value });
-      console.log(this.state);
+    this.setState({ searchfilter:{...this.state.searchfilter, name:event.target.value} });
+      console.log(this.state.searchfilter);
   }
 
   handle_goals(value) {
 
-    this.setState({ goals:value });
-      console.log(this.state);
+    this.setState({ searchfilter:{...this.state.searchfilter, goals:value} });
+        console.log(this.state.searchfilter);
   }
   handle_mentor_level(value) {
-    console.log(this.state);
-    this.setState({ mentorlevel:value });
+      console.log(this.state.searchfilter);
+    this.setState({ searchfilter:{ ...this.state.searchfilter, mentorlevel:value }});
   }
   handle_contact(value) {
-    console.log(this.state);
-    this.setState({ contact:value });
+      console.log(this.state.searchfilter);
+    this.setState({ searchfilter:{ ...this.state.searchfilter, contact:value }});
   }
   handle_availaiblity(value) {
-    console.log(this.state);
-    this.setState({ availability:value });
+      console.log(this.state.searchfilter);
+    this.setState({ searchfilter:{ ...this.state.searchfilter, availability:value }});
   }
   handle_edu(value) {
-    console.log(this.state);
-    this.setState({ edulevel:value });
+      console.log(this.state.searchfilter);
+    this.setState({ searchfilter:{ ...this.state.searchfilter, edulevel:value }});
   }
   handle_submit(event){
     event.preventDefault();
+  //  if(this.state.searchfilter && this.state.searchfilter.length > 0){
+      axios({
+        method: 'POST',
+        url: 'http://custommentor/custom_mentor/serverapi/searchmentor.php',
+        data: `requesttype=SearchMentor&data=${JSON.stringify(this.state.searchfilter)}`,
+      }).then((response) => {
+          this.setState({...this.state.response, response:response.data });
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      });
+      console.log(this.state.response);
 
-    axios({
-      method: 'POST',
-      url: 'http://custommentor/custom_mentor/serverapi/searchmentor.php',
-      data: `requesttype=SearchMentor&data=${JSON.stringify(this.state)}`,
-    }).then((response) => {
-      console.log(response.data);
-    }).catch((error) => {
-      console.log(error);
-    });
-    console.log(this.state);
-
-  }
-
+// }else{
+//
+//   this.setState({ error:'Empty Search Queries' });
+//   }
+}
   static propTypes = {
     label: PropTypes.oneOfType([
       PropTypes.string,
@@ -133,28 +141,52 @@ export default class MentorSearch extends Component {
 
                     <Col sm={2}>
               <Form onSubmit={this.handle_submit}>
-               <Input type="text" name="name" value={this.state.name} id="exampleEmail" placeholder="Enter A Mentor Name" onInput={this.handle_input}/>
+               <Input type="text" name="name" value={this.state.searchfilter.name} id="exampleEmail" placeholder="Enter A Mentor Name" onInput={this.handle_input}/>
                 <br/>
-                   <Select multi simpleValue value={this.state.goals} placeholder="Goals " options={goals} onChange={this.handle_goals} /><br/>
+                   <Select multi simpleValue value={this.state.searchfilter.goals} placeholder="Goals " options={goals} onChange={this.handle_goals} /><br/>
 
 
-               <Select simpleValue value={this.state.mentorlevel} placeholder="Mentoring Level" options={mentorlevel} onChange={this.handle_mentor_level} />
+               <Select simpleValue value={this.state.searchfilter.mentorlevel} placeholder="Mentoring Level" options={mentorlevel} onChange={this.handle_mentor_level} />
 <br/>
 
-              <Select multi simpleValue value={this.state.contact} placeholder=" Contact" options={contact} onChange={this.handle_contact} />
+              <Select multi simpleValue value={this.state.searchfilter.contact} placeholder=" Contact" options={contact} onChange={this.handle_contact} />
 <br/>
 
-             <Select multi simpleValue value={this.state.availability} placeholder=" Availability" options={availability} onChange={this.handle_availaiblity} />
+             <Select multi simpleValue value={this.state.searchfilter.availability} placeholder=" Availability" options={availability} onChange={this.handle_availaiblity} />
 <br/>
 
-            <Select  simpleValue value={this.state.edulevel} placeholder=" Educational Level" options={edulevel} onChange={this.handle_edu} />
+            <Select  simpleValue value={this.state.searchfilter.edulevel} placeholder=" Educational Level" options={edulevel} onChange={this.handle_edu} />
 <br/>
-                <Button color="primary" size="sm">Search</Button>{' '}
-
+                <Button color="primary" size="sm">Search</Button>  <Button color="primary" size="sm">Search</Button><br></br><br></br>{' '}
+                {this.state.error ?
+                  <Alert color="danger">
+                        {this.state.error}
+                      </Alert>:null}
          </Form>
        </Col>
        <Col sm={10}>
-         asdasd
+         <ListGroup>
+
+             {this.state.response.count >0 ?
+
+           Object.keys(this.state.response.response).map((key) => {
+             let result=this.state.response.response
+        return (
+            <ListGroupItem className="justify-content-between">
+
+              Name : {result[key]['name']} , Email :{result[key]['email']} , Phone : {result[key]['phone']} , Goals : {result[key]['goals']}<br></br>
+              Services: {result[key]['service']}, Mentoring Level : {result[key]['mentoring_level']}, Education : {result[key]['education']}, Availaiblity Days : {result[key]['av_day']} <br></br>
+              Availability Time :{result[key]['av_time']} Contact Type : {result[key]['contact_type']}, Week Frequency : {result[key]['weektalk']}
+
+            </ListGroupItem>
+        )
+    })
+    :'There was no mentor found for the search query'}
+
+
+
+     </ListGroup>
+
        </Col>
 
 
