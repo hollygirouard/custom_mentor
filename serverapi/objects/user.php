@@ -8,7 +8,7 @@ class User extends database{
     // database connection and table name
 
     private $user_table = "users";
-    private $avaliability_table = "avalablity";
+    private $avaliability_table = "avalability";
     private $contact_table = "contact_method";
     private $goals_table = "goals";
 
@@ -171,20 +171,26 @@ class User extends database{
     public function search_mentor($name ,$goals, $contact, $availability, $edulevel,$mentorlevel){
       //generating query'
       $nameq = $name!=""?"and name='$name'":"";
-      $user_query="(SELECT id,name,email,phone
+      $user_query="SELECT id,name,email,phone
           FROM " . $this->user_table . "
-          WHERE type = 'Mentor' $nameq)u";
+          WHERE type = 'Mentor' $nameq";
 //if user search based on mentor level and education level
-      if($mentorlevel!="" && $edulevel!=""){$profile_query="(SELECT * FROM  ".$this->profile_table." WHERE education='$edulevel' and mentoring_level='$mentorlevel')p";}
-          elseif($mentorlevel=="" && $edulevel!=""){$profile_query="(SELECT * FROM  ".$this->profile_table." WHERE education='$edulevel')p";}
-          elseif($mentorlevel=="" && $edulevel!=""){$profile_query="(SELECT * FROM  ".$this->profile_table." WHERE education='$edulevel' )p";}
-          elseif($mentorlevel!="" && $edulevel==""){$profile_query="(SELECT * FROM  ".$this->profile_table." WHERE mentoring_level='$mentorlevel')p";}
-            else{$profile_query="";}
+      if($mentorlevel!="" && $edulevel!=""){$profile_query="SELECT * FROM  ".$this->profile_table." WHERE education='$edulevel' and mentoring_level='$mentorlevel'";}
+          elseif($mentorlevel=="" && $edulevel!=""){$profile_query="SELECT * FROM  ".$this->profile_table." WHERE education='$edulevel'";}
+          elseif($mentorlevel=="" && $edulevel!=""){$profile_query="SELECT * FROM  ".$this->profile_table." WHERE education='$edulevel' ";}
+          elseif($mentorlevel!="" && $edulevel==""){$profile_query="SELECT * FROM  ".$this->profile_table." WHERE mentoring_level='$mentorlevel'";}
+            else{$profile_query="SELECT * FROM  ".$this->profile_table."";}
 
-      $availibility_query=$this->generate_search_query($availability,$this->avaliability_table,'day','av');
-      $contact_query=$this->generate_search_query($contact,$this->contact_table,'type','cm');
+      $availibility_query=$this->generate_search_query($availability,$this->avaliability_table,'av_day');
+      $contact_query=$this->generate_search_query($contact,$this->contact_table,'contact_type');
+        $goals_query=$this->generate_search_query($goals,$this->goals_table,'goals');
+$join_query="SELECT u.name,u.email,u.phone,gl.goals,p.service,p.mentoring_level,p.education,av.av_day,av.av_time,cm.contact_type FROM ($user_query) as u join ($profile_query) as p on u.id=p.user_fk
+            join ($availibility_query) as av on u.id=av.user_fk
+            join ($contact_query)as cm on u.id=cm.user_fk
+            join ($goals_query)as gl on u.id=gl.user_fk";
 
-    return $contact_query;
+
+    return $join_query;
 
     }
 
@@ -223,20 +229,23 @@ class User extends database{
         return true;
    }
    //this is a utitlity function to help generate the search filter queries
-   private function generate_search_query($string,$tbname,$column,$shrtname){
+   private function generate_search_query($string,$tbname,$column){
      if($string!=''){
        //convert to an array
      $string=explode(',',$string);
      $query_array=array();
      foreach ($string as $key => $value) {
-       if($key==0){$query_array[]=" $column='$value' ";}
+       if($key==0){$query_array[]=" $tbname.$column='$value' ";}
        else{
-       $query_array[]="or $column= '$value' ";}
+       $query_array[]="or  $tbname.$column= '$value' ";}
      }
      $query_string=implode('',$query_array);
-     $query="(SELECT * FROM  ".$tbname." WHERE $query_string)$shrtname";
+//this is used only to get the time for availability
+     $time= $tbname==$this->avaliability_table ?', GROUP_CONCAT(av_time) as av_time':'';
 
-     }else{$query="";}
+     $query="SELECT user_fk, GROUP_CONCAT($column) as $column $time FROM   ".$tbname." WHERE $query_string group by user_fk";
+
+   }else{$query="SELECT user_fk, GROUP_CONCAT($column) as $column FROM   $tbname group by user_fk";}
 return $query;
    }
 }
