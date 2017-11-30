@@ -12,12 +12,12 @@ require_once 'objects/profile.php';
 $profile = new Profile();
 $requesttype=$_POST['requesttype'];
 $obj = json_decode($_POST['data'],true);
-$profile->goals = array_key_exists("goals", $obj) ? implode(',',$obj['goals'])):'';//array
+$profile->goals = array_key_exists("goals", $obj) ? $obj['goals']:'';//array
 $profile->services = array_key_exists("helpPara", $obj) ? $obj['helpPara']:'';
 $profile->mentoring_levels = array_key_exists("mentoring", $obj) ? $obj['mentoring']:'';
-$profile->contact = array_key_exists("contact", $obj) ? implode(',',$obj['contact'])):'';//array
+$profile->contact = array_key_exists("contact", $obj) ? $obj['contact']:'';//array
 $profile->weekTalk = array_key_exists("weekTalk", $obj) ? $obj['weekTalk']:'';
-$profile->availability = array_key_exists("availability", $obj) ? implode(',',$obj['availability'])):'';//array
+$profile->availability = array_key_exists("availability", $obj) ?$obj['availability']:'';//array
 $profile->areaofexp = array_key_exists("experiencePara", $obj) ? $obj['experiencePara']:'';
 $profile->experience = array_key_exists("expertisePara", $obj) ? $obj['expertisePara']:'';
 $profile->fieldofstudy = array_key_exists("studiesPara", $obj) ? $obj['studiesPara']:'';

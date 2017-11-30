@@ -54,8 +54,30 @@ class Profile extends User{
           //insert details into profile Table
           $profile="INSERT INTO ".$this->profile_table."(service,mentoring_level,weektalk,areaofexp,experience,fieldofstudy,education,managementool,addition_degrees)
           VALUES(:services, :mentoring_level, :weektalk, :areaofexp, :experience, :fieldofstudy, :education, :managementool, :addition_degrees)";
-          $query = "UPDATE ".$this->profile_table." SET goals=:goals, service=:services, mentoring_level=:mentoring_level, weektalk=:weekTalk, contact=:contact, avialability=:avialability,
-          areaofexp=:areaofexp, experience=:experience, fieldofstudy=:fieldofstudy, education=:education, managementool=:managementool, addition_degrees=:addition_degrees WHERE fk_id=:id ";
+
+          //loop through availability array to generate query_array
+          $availability_array=array();
+          $contact_array=array();
+          $goals_array=array();
+          $first=0;
+          foreach ($this->availability as $key => $value) {
+            //format for multiple insert :('day','strttime-endtime'),('day','strttime-endtime'),('day','strttime-endtime')
+            $time=array_key_exists("start", $value) && array_key_exists("end", $value)?$value['start']." - ".$value['start']:'';
+            if($first==0){
+                $availability_array[]="('$key','$time')";
+            }else{
+              $availability_array[]=",('$key','$time')";
+            }
+            $first++;
+          }
+
+
+          $availability_string=implode(',',$availability_array);
+          $contact_string=$this->gen_multi_insert_query($this->contact);
+          $goals_string=$this->gen_multi_insert_query($this->goals);
+          $availability="INSERT INTO ".$this->avaliability_table."('av_day','av_time') VALUES $availability_string";
+          $contact="INSERT INTO ".$this->contact_table."('av_day','av_time') VALUES $availability_string";
+          $goals="INSERT INTO ".$this->goals_table."('av_day','av_time') VALUES $availability_string";
 
 
           // prepare query for execution
@@ -106,6 +128,20 @@ class Profile extends User{
       die('ERROR: ' . $exception->getMessage());
   }
 
+}
+private function gen_multi_insert_query($array){
+  $array_query=array();
+  foreach ($array as $key => $value) {
+    //format for multiple insert :('email'),('phone'),('text')
+
+    if($key==0){
+        $array_query[]="('$value')";
+    }else{
+      $array_query[]=",('$value')";
+    }
+
+  }
+  return implode($array_query);
 }
 
 }
