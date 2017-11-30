@@ -87,7 +87,7 @@ export default class PersonalityForm extends Component {
     event.preventDefault();
     axios({
       method: 'POST',
-      url: '/serverapi/profile.php',
+      url: 'http://localhost/custommentor/custom_mentor/serverapi/profile.php',
       data: `requesttype=createProfile&data=${JSON.stringify(this.state.formValues)}`,
     }).then((response) => {
       console.log(response.data);
@@ -341,11 +341,11 @@ export default class PersonalityForm extends Component {
                 <div>
                   <input
                     type="time"
-                    data-type="start"
+                    data-type="0"
                     name="monday"
                     onChange={this.timeSet}
                   />
-                  <input type="time" data-type="end" name="monday" onChange={this.timeSet} />
+                  <input type="time" data-type="1" name="monday" onChange={this.timeSet} />
                 </div>
               : null}
           </label>
@@ -364,11 +364,11 @@ export default class PersonalityForm extends Component {
                 <div>
                   <input
                     type="time"
-                    data-type="start"
+                    data-type="0"
                     name="tuesday"
                     onChange={this.timeSet}
                   />
-                  <input type="time" data-type="end" name="tuesday" onChange={this.timeSet} />
+                  <input type="time" data-type="1" name="tuesday" onChange={this.timeSet} />
                 </div>
               : null}
           </label>
@@ -387,11 +387,11 @@ export default class PersonalityForm extends Component {
                 <div>
                   <input
                     type="time"
-                    data-type="start"
+                    data-type="0"
                     name="wednesday"
                     onChange={this.timeSet}
                   />
-                  <input type="time" data-type="end" name="wednesday" onChange={this.timeSet} />
+                  <input type="time" data-type="1" name="wednesday" onChange={this.timeSet} />
                 </div>
               : null
 }
@@ -409,8 +409,8 @@ export default class PersonalityForm extends Component {
             Thursday {this.state.formValues.availability.thursday
               ?
                 <div>
-                  <input type="time" data-type="start" name="thursday" onChange={this.timeSet} />
-                  <input type="time" data-type="end" name="thursday" onChange={this.timeSet} />
+                  <input type="time" data-type="0" name="thursday" onChange={this.timeSet} />
+                  <input type="time" data-type="1" name="thursday" onChange={this.timeSet} />
                 </div>
               : null
 }
@@ -428,8 +428,8 @@ export default class PersonalityForm extends Component {
             Friday {this.state.formValues.availability.friday
               ?
                 <div>
-                  <input type="time" data-type="start" name="friday" onChange={this.timeSet} />
-                  <input type="time" data-type="end" name="friday" onChange={this.timeSet} />
+                  <input type="time" data-type="0" name="friday" onChange={this.timeSet} />
+                  <input type="time" data-type="1" name="friday" onChange={this.timeSet} />
                 </div>
               : null
 }
@@ -447,8 +447,8 @@ export default class PersonalityForm extends Component {
             Saturday {this.state.formValues.availability.saturday
               ?
                 <div>
-                  <input type="time" data-type="start" name="saturday" onChange={this.timeSet} />
-                  <input type="time" data-type="end" name="saturday" onChange={this.timeSet} />
+                  <input type="time" data-type="0" name="saturday" onChange={this.timeSet} />
+                  <input type="time" data-type="1" name="saturday" onChange={this.timeSet} />
                 </div>
               : null}
           </label>
@@ -465,8 +465,8 @@ export default class PersonalityForm extends Component {
             Sunday {this.state.formValues.availability.sunday
               ?
                 <div>
-                  <input type="time" data-type="start" name="sunday" onChange={this.timeSet} />
-                  <input type="time" data-type="end" name="sunday" onChange={this.timeSet} />
+                  <input type="time" data-type="0" name="sunday" onChange={this.timeSet} />
+                  <input type="time" data-type="1" name="sunday" onChange={this.timeSet} />
                 </div>
               : null}
           </label>

@@ -52,14 +52,14 @@ class User extends database
 
           $profile_query = "SELECT * FROM  " . $this->profile_table . "";
 
-
+      $user_query="SELECT * FROM  " . $this->user_table . " WHERE email='$useremail'";
       $availibility_query = $this->generate_search_query('', $this->avaliability_table, 'av_day');
       $contact_query      = $this->generate_search_query('', $this->contact_table, 'contact_type');
       $goals_query        = $this->generate_search_query('', $this->goals_table, 'goals');
-          $query= "SELECT u.name,u.email,u.type,u.phone,gl.goals,p.service,p.mentoring_level,p.education,av.av_day,av.av_time,cm.contact_type FROM ".$this->user_table." u join ($profile_query) as p on u.id=p.user_fk
-              join ($availibility_query) as av on u.id=av.user_fk
-              join ($contact_query)as cm on u.id=cm.user_fk
-              join ($goals_query)as gl on u.id=gl.user_fk where u.email=:email";
+          $query= "SELECT u.name,u.email,u.type,u.phone,gl.goals,p.service,p.mentoring_level,p.education,av.av_day,av.av_time,cm.contact_type FROM ($user_query)as u  left join ($profile_query) as p on u.id=p.user_fk
+            left   join ($availibility_query) as av on u.id=av.user_fk
+            left   join ($contact_query)as cm on u.id=cm.user_fk
+            left   join ($goals_query)as gl on u.id=gl.user_fk ";
 
 
             $stmt  = $this->conn->prepare($query);
