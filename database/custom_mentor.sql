@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2017 at 09:37 AM
+-- Generation Time: Nov 30, 2017 at 10:53 AM
 -- Server version: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -60,7 +60,9 @@ CREATE TABLE `contact_method` (
 
 INSERT INTO `contact_method` (`id`, `user_fk`, `contact_type`) VALUES
 (21, 1, 'email'),
-(22, 1, 'phone');
+(22, 1, 'phone'),
+(23, 2, 'email'),
+(24, 2, 'phone');
 
 -- --------------------------------------------------------
 
@@ -81,7 +83,9 @@ CREATE TABLE `goals` (
 INSERT INTO `goals` (`id`, `user_fk`, `goals`) VALUES
 (21, 1, 'educational'),
 (22, 1, 'financial'),
-(23, 1, 'physical');
+(23, 1, 'physical'),
+(24, 2, 'physical'),
+(25, 2, 'spiritual');
 
 -- --------------------------------------------------------
 
@@ -108,7 +112,7 @@ CREATE TABLE `profile` (
 --
 
 INSERT INTO `profile` (`profile_id`, `user_fk`, `service`, `mentoring_level`, `weektalk`, `areaofexp`, `experience`, `fieldofstudy`, `education`, `managementool`, `addition_degrees`) VALUES
-(5, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 2, NULL, 'cheerleader', NULL, NULL, NULL, NULL, 'PHD', NULL, NULL),
 (6, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (52, 1, 'asd', 'cheerleader', 'twice', '', '', '', 'PHD', NULL, '');
@@ -134,7 +138,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `phone`) VALUES
 (1, 'demo', 'demo@demo.com', '$2y$10$7/c79SOsg6OoDtDY5j710uulAZQADsoJwDwZ7VvnheBt8iYCEJ4hS', 'Mentor', '123123'),
-(2, 'demo2', 'demo2@demo.com', '$2y$10$1.aD/ecWVWBTO2JV0bb9i.r8zkvUViq0AWW83SqE32lITJjs5H9qi', 'Mentee', '123123'),
+(2, 'demo2', 'demo2@demo.com', '$2y$10$1.aD/ecWVWBTO2JV0bb9i.r8zkvUViq0AWW83SqE32lITJjs5H9qi', 'Mentor', '123123'),
 (3, 'TestingAWS', 'TestingAWS@testing.com', '$2y$10$c8HJoAUkiSGAKAPH1nxl7.eTnHv88mDysX12M5J9OcPx2M.OoFwbq', 'Mentee', '123123'),
 (4, 'Austin T Edwards', 'AustinTedwards@gmail.com', '$2y$10$eWnMPlNCFHbnqqrQOc22F.haj1ZImVMXmI598ssKTgNbblDMTCGj6', 'Mentee', '9134816948'),
 (5, 'testing', 'tester@gmail.com', '$2y$10$QqUcq8gt39QG2evKJM53JOlb74MxzURnQDBoabwA8MzcQZuVrDDwe', 'Mentee', '3035555555'),
@@ -193,12 +197,12 @@ ALTER TABLE `avalability`
 -- AUTO_INCREMENT for table `contact_method`
 --
 ALTER TABLE `contact_method`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `goals`
 --
 ALTER TABLE `goals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `profile`
 --
