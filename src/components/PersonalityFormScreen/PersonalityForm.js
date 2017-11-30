@@ -34,6 +34,10 @@ export default class PersonalityForm extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.timeChange = this.timeChange.bind(this);
+    this.timeChange = this.timeChange.bind(this);
+    this.timeSet = this.timeSet.bind(this);
+      this.checkedBox = this.checkedBox.bind(this);
   }
 
   /* eslint-disable no-unused-expressions */

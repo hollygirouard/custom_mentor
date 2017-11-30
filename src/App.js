@@ -48,7 +48,7 @@ const SCREENS = [
     title: 'Personality Form', route: '/form', component: PersonalityFormContainer, mainMenu: true,
   },
   {
-    title: 'MentorSearch Form', route: '/form', component: MentorSearchContainer, mainMenu: true,
+    title: 'MentorSearch Form', route: '/search', component: MentorSearchContainer, mainMenu: true,
   },
   {
     title: 'Contact', route: '/contact', component: Contact, mainMenu: true,
@@ -184,7 +184,7 @@ export default class App extends Component {
           {this.renderNav()}
           {
             <div className="home">
-              <Route path="/" exact component={PersonalityFormContainer} />
+              <Route path="/" exact component={HomeContainer} />
               {this.renderRoutes()}
               {this.renderFooter()}
             </div>

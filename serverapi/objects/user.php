@@ -8,12 +8,12 @@ class User extends database
 
     // database connection and table name
 
-    private $user_table = "users";
-    private $avaliability_table = "avalability";
-    private $contact_table = "contact_method";
-    private $goals_table = "goals";
+    protected $user_table = "users";
+    protected $avaliability_table = "avalability";
+    protected $contact_table = "contact_method";
+    protected $goals_table = "goals";
 
-    public $profile_table = "profile";
+    protected $profile_table = "profile";
 
     // object properties
     public $id;
@@ -49,7 +49,19 @@ class User extends database
 
         $useremail = $this->email;
         try {
-            $query = "SELECT *  FROM " . $this->user_table . " u INNER JOIN " . $this->profile_table . " p ON u.id=p.fk_id  WHERE u.email=:email";
+
+          $profile_query = "SELECT * FROM  " . $this->profile_table . "";
+
+
+      $availibility_query = $this->generate_search_query('', $this->avaliability_table, 'av_day');
+      $contact_query      = $this->generate_search_query('', $this->contact_table, 'contact_type');
+      $goals_query        = $this->generate_search_query('', $this->goals_table, 'goals');
+          $query= "SELECT u.name,u.email,u.type,u.phone,gl.goals,p.service,p.mentoring_level,p.education,av.av_day,av.av_time,cm.contact_type FROM ".$this->user_table." u join ($profile_query) as p on u.id=p.user_fk
+              join ($availibility_query) as av on u.id=av.user_fk
+              join ($contact_query)as cm on u.id=cm.user_fk
+              join ($goals_query)as gl on u.id=gl.user_fk where u.email=:email";
+
+
             $stmt  = $this->conn->prepare($query);
             $stmt->bindParam(':email', $useremail);
 
@@ -60,12 +72,8 @@ class User extends database
             unset($this->resultv['type']);
             unset($this->resultv['email']);
             unset($results[0]['id']);
-            unset($results[0]['password']);
-            unset($results[0]['profile_id']);
-            unset($results[0]['fk_id']);
-            $results[0]['goals']        = unserialize($results[0]['goals']);
-            $results[0]['contact']      = unserialize($results[0]['contact']);
-            $results[0]['avialability'] = unserialize($results[0]['avialability']);
+
+
 
             $this->resultv['user_details'] = $results[0];
         }
@@ -250,6 +258,7 @@ class User extends database
     //this is a utitlity function to help generate the search filter queries
     private function generate_search_query($string, $tbname, $column)
     {
+      $time         = $tbname == $this->avaliability_table ? ', GROUP_CONCAT(av_time) as av_time' : '';
         if ($string != '') {
             //convert to an array
             $string      = explode(',', $string);
@@ -263,12 +272,12 @@ class User extends database
             }
             $query_string = implode('', $query_array);
             //this is used only to get the time for availability
-            $time         = $tbname == $this->avaliability_table ? ', GROUP_CONCAT(av_time) as av_time' : '';
+
 
             $query = "SELECT user_fk, GROUP_CONCAT($column) as $column $time FROM   " . $tbname . " WHERE $query_string group by user_fk";
 
         } else {
-            $query = "SELECT user_fk, GROUP_CONCAT($column) as $column FROM   $tbname group by user_fk";
+            $query = "SELECT user_fk, GROUP_CONCAT($column) as $column  $time  FROM   $tbname group by user_fk";
         }
         return $query;
     }

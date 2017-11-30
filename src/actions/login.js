@@ -29,7 +29,7 @@ export const authenticateUser = loginInfo => {
                 // AWS Config
                 // url: '/serverapi/user.php',
                 // Development Config
-                url: '/serverapi/user.php',
+                url: 'http://localhost/custommentor/custom_mentor/serverapi/user.php',
                 data: "requesttype=Signin&data=" + (JSON.stringify(loginInfo))
             }).then(function (response) {
                 //sample response :{"response":"failed","error":"Your email has been registered. Please pick another email.",type:""}

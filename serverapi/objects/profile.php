@@ -52,7 +52,8 @@ class Profile extends User{
           $id = $results[0]['id'];
           //decide whether its an update or a new addition
           //insert details into profile Table
-
+          $profile="INSERT INTO ".$this->profile_table."(service,mentoring_level,weektalk,areaofexp,experience,fieldofstudy,education,managementool,addition_degrees)
+          VALUES(:services, :mentoring_level, :weektalk, :areaofexp, :experience, :fieldofstudy, :education, :managementool, :addition_degrees)";
           $query = "UPDATE ".$this->profile_table." SET goals=:goals, service=:services, mentoring_level=:mentoring_level, weektalk=:weekTalk, contact=:contact, avialability=:avialability,
           areaofexp=:areaofexp, experience=:experience, fieldofstudy=:fieldofstudy, education=:education, managementool=:managementool, addition_degrees=:addition_degrees WHERE fk_id=:id ";
 
