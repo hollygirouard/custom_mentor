@@ -104,7 +104,7 @@ export default class MentorSearch extends Component {
 
     axios({
       method: 'POST',
-      url: 'http://localhost:8080/custommentor/custom_mentor/serverapi/user.php',
+      url: 'http://custommentor/custom_mentor/serverapi/searchmentor.php',
       data: `requesttype=SearchMentor&data=${JSON.stringify(this.state)}`,
     }).then((response) => {
       console.log(response.data);

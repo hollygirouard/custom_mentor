@@ -12,11 +12,18 @@ require_once 'objects/user.php';
 $user = new User();
 $requesttype=$_POST['requesttype'];
 $obj = json_decode($_POST['data'],true);
+$name = $obj['name'];
+$availability = $obj['availability'];
+$contact = $obj['contact'];
+$edulevel = $obj['edulevel'];
+$goals = $obj['goals'];
+$mentorlevel =$obj['mentorlevel'];
 
 
 // if the form was signup is sent
 if($requesttype=="SearchMentor"){
-echo "hahahaha"
+$result=$user->search_mentor($name,$goals, $contact, $availability, $edulevel,$mentorlevel);
+echo $result;
 }
 
 

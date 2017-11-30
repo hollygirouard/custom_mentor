@@ -8,6 +8,10 @@ class User extends database{
     // database connection and table name
 
     private $user_table = "users";
+    private $avaliability_table = "avalablity";
+    private $contact_table = "contact_method";
+    private $goals_table = "goals";
+
     public $profile_table="profile";
 
     // object properties
@@ -164,8 +168,24 @@ class User extends database{
         }
     }
 
-    public function search_mentor(){
-      
+    public function search_mentor($name ,$goals, $contact, $availability, $edulevel,$mentorlevel){
+      //generating query'
+      $nameq = $name!=""?"and name='$name'":"";
+      $user_query="(SELECT id,name,email,phone
+          FROM " . $this->user_table . "
+          WHERE type = 'Mentor' $nameq)u";
+//if user search based on mentor level and education level
+      if($mentorlevel!="" && $edulevel!=""){$profile_query="(SELECT * FROM  ".$this->profile_table." WHERE education='$edulevel' and mentoring_level='$mentorlevel')p";}
+          elseif($mentorlevel=="" && $edulevel!=""){$profile_query="(SELECT * FROM  ".$this->profile_table." WHERE education='$edulevel')p";}
+          elseif($mentorlevel=="" && $edulevel!=""){$profile_query="(SELECT * FROM  ".$this->profile_table." WHERE education='$edulevel' )p";}
+          elseif($mentorlevel!="" && $edulevel==""){$profile_query="(SELECT * FROM  ".$this->profile_table." WHERE mentoring_level='$mentorlevel')p";}
+            else{$profile_query="";}
+
+      $availibility_query=$this->generate_search_query($availability,$this->avaliability_table,'day','av');
+      $contact_query=$this->generate_search_query($contact,$this->contact_table,'type','cm');
+
+    return $contact_query;
+
     }
 
 
@@ -201,5 +221,22 @@ class User extends database{
    {
         setcookie("useremail", "", time() - 3600);
         return true;
+   }
+   //this is a utitlity function to help generate the search filter queries
+   private function generate_search_query($string,$tbname,$column,$shrtname){
+     if($string!=''){
+       //convert to an array
+     $string=explode(',',$string);
+     $query_array=array();
+     foreach ($string as $key => $value) {
+       if($key==0){$query_array[]=" $column='$value' ";}
+       else{
+       $query_array[]="or $column= '$value' ";}
+     }
+     $query_string=implode('',$query_array);
+     $query="(SELECT * FROM  ".$tbname." WHERE $query_string)$shrtname";
+
+     }else{$query="";}
+return $query;
    }
 }
