@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { authenticateUser } from './actions/login';
+import { userSignOut } from './actions/logout';
 import App from './App';
 
 const mapStateToProps = state => ({
@@ -9,6 +10,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   authenticateUser: () => dispatch(authenticateUser(ownProps)),
+  userSignOut: () => dispatch(userSignOut()),
+
 });
 
 const AppContainer = connect(

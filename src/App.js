@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, NavLink } from 'react-router-dom';
+import { Button } from 'reactstrap';
+
 
 import HomeContainer from './components/Home/HomeContainer';
 import UserContainer from './components/UserScreen/UserContainer';
@@ -14,6 +16,7 @@ import BackgroundContainer from './components/BackgroundScreen/BackgroundContain
 import CommLogContainer from './components/CommLogScreen/CommLogContainer';
 
 import Contact from './components/Home/Contact';
+
 
 const SCREENS = [
   {
@@ -154,6 +157,8 @@ export default class App extends Component {
                   </li>
                 ))
         }
+        <Button color="primary" onClick={() => this.props.userSignOut()}>Sign out</Button>
+
       </ul>
     ) : (
       <ul className="nav navbar-nav navbar-right">
