@@ -81,21 +81,13 @@ export default class App extends Component {
       <nav className="navbar navbar-default navbar-fixed-top" id={this.props.isLoggedIn ? 'member_sidebar' : 'documenter_sidebar'}>
         <div className="container">
           <div className="navbar-header">
-            <button
-              type="button"
-              className="navbar-toggle"
-              data-toggle="collapse"
-              data-target="#myNavbar"
-            >
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-            </button>
-            <a className="navbar-brand" href="index.html">
+            <a className="navbar-brand" href="/">
               <img alt="CustomMentor" className="logo" src={`${process.env.PUBLIC_URL}/image/CustomMentorLogo.png`} />
             </a>
           </div>
-          <div className="collapse navbar-collapse" id="myNavbar">
+          <button className = "btn" onClick={() => this.openNav()}>&#9776;</button>
+
+          <div className="sidenav" id="myNavbar">
             {this.renderLinks()}
           </div>
         </div>
@@ -164,6 +156,7 @@ export default class App extends Component {
       </ul>
     ) : (
       <ul className="nav navbar-nav navbar-right">
+        <a href="javascript:void(0)" class="closebtn" onClick={() => this.closeNav()}>&times;</a>
         <li><a href="#signin">Sign-In/Sign-Up</a></li>
         <li><a href="#menteeInfo">Find a Mentor</a></li>
         <li><a href="#mentorInfo">Become a Mentor</a></li>
@@ -172,7 +165,13 @@ export default class App extends Component {
       </ul>
     );
   }
+ openNav() {
+      document.getElementById("myNavbar").style.width = "250px";
+  }
 
+ closeNav() {
+      document.getElementById("myNavbar").style.width = "0";
+  }
   render() {
     return (
       <Router>

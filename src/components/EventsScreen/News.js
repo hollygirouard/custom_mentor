@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import NewsArticle from './NewsArticle'
 import axios from 'axios'
-import * as pCensor from 'profanity-censor'
+// import * as pCensor from 'profanity-censor'
 
 //configure dictionary array for blacklist words
 //NOTE: if dictionary is used, it replaces default list
@@ -23,7 +23,7 @@ export default class News extends Component {
 	}
 
 		grabPosts(){
-			let subreddits = 
+			let subreddits =
 			[
 				'programming',
 				'ted',
@@ -64,7 +64,7 @@ export default class News extends Component {
 			.then(data => {
 				data.data.data.children.forEach(element => {
 					//censor profanity from title
-					element.data.title = pCensor.filter(element.data.title)
+					// element.data.title = pCensor.filter(element.data.title)
 				})
 				this.setState({after:data.data.data.after})
 				let results = this.state.searchResults
@@ -80,7 +80,7 @@ export default class News extends Component {
 	    	        <input className="form-control" name="query" type="text" />
 	    	        <input className="btn btn-primary ml-3" type="submit" />
 	        	</form>
-	        	
+
 	        	<div id="news-feed" className=''>
 	        		{this.state.searchResults.map((data, i) =>(
 	        			<NewsArticle key={i} articleData={data.data}></NewsArticle>
