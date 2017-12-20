@@ -139,11 +139,12 @@ export default class App extends Component {
   renderLinks() {
     return this.props.isLoggedIn ? (
       <ul className="nav navbar-nav navbar-right">
+        <a href="javascript:void(0)" class="closebtn" onClick={() => this.closeNav()}>&times;</a>
         {
             SCREENS
                 .filter(item => item.mainMenu)
                 .map(screen => (
-                  <li key={screen.title}>
+                  <li onClick={() => this.closeNav()} key={screen.title}>
                     <NavLink
                       to={screen.route}
                       key={screen.title}
@@ -157,11 +158,11 @@ export default class App extends Component {
     ) : (
       <ul className="nav navbar-nav navbar-right">
         <a href="javascript:void(0)" class="closebtn" onClick={() => this.closeNav()}>&times;</a>
-        <li><a href="#signin">Sign-In/Sign-Up</a></li>
-        <li><a href="#menteeInfo">Find a Mentor</a></li>
-        <li><a href="#mentorInfo">Become a Mentor</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a onClick={() => this.closeNav()} href="#signin">Sign-In/Sign-Up</a></li>
+        <li><a onClick={() => this.closeNav()} href="#menteeInfo">Find a Mentor</a></li>
+        <li><a onClick={() => this.closeNav()} href="#mentorInfo">Become a Mentor</a></li>
+        <li><a onClick={() => this.closeNav()} href="#about">About</a></li>
+        <li><a onClick={() => this.closeNav()} href="#contact">Contact</a></li>
       </ul>
     );
   }
