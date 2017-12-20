@@ -45,7 +45,7 @@ a:hover, a:focus{
 /***********************************
 Navigation bar
 ************************************/
-/* .navbar-default .navbar-brand {
+.navbar-default .navbar-brand {
     color: #00A7E1;
 }
 .navbar-default {
@@ -93,7 +93,7 @@ Navigation bar
 }
 .mart20{
 	margin-top: 20px;
-} */
+}
 
 .btn{
 	border-radius: 10px;
@@ -139,6 +139,8 @@ Navigation bar
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+
 /***********************************
 Banner
 ************************************/
