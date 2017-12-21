@@ -136,7 +136,7 @@ export default class App extends Component {
                   </li>
                 ))
         }
-        <Button color="primary" onClick={() => this.props.userSignOut()}>Sign out</Button>
+        <li><a color="primary" className = "signout" onClick={() => this.props.userSignOut()}>Sign out</a></li>
 
       </ul>
     ) : (
