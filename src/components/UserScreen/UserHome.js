@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 export default class UserHome extends Component {
   render() {
     const user = this.props.currentUser.data.user_details;
+    console.log(this.props)
 
     return (
       <div className="screen">

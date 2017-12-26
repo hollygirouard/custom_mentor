@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect, NavLink } from 'react-router-dom';
+import { Button } from 'reactstrap';
+
 
 import HomeContainer from './components/Home/HomeContainer';
 import UserContainer from './components/UserScreen/UserContainer';
@@ -7,14 +9,11 @@ import GoalsContainer from './components/GoalsScreen/GoalsContainer';
 import PersonalityFormContainer from './components/PersonalityFormScreen/PersonalityFormContainer';
 import MentorSearchContainer from './components/MentorSearch/MentorSearchContainer';
 import AccountContainer from './components/AccountScreen/AccountContainer';
-import ScheduleContainer from './components/ScheduleScreen/ScheduleContainer';
-import ReviewsContainer from './components/ReviewsScreen/ReviewsContainer';
+import SearchContainer from './components/SearchScreen/SearchContainer';
 import EventsContainer from './components/EventsScreen/EventsContainer';
-import EducationContainer from './components/EducationScreen/EducationContainer';
-import BackgroundContainer from './components/BackgroundScreen/BackgroundContainer';
 import CommLogContainer from './components/CommLogScreen/CommLogContainer';
-
 import Contact from './components/Home/Contact';
+
 
 const SCREENS = [
   {
@@ -24,13 +23,7 @@ const SCREENS = [
     title: 'My Profile', route: '/profile', component: AccountContainer, mainMenu: true,
   },
   {
-    title: 'Goals', route: '/goals', component: GoalsContainer, mainMenu: true,
-  },
-  {
-    title: 'Schedule', route: '/schedule', component: ScheduleContainer, mainMenu: true,
-  },
-  {
-    title: 'Reviews', route: '/reviews', component: ReviewsContainer, mainMenu: true,
+    title: 'Search for Mentor/Mentee', route: '/search', component: SearchContainer, mainMenu: true,
   },
   {
     title: 'Community Log', route: '/commlog', component: CommLogContainer, mainMenu: true,
@@ -38,21 +31,8 @@ const SCREENS = [
   {
     title: 'News & Events', route: '/events', component: EventsContainer, mainMenu: true,
   },
-  {
-    title: 'Education & Training', route: '/education', component: EducationContainer, mainMenu: true,
-  },
-  {
-    title: 'Background Checks', route: '/background', component: BackgroundContainer, mainMenu: true,
-  },
-  {
-    title: 'Personality Form', route: '/form', component: PersonalityFormContainer, mainMenu: true,
-  },
-  {
-    title: 'MentorSearch Form', route: '/search', component: MentorSearchContainer, mainMenu: true,
-  },
-  {
-    title: 'Contact', route: '/contact', component: Contact, mainMenu: true,
-  },
+    {title: 'Contact', route: '/contact', component: Contact, mainMenu: true,
+  }
 ];
 
 export default class App extends Component {
@@ -85,21 +65,13 @@ export default class App extends Component {
       <nav className="navbar navbar-default navbar-fixed-top" id={this.props.isLoggedIn ? 'member_sidebar' : 'documenter_sidebar'}>
         <div className="container">
           <div className="navbar-header">
-            <button
-              type="button"
-              className="navbar-toggle"
-              data-toggle="collapse"
-              data-target="#myNavbar"
-            >
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-            </button>
             <a className="navbar-brand" href="/">
               <img alt="CustomMentor" className="logo" src={`${process.env.PUBLIC_URL}/image/CustomMentorLogo.png`} />
             </a>
           </div>
-          <div className="collapse navbar-collapse" id="myNavbar">
+          <button className = "btn" onClick={() => this.openNav()}>&#9776;</button>
+
+          <div className="sidenav" id="myNavbar">
             {this.renderLinks()}
           </div>
         </div>
@@ -151,11 +123,12 @@ export default class App extends Component {
   renderLinks() {
     return this.props.isLoggedIn ? (
       <ul className="nav navbar-nav navbar-right">
+        <a href="javascript:void(0)" class="closebtn" onClick={() => this.closeNav()}>&times;</a>
         {
             SCREENS
                 .filter(item => item.mainMenu)
                 .map(screen => (
-                  <li key={screen.title}>
+                  <li onClick={() => this.closeNav()} key={screen.title}>
                     <NavLink
                       to={screen.route}
                       key={screen.title}
@@ -165,18 +138,27 @@ export default class App extends Component {
                   </li>
                 ))
         }
+        <li><a color="primary" className = "signout" onClick={() => this.props.userSignOut()}>Sign out</a></li>
+
       </ul>
     ) : (
       <ul className="nav navbar-nav navbar-right">
-        <li><a href="#signin">Sign-In/Sign-Up</a></li>
-        <li><a href="#menteeInfo">Find a Mentor</a></li>
-        <li><a href="#mentorInfo">Become a Mentor</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <a href="javascript:void(0)" class="closebtn" onClick={() => this.closeNav()}>&times;</a>
+        <li><a onClick={() => this.closeNav()} href="#signin">Sign-In/Sign-Up</a></li>
+        <li><a onClick={() => this.closeNav()} href="#menteeInfo">Find a Mentor</a></li>
+        <li><a onClick={() => this.closeNav()} href="#mentorInfo">Become a Mentor</a></li>
+        <li><a onClick={() => this.closeNav()} href="#about">About</a></li>
+        <li><a onClick={() => this.closeNav()} href="#contact">Contact</a></li>
       </ul>
     );
   }
+ openNav() {
+      document.getElementById("myNavbar").style.width = "250px";
+  }
 
+ closeNav() {
+      document.getElementById("myNavbar").style.width = "0";
+  }
   render() {
     return (
       <Router>

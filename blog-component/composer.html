@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!-- Quill text editor styles CDN -->
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>News and Events</h1>
+
+        <nav class="nav nav-tabs">
+            <a class="nav-link" href="/">Blog / Events</a>
+            <a class="nav-link" href="/newsFeed">Reddit News</a>
+            <a class="nav-link active" href="/composer">Blog Composer</a>
+        </nav>
+
+        <h2 class="text-center">Post a new blog</h2>
+        <div class="alertcontainer"></div>
+        <form action="/" method="POST">
+            <input id='blog-title' type="text" placeholder="Title" required class='form-control-lg form-control'>
+            <!-- Create the editor container -->
+            <div id="editor">
+                <textarea type='text' name='content'>Hello World!</textarea>
+            </div>
+            <input class='btn btn-success' type="submit" value="Post blog">
+        </form>
+    </div>
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script src="composer.js"></script>
+</body>
+
+</html>

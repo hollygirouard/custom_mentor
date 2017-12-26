@@ -60,9 +60,8 @@ Navigation bar
     font-weight: 700;
 }
 .navbar-nav > li > a{
-	padding: 0px;
 	margin: 10px 5px;
-	padding: 10px 15px;
+	padding: 0px 40px 0px 40px;
 }
 .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover
 {
@@ -75,17 +74,7 @@ Navigation bar
     outline: none;
 }
 
-.btn-trial a{
-	background-color: #00A7E1;
-	border-radius: 25px;
-	color: #ffffff !important;
-	border: 1px solid #00A7E1;
-}
-.btn-trial a:hover, .btn-trial a:focus{
-	border: 1px solid #00A7E1;
-	background-color: #fff;
-	color: #00A7E1 !important;
-}
+
 .navbar-default .navbar-brand {
     font-family: 'Dosis', sans-serif !important;
     font-weight: 700;
@@ -104,6 +93,53 @@ Navigation bar
 .mart20{
 	margin-top: 20px;
 }
+
+.btn{
+	border-radius: 10px;
+	font-size: 20px;
+	float:right;
+	margin-top: 1%;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #717f86;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #00A7E1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
 /***********************************
 Banner
 ************************************/
@@ -136,7 +172,7 @@ Banner
 	margin-top: 30px;
 }
 .quote .btn{
-    background-color: 
+    background-color:
 }
 .modal-dialog {
     width: 600px;
@@ -184,7 +220,7 @@ Banner
     top:10px;
     margin-left: -2.5px;
     transition:all 0.3s ease-in;
- 
+
      -webkit-animation-name: rotateplane; /* Chrome, Safari, Opera */
     -webkit-animation-duration: 2s; /* Chrome, Safari, Opera */
     animation-name: rotateplane;
@@ -499,7 +535,7 @@ Contact Us
     width: 100%;
 	margin-bottom: 15px;
     border-radius: 0;
-    
+
 }
 .textarea {
     height: 228px;
@@ -709,7 +745,7 @@ Responsive media queries
     }
     .price-table .pricing-head h4 {
     font-size: 18px;
-    }   
+    }
 }
 @media (min-width: 20px) and (max-width: 450px) {
     .text-dec {

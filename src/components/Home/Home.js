@@ -10,7 +10,7 @@ import MentorInfo from '../Home/MentorInfo';
 export default class Home extends Component {
   componentWillUpdate(newProps) {
     if (newProps.isLoggedIn) {
-      this.props.history.push('/profile');
+      this.props.history.push('/home');
     }
   }
 
